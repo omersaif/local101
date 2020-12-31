@@ -22,7 +22,7 @@
 				
 					<th>Name</th>
 					<th>ID Number</th>
-			
+					<th>DoB</th>
 					<th>Course Yr & Section</th>
 					<th></th>
 		</tr>
@@ -42,7 +42,7 @@
 	
 		<td><?php echo $row['firstname'] . " " . $row['lastname']; ?></td> 
 		<td><?php echo $row['username']; ?></td> 
-	
+		<td><?php echo $row['dob']; ?></td>
 		<td width="100"><?php echo $row['class_name']; ?></td> 
 	
 		<td width="30"><a href="edit_student.php<?php echo '?id='.$id; ?>" class="btn btn-success"><i class="icon-pencil"></i> </a></td>

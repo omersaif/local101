@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2020 at 03:46 AM
+-- Generation Time: Jan 01, 2021 at 04:28 AM
 -- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,7 +49,11 @@ INSERT INTO `activity_log` (`activity_log_id`, `username`, `date`, `action`) VAL
 (8, '', '2013-11-18 15:32:37', 'Add Subject IS 411B'),
 (9, '', '2013-11-18 15:34:54', 'Edit User jkev'),
 (10, 'jkev', '2014-01-17 13:26:18', 'Add User admin'),
-(11, 'admin', '2020-12-21 08:37:51', 'Add Subject 1234');
+(11, 'admin', '2020-12-21 08:37:51', 'Add Subject 1234'),
+(12, '', '2020-12-29 10:06:14', 'Add School Year 2020-21(o)'),
+(13, '', '2020-12-29 10:12:20', 'Add School Year 2020-21(e)'),
+(14, '', '2020-12-29 10:13:51', 'Add School Year 2020-21(e)'),
+(15, '', '2020-12-29 10:14:54', 'Add School Year 2019-2020');
 
 -- --------------------------------------------------------
 
@@ -95,39 +99,49 @@ CREATE TABLE `assignment` (
   `fdesc` varchar(100) NOT NULL,
   `teacher_id` int(11) NOT NULL,
   `class_id` int(11) NOT NULL,
-  `fname` varchar(100) NOT NULL
+  `fname` varchar(100) NOT NULL,
+  `maxmarks` varchar(215) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `assignment`
 --
 
-INSERT INTO `assignment` (`assignment_id`, `floc`, `fdatein`, `fdesc`, `teacher_id`, `class_id`, `fname`) VALUES
-(2, 'uploads/6843_File_Doc3.docx', '2013-10-11 01:24:32', 'fasfasf', 13, 36, 'Assignment number 1'),
-(3, 'uploads/3617_File_login.mdb', '2013-10-28 19:35:28', 'q', 9, 80, 'q'),
-(4, 'admin/uploads/7146_File_normalization.ppt', '2013-10-30 18:48:15', 'fsaf', 9, 95, 'fsaf'),
-(5, 'admin/uploads/7784_File_ABSTRACT.docx', '2013-10-30 18:48:33', 'fsaf', 9, 95, 'dsaf'),
-(6, 'admin/uploads/4536_File_ABSTRACT.docx', '2013-10-30 18:53:32', 'file', 9, 95, 'abstract'),
-(10, 'admin/uploads/2209_File_598378_543547629007198_436971088_n.jpg', '2013-11-01 13:13:18', 'fsafasf', 9, 95, 'Assignment#2'),
-(11, 'admin/uploads/1511_File_bootstrap.css', '2013-11-01 13:18:25', 'sdsa', 9, 95, 'css'),
-(12, 'admin/uploads/4309_File_new  2.txt', '2013-11-17 23:21:46', 'test', 12, 145, 'test'),
-(13, 'admin/uploads/5901_File_IS 112-Personal Productivity Using IS.doc', '2013-11-18 16:59:35', 'q', 12, 145, 'q'),
-(15, 'admin/uploads/7077_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-11-25 10:38:45', 'afs', 18, 159, 'dasf'),
-(16, 'admin/uploads/8470_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-11-25 10:39:19', 'test', 18, 160, 'assign1'),
-(17, 'admin/uploads/2840_File_IMG_0698.jpg', '2013-11-25 15:53:20', 'q', 12, 161, 'q'),
-(19, '', '2013-12-07 20:11:39', 'kevin test', 12, 162, ''),
-(20, '', '2013-12-07 20:26:43', 'dasddsd', 12, 145, ''),
-(21, '', '2013-12-07 20:26:43', 'dasddsd', 12, 162, ''),
-(22, '', '2013-12-07 20:27:18', 'dasffsafsaf', 12, 162, ''),
-(23, '', '2013-12-07 20:33:11', 'test', 12, 162, ''),
-(24, 'admin/uploads/7053_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:39:05', 'kevin', 12, 0, 'kevin'),
-(25, 'admin/uploads/2417_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:41:10', 'kevin', 12, 0, 'kevin'),
-(26, 'admin/uploads/8095_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:43:25', 'kevin', 12, 0, 'kevin'),
-(27, 'admin/uploads/4089_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:47:48', 'fasfafaf', 12, 0, 'fasf'),
-(28, 'admin/uploads/2948_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:48:59', 'dasdasd', 12, 0, 'dasd'),
-(29, 'admin/uploads/5971_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:50:47', 'dasdasd', 12, 0, 'dsad'),
-(30, 'admin/uploads/6926_File_Resume.docx', '2014-02-13 11:27:59', 'q', 12, 167, 'q'),
-(31, 'admin/uploads/8289_File_sample.pdf', '2020-12-21 09:56:48', 'asdasd', 9, 186, 'asdasd');
+INSERT INTO `assignment` (`assignment_id`, `floc`, `fdatein`, `fdesc`, `teacher_id`, `class_id`, `fname`, `maxmarks`) VALUES
+(2, 'uploads/6843_File_Doc3.docx', '2013-10-11 01:24:32', 'fasfasf', 13, 36, 'Assignment number 1', ''),
+(3, 'uploads/3617_File_login.mdb', '2013-10-28 19:35:28', 'q', 9, 80, 'q', ''),
+(4, 'admin/uploads/7146_File_normalization.ppt', '2013-10-30 18:48:15', 'fsaf', 9, 95, 'fsaf', ''),
+(5, 'admin/uploads/7784_File_ABSTRACT.docx', '2013-10-30 18:48:33', 'fsaf', 9, 95, 'dsaf', ''),
+(6, 'admin/uploads/4536_File_ABSTRACT.docx', '2013-10-30 18:53:32', 'file', 9, 95, 'abstract', ''),
+(10, 'admin/uploads/2209_File_598378_543547629007198_436971088_n.jpg', '2013-11-01 13:13:18', 'fsafasf', 9, 95, 'Assignment#2', ''),
+(11, 'admin/uploads/1511_File_bootstrap.css', '2013-11-01 13:18:25', 'sdsa', 9, 95, 'css', ''),
+(12, 'admin/uploads/4309_File_new  2.txt', '2013-11-17 23:21:46', 'test', 12, 145, 'test', ''),
+(13, 'admin/uploads/5901_File_IS 112-Personal Productivity Using IS.doc', '2013-11-18 16:59:35', 'q', 12, 145, 'q', ''),
+(15, 'admin/uploads/7077_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-11-25 10:38:45', 'afs', 18, 159, 'dasf', ''),
+(16, 'admin/uploads/8470_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-11-25 10:39:19', 'test', 18, 160, 'assign1', ''),
+(17, 'admin/uploads/2840_File_IMG_0698.jpg', '2013-11-25 15:53:20', 'q', 12, 161, 'q', ''),
+(19, '', '2013-12-07 20:11:39', 'kevin test', 12, 162, '', ''),
+(20, '', '2013-12-07 20:26:43', 'dasddsd', 12, 145, '', ''),
+(21, '', '2013-12-07 20:26:43', 'dasddsd', 12, 162, '', ''),
+(22, '', '2013-12-07 20:27:18', 'dasffsafsaf', 12, 162, '', ''),
+(23, '', '2013-12-07 20:33:11', 'test', 12, 162, '', ''),
+(24, 'admin/uploads/7053_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:39:05', 'kevin', 12, 0, 'kevin', ''),
+(25, 'admin/uploads/2417_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:41:10', 'kevin', 12, 0, 'kevin', ''),
+(26, 'admin/uploads/8095_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:43:25', 'kevin', 12, 0, 'kevin', ''),
+(27, 'admin/uploads/4089_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:47:48', 'fasfafaf', 12, 0, 'fasf', ''),
+(28, 'admin/uploads/2948_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:48:59', 'dasdasd', 12, 0, 'dasd', ''),
+(29, 'admin/uploads/5971_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:50:47', 'dasdasd', 12, 0, 'dsad', ''),
+(30, 'admin/uploads/6926_File_Resume.docx', '2014-02-13 11:27:59', 'q', 12, 167, 'q', ''),
+(31, 'admin/uploads/8289_File_sample.pdf', '2020-12-21 09:56:48', 'asdasd', 9, 186, 'asdasd', ''),
+(32, 'admin/uploads/3292_File_JUNE-JULY-2017 - CS-min (1).pdf', '2020-12-30 10:35:42', 'adjsd', 111, 196, 'assign-1', ''),
+(33, 'admin/uploads/5950_File_Jan-2019.pdf', '2020-12-31 18:31:47', 'assignment', 9, 196, 'assignment', ''),
+(34, 'admin/uploads/5950_File_Jan-2019.pdf', '2020-12-31 18:31:47', 'assignment', 9, 198, 'assignment', ''),
+(35, 'admin/uploads/5366_File_Jan-2019.pdf', '2020-12-31 18:34:48', 'fadsr', 9, 196, 'maxmarks', ''),
+(36, 'admin/uploads/5366_File_Jan-2019.pdf', '2020-12-31 18:34:48', 'fadsr', 9, 198, 'maxmarks', ''),
+(37, 'admin/uploads/2281_File_Jan-2019.pdf', '2020-12-31 18:36:12', 'assign', 9, 196, 'assign', ''),
+(38, 'admin/uploads/6836_File_Jan-2019.pdf', '2020-12-31 18:38:46', 'daffafssaf', 9, 196, 'assign-1000', '100'),
+(39, 'admin/uploads/6836_File_Jan-2019.pdf', '2020-12-31 18:38:46', 'daffafssaf', 9, 198, 'assign-1000', '100'),
+(41, 'admin/uploads/1274_File_Jan-2019.pdf', '2020-12-31 18:52:38', 'sagu', 9, 196, 'sagu', '50');
 
 -- --------------------------------------------------------
 
@@ -137,29 +151,30 @@ INSERT INTO `assignment` (`assignment_id`, `floc`, `fdatein`, `fdesc`, `teacher_
 
 CREATE TABLE `class` (
   `class_id` int(11) NOT NULL,
-  `class_name` varchar(100) NOT NULL
+  `class_name` varchar(100) NOT NULL,
+  `did` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `class`
 --
 
-INSERT INTO `class` (`class_id`, `class_name`) VALUES
-(7, 'BSIS-4A'),
-(8, 'BSIS-4B'),
-(12, 'BSIS-3A'),
-(13, 'BSIS-3B'),
-(14, 'BSIS-3C'),
-(15, 'BSIS-2A'),
-(16, 'BSIS-2B'),
-(17, 'BSIS-2C'),
-(18, 'BSIS-1A'),
-(19, 'BSIS-1B'),
-(20, 'BSIS-1C'),
-(21, 'BSED-1A'),
-(22, 'AB-1C'),
-(23, 'BSIT-2B'),
-(24, 'BSIT-1A');
+INSERT INTO `class` (`class_id`, `class_name`, `did`) VALUES
+(7, 'CS-3A', 4),
+(8, 'CS-3B', 4),
+(12, 'CS-4A', 4),
+(13, 'CS-4B', 4),
+(14, 'EC-3A', 5),
+(15, 'EC-3B', 5),
+(16, 'EC-4A', 5),
+(17, 'EC-4B', 5),
+(18, 'ME-3A', 9),
+(19, 'ME-3B', 9),
+(20, 'CV-3A', 10),
+(21, 'CV-3B', 10),
+(22, 'CV-4A', 10),
+(23, 'CV-4B', 10),
+(24, 'BSIT-1A', 0);
 
 -- --------------------------------------------------------
 
@@ -183,7 +198,10 @@ INSERT INTO `class_quiz` (`class_quiz_id`, `teacher_class_id`, `quiz_time`, `qui
 (14, 167, 3600, 3),
 (15, 167, 1800, 3),
 (16, 185, 900, 0),
-(17, 186, 1800, 6);
+(17, 186, 1800, 6),
+(18, 151, 1200, 7),
+(19, 152, 1200, 7),
+(20, 153, 1200, 7);
 
 -- --------------------------------------------------------
 
@@ -224,7 +242,7 @@ INSERT INTO `content` (`content_id`, `title`, `content`) VALUES
 (1, 'Mission', '<pre>\r\n<span style=\"font-size:16px\"><strong>Mission</strong></span></pre>\r\n\r\n<p style=\"text-align:left\"><span style=\"font-family:arial,helvetica,sans-serif; font-size:medium\"><span style=\"font-size:large\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></span>&nbsp; &nbsp;<span style=\"font-size:18px\"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; A leading institution in higher and continuing education commited to engage in quality instruction, development-oriented research sustinable lucrative economic enterprise, and responsive extension and training services through relevant academic programs to empower a human resource that responds effectively to challenges in life and acts as catalyst in the holistoic development of a humane society.&nbsp;</span></p>\r\n\r\n<p style=\"text-align:left\">&nbsp;</p>\r\n'),
 (2, 'Vision', '<pre><span style=\"font-size: large;\"><strong>Vision</strong></span></pre>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"font-size: large;\">&nbsp; Driven by its passion for continous improvement, the State College has to vigorously pursue distinction and proficieny in delivering its statutory functions to the Filipino people in the fields of education, business, agro-fishery, industrial, science and technology, through committed and competent human resource, guided by the beacon of innovation and productivity towards the heights of elevated status. </span><br /><br /></p>'),
 (3, 'History', '<pre><span style=\"font-size: large;\">HISTORY &nbsp;</span> </pre>\r\n<p style=\"text-align: justify;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Carlos Hilado Memorial State College, formerly Paglaum State College, is a public educational institution that aims to provide higher technological, professional and vocational instruction and training in science, agriculture and industrial fields as well as short term or vocational courses. It was Batas Pambansa Bilang 477 which integrated these three institutions of learning: the Negros Occidental College of Arts and Trades (NOCAT) in the Municipality of Talisay, Bacolod City National Trade School (BCNTS) in Alijis, Bacolod City, and the Negros Occidental Provincial Community College (NOPCC) in Bacolod City, into a tertiary state educational institution to be called Paglaum State College. Approved in 1983, the College Charter was implemented effective January 1, 1984, with Mr. Sulpicio P. Cartera as its President. The administrative seat of the first state college in Negros Occidental is located at the Talisay Campus which was originally established as Negros Occidental School of Arts and Trades (NOSAT) under R.A. 848, authored and sponsored by Hon. Carlos Hilado. It occupies a five-hectare land donated by the provincial government under Provincial Board Resolution No. 1163. The renaming of the college to Carlos Hilado Memorial State College was effected by virtue of House Bill No. 7707 authored by then Congressman Jose Carlos V. Lacson of the 3rd Congressional District, Province of Negros Occidental, and which finally became a law on May 5, 1994</p>\r\n<p style=\"text-align: justify;\">&nbsp;</p>\r\n<p style=\"text-align: justify;\">&nbsp;&nbsp;&nbsp; Talisay Campus. July 1, 1954 marked the formal opening of NOSAT with Mr. Francisco Apilado as its first Superintendent and Mr. Gil H. Tenefrancia as Principal. There were five (5) full time teachers, with an initial enrolment of eighty-nine (89) secondary and trade technical students. The shop courses were General Metal Works, Practical Electricity and Woodworking. The first classes were held temporarily at Talisay Elementary School while the shop buildings and classrooms were under construction. NOSAT was a recipient of FOA-PHILCUA aid in terms of technical books, equipment, tools and machinery. Alijis Campus. The Alijis Campus of the Carlos Hilado Memorial State College is situated in a 5-hectare lot located at Barangay Alijis, Bacolod City. The lot was a donation of the late Dr. Antonio Lizares. The school was formerly established as the Bacolod City National Trade School. The establishment of this trade technical institution is pursuant to R.A. 3886 in 1968, authored by the late Congressman Inocencio V. Ferrer of the second congressional district of the Province of Negros Occidental. Fortune Towne. The Fortune Towne Campus of the Carlos Hilado Memorial State College was originally situated in Negros Occidental High School (NOHS), Bacolod City on a lot owned by the Provincial Government under Provincial Board Resolution No. 91 series of 1970. The school was formerly established as the Negros Occidental Provincial Community College and formally opened on July 13, 1970 with the following course offerings: Bachelor of Arts, Technical Education and Bachelor of Commerce. The initial operation of the school started in July 13, 1970, with an initial enrolment of 209 students. Classes were first housed at the Negros Occidental High School while the first building was constructed. Then Governor Alfredo L. Montelibano spearheaded the first operation of the NOPCC along with the members of the Board of Trustees. In June 1995, the campus transferred to its new site in Fortune Towne, Bacolod City. Binalbagan Campus. On Nov. 24, 2000, the Negros Occidental School of Fisheries (NOSOF) in Binalbagan, Negros Occidental was integrated to the Carlos Hilado Memorial State College system as an external campus by virtue of Resolution No. 46 series of 2000.</p>'),
-(4, 'Footer', '<p style=\"text-align:center\">CHMSC Online Learning Managenment System</p>\r\n\r\n<p style=\"text-align:center\">All Rights Reserved &reg;2013</p>\r\n'),
+(4, 'Footer', '<p style=\"text-align:center\">BIDS &nbsp;Learning Managenment System</p>\r\n\r\n<p style=\"text-align:center\">All Rights Reserved &reg;2020</p>\r\n'),
 (5, 'Upcoming Events', '<pre>\r\nUP COMING EVENTS</pre>\r\n\r\n<p><strong>&gt;</strong> EXAM</p>\r\n\r\n<p><strong>&gt;</strong> INTERCAMPUS MEET</p>\r\n\r\n<p><strong>&gt;</strong> DEFENSE</p>\r\n\r\n<p><strong>&gt;</strong> ENROLLMENT</p>\r\n\r\n<p>&nbsp;</p>\r\n'),
 (6, 'Title', '<p><span style=\"font-family:trebuchet ms,geneva\">CHMSC Online Learning Management System</span></p>\r\n'),
 (7, 'News', '<pre>\r\n<span style=\"font-size:medium\"><em><strong>Recent News\r\n</strong></em></span></pre>\r\n\r\n<h2><span style=\"font-size:small\">Extension and Community Services</span></h2>\r\n\r\n<p style=\"text-align:justify\">This technology package was promoted by the College of Industrial Technology Unit is an index to offer Practical Skills and Livelihood Training Program particularly to the Ina ngTahanan of Tayabas, Barangay Zone 15, Talisay City, Negros Occidental</p>\r\n\r\n<p style=\"text-align:justify\">The respondent of this technology package were mostly &ldquo;ina&rdquo; or mothers in PurokTayabas. There were twenty mothers who responded to the call of training and enhancing their sewing skills. The beginners projects include an apron, elastics waist skirts, pillow-cover and t-shirt style top. Short sleeve blouses with buttonholes or contoured seaming are also some of the many projects introduced to the mothers. Based on the interview conducted after the culmination activity, the projects done contributed as a means of earning to the respondents.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; In support to the thrust of the government to improve the health status of neighboring barangays, the Faculty and Staff of CHMSC ECS Fortune Towne, Bacolod City, launched its Medical Mission in Patag, Silay City. It was conducted last March 2010, to address the health needs of the people. A medical consultation is given to the residents of SitioPatag to attend to their health related problems that may need medical treatment. Medical tablets for headache, flu, fever, antibiotics and others were availed by the residents.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;The BAYAN-ANIHAN is a Food Production Program with a battle cry of &ldquo;GOODBYE GUTOM&rdquo;, advocating its legacy &ldquo;Food on the Table for every Filipino Family&rdquo; through backyard gardening. NGO&rsquo;s, governmental organizations, private and public sectors, business sectors are the cooperating agencies that support and facilitate this project and Carlos Hilado Memorial State College (CHMSC) is one of the identified partner school. Being a member institution in advocating its thrust, the school through its Extension and Community Services had conducted capability training workshop along this program identifying two deputy coordinators and trainers last November 26,27 and 28, 2009, with the end in view of implementing the project all throughout the neighboring towns, provinces and regions to help address poverty in the country. Program beneficiaries were the selected families of GawadKalinga (GK) in Hope Village, Brgy. Cabatangan, Talisay City, with 120 families beneficiaries; GK FIAT Village in Silay City with 30 beneficiaries; Bonbon Dream Village brgy. E. Lopez, Silay City with 60 beneficiaries; and respectively Had. Teresita and Had. Carmen in Talisay City, Negros Occidental both with 60 member beneficiaries. This program was introduced to 30 household members with the end in view of alleviating the quality standards of their living.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">The extension &amp; Community Services of the College conducted a series of consultations and meetings with the different local government units to assess technology needs to determines potential products to be developed considering the abundance of raw materials in their respective areas and their product marketability. The project was released in November 2009 in six cities in the province of Negros Occidental, namely San Carlos, Sagay, Silay, Bago, Himamaylan and Sipalay and the Municipality of E. B Magalona</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; The City of San Carlos focused on peanut and fish processing. Sagay and bago focused on meat processing, while Silay City on fish processing. The City of Himamaylan is on sardines, and in Sipalay focused on fish processing specially on their famous BARONGAY product. The municipality of E.B Magalona focused on bangus deboning.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; The food technology instructors are tasked to provide the needed skills along with the TLDC Livelihood project that each City is embarking on while the local government units provide the training venue for the project and the training equipment and machine were provided by the Department of Science and Technology.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n'),
@@ -234,6 +252,17 @@ INSERT INTO `content` (`content_id`, `title`, `content`) VALUES
 (12, 'president', '<p>It is my great pleasure and privilege to welcome you to CHMSC&rsquo;s official website. Accept my deep appreciation for continuously taking interest in CHMSC and its programs and activities.<br /> Recently, the challenges of the knowledge era of the 21st Century led me to think very deeply how educational institutions of higher learning must vigorously pursue relevant e<img style=\"float: left;\" src=\"images/president.jpg\" alt=\"\" />ducation to compete with and respond to the challenges of globalization. As an international fellow, I realized that in the face of this globalization and technological advancement, educational institutions are compelled to work extraordinary in educating the youths and enhancing their potentials for gainful employment and realization of their dreams to become effective citizens.<br /><br /> Honored and humbled to be given the opportunity for stewardship of this good College, I am fully aware that the goal is to make CHMSC as the center of excellence or development in various fields. The vision, CHMSC ExCELS: Excellence, Competence and Educational Leadership in Science and Technology is a profound battle cry for each member of CHMSC Community. A CHMSCian must be technologically and academically competent, socially mature, safety conscious with care for the environment, a good citizen and possesses high moral values. The way the College is being managed, the internal and the external culture of all stockholders, and the efforts for quality and excellence will result to the establishment of the good corporate image of the College. The hallmark is reflected as the image of the good institution.<br /><br /> The tasks at hand call for our full cooperation, support and active participation. Therefore, I urge everyone to help me in the crusade to <br /><br /></p>\r\n<p style=\"text-align: justify;\"><span style=\"line-height: 1.3em;\">Provide wider access to CHMSC programs;</span></p>\r\n<p style=\"text-align: justify;\"><span style=\"line-height: 1.3em;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Harness the potentials of students thru effective teaching and learning methodologies and techniques;</span></p>\r\n<p style=\"text-align: justify;\"><span style=\"line-height: 1.3em;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Enable CHMSC Environment for All through secure green campus;</span></p>\r\n<p style=\"text-align: justify;\"><span style=\"line-height: 1.3em;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Advocate green movement, protect intellectual property and stimulate innovation;</span></p>\r\n<p style=\"text-align: justify;\"><span style=\"line-height: 1.3em;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Promote lifelong learning;</span></p>\r\n<p style=\"text-align: justify;\"><span style=\"line-height: 1.3em;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Conduct Research and Development for community and poverty alleviation;</span></p>\r\n<p style=\"text-align: justify;\"><span style=\"line-height: 1.3em;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* Share and disseminate knowledge through publication and extension outreach to communities; and</span></p>\r\n<p style=\"text-align: justify;\"><span style=\"line-height: 1.3em;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*Strengthen Institute-industry linkages and public-private partnership for mutual interest.</span></p>\r\n<p style=\"text-align: justify;\"><br /><span style=\"line-height: 1.3em; text-align: justify;\">Together, WE can make CHMSC</span></p>\r\n<p style=\"text-align: justify;\"><br /><span style=\"line-height: 1.3em;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*A model green institution for Human Resources Development, a builder of human resources in the knowledge era of the 21st Century;</span></p>\r\n<p style=\"text-align: justify;\"><span style=\"line-height: 1.3em;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *A center for curricular innovations and research especially in education, technology, engineering, ICT and entrepreneurship; and</span></p>\r\n<p style=\"text-align: justify;\"><span style=\"line-height: 1.3em;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *A Provider of quality graduates in professional and technological programs for industry and community.</span></p>\r\n<p style=\"text-align: justify;\"><br /><br /> Dear readers and guests, these are the challenges for every CHMSCian to hurdle and the dreams to realize. This website will be one of the connections with you as we ardently take each step. Feel free to visit often and be kept posted as we continue to work for discoveries and advancement that will bring benefits to the lives of the students, the community, and the world, as a whole.<br /><br /> Warmest welcome and I wish you well!</p>\r\n<p style=\"text-align: justify;\"><br /><br /></p>\r\n<p style=\"text-align: justify;\">RENATO M. SOROLLA, Ph.D.<br />SUC President II</p>'),
 (13, 'motto', '<p><strong><span style=\"color:#FFF0F5\"><span style=\"font-family:arial,helvetica,sans-serif\">CHMSC EXCELS:</span></span></strong></p>\r\n\r\n<p><strong><span style=\"color:#FFF0F5\"><span style=\"font-family:arial,helvetica,sans-serif\">Excellence, Competence and Educational</span></span></strong></p>\r\n\r\n<p><strong><span style=\"color:#FFF0F5\"><span style=\"font-family:arial,helvetica,sans-serif\">Leadership in Science and Technology</span></span></strong></p>\r\n'),
 (14, 'Campuses', '<pre>\r\n<span style=\"font-size:16px\"><strong>Campuses</strong></span></pre>\r\n\r\n<ul>\r\n	<li>Alijis Campus</li>\r\n	<li>Binalbagan Campus</li>\r\n	<li>Fortunetown Campus</li>\r\n	<li>Talisay Campus<br />\r\n	&nbsp;</li>\r\n</ul>\r\n');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course`
+--
+
+CREATE TABLE `course` (
+  `course_id` int(20) NOT NULL,
+  `course_name` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -252,10 +281,28 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`department_id`, `department_name`, `dean`) VALUES
-(4, 'College of Industrial Technology', 'Dr. Antonio Deraja'),
-(5, 'School of Arts and Science', 'DR.'),
-(9, 'College of Education', 'null'),
-(10, 'Sample Department', 'DR. John Smith');
+(4, 'computer science engineering', 'hod'),
+(5, 'electrical engineering', 'DR.'),
+(9, 'mechanical engineering', 'null'),
+(10, 'civil engineering', 'DR. John Smith');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `edit_profile`
+--
+
+CREATE TABLE `edit_profile` (
+  `profile_id` int(20) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `designation` varchar(250) NOT NULL,
+  `proficiency` varchar(250) NOT NULL,
+  `teching_exp` varchar(250) NOT NULL,
+  `project` varchar(250) NOT NULL,
+  `qualification` varchar(250) NOT NULL,
+  `teacher_id` int(20) NOT NULL,
+  `publication` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -327,7 +374,8 @@ INSERT INTO `files` (`file_id`, `floc`, `fdatein`, `fdesc`, `teacher_id`, `class
 (138, 'admin/uploads/3952_File_sample.pdf', '2020-12-21 09:24:50', 'Sample', 9, 186, 'Sample', 'JomarPabuaya'),
 (139, 'admin/uploads/3579_File_sample.pdf', '2020-12-21 09:38:22', 'adasd', 9, 186, '234234', 'JomarPabuaya'),
 (140, 'admin/uploads/6898_File_sample.pdf', '2020-12-21 09:39:32', 'adasd', 9, 186, '234234', 'JomarPabuaya'),
-(141, 'admin/uploads/9782_File_sample.pdf', '2020-12-21 09:40:28', 'adasd', 9, 186, '234234', 'JomarPabuaya');
+(141, 'admin/uploads/9782_File_sample.pdf', '2020-12-21 09:40:28', 'adasd', 9, 186, '234234', 'JomarPabuaya'),
+(142, 'admin/uploads/8177_File_JUNE-JULY-2017 - CS-min (2).pdf', '2020-12-30 14:17:07', 'lmlml', 18, 197, 'kmkmkm', 'AllanDela Torre');
 
 -- --------------------------------------------------------
 
@@ -430,7 +478,23 @@ INSERT INTO `notification` (`notification_id`, `teacher_class_id`, `notification
 (20, 186, 'Add Downloadable Materials file name <b>234234</b>', '2020-12-21 09:40:28', 'downloadable_student.php'),
 (21, 186, 'Add Assignment file name <b>asdasd</b>', '2020-12-21 09:56:48', 'assignment_student.php'),
 (22, 186, 'Add Annoucements', '2020-12-21 09:59:00', 'announcements_student.php'),
-(23, 186, 'Add Practice Quiz file', '2020-12-21 10:10:11', 'student_quiz_list.php');
+(23, 186, 'Add Practice Quiz file', '2020-12-21 10:10:11', 'student_quiz_list.php'),
+(24, 151, 'Add Practice Quiz file', '2020-12-29 09:48:57', 'student_quiz_list.php'),
+(25, 152, 'Add Practice Quiz file', '2020-12-29 09:48:57', 'student_quiz_list.php'),
+(26, 153, 'Add Practice Quiz file', '2020-12-29 09:48:57', 'student_quiz_list.php'),
+(27, 196, 'Add Assignment file name <b>assign-1</b>', '2020-12-30 10:35:42', 'assignment_student.php'),
+(28, 196, 'Add Annoucements', '2020-12-30 10:48:48', 'announcements_student.php'),
+(29, 197, 'Add Annoucements', '2020-12-30 13:57:30', 'announcements_student.php'),
+(30, 197, 'Add Downloadable Materials file name <b>kmkmkm</b>', '2020-12-30 14:17:07', 'downloadable_student.php'),
+(31, 196, 'Add Assignment name <b>assignment</b>', '2020-12-31 18:31:47', 'assignment_student.php'),
+(32, 198, 'Add Assignment name <b>assignment</b>', '2020-12-31 18:31:47', 'assignment_student.php'),
+(33, 196, 'Add Assignment name <b>maxmarks</b>', '2020-12-31 18:34:48', 'assignment_student.php'),
+(34, 198, 'Add Assignment name <b>maxmarks</b>', '2020-12-31 18:34:48', 'assignment_student.php'),
+(35, 196, 'Add Assignment name <b>assign</b>', '2020-12-31 18:36:12', 'assignment_student.php'),
+(36, 196, 'Add Assignment name <b>assign-1000</b>', '2020-12-31 18:38:46', 'assignment_student.php'),
+(37, 198, 'Add Assignment name <b>assign-1000</b>', '2020-12-31 18:38:46', 'assignment_student.php'),
+(38, 196, 'Add Assignment file name <b>sagu</b>', '2020-12-31 18:51:11', 'assignment_student.php'),
+(39, 196, 'Add Assignment file name <b>sagu</b>', '2020-12-31 18:52:38', 'assignment_student.php');
 
 -- --------------------------------------------------------
 
@@ -454,7 +518,9 @@ INSERT INTO `notification_read` (`notification_read_id`, `student_id`, `student_
 (2, 219, 'yes', 21),
 (3, 219, 'yes', 20),
 (4, 219, 'yes', 19),
-(5, 219, 'yes', 15);
+(5, 219, 'yes', 15),
+(6, 111, 'yes', 27),
+(7, 111, 'yes', 28);
 
 -- --------------------------------------------------------
 
@@ -481,7 +547,8 @@ INSERT INTO `notification_read_teacher` (`notification_read_teacher_id`, `teache
 (5, 12, 'yes', 10),
 (6, 12, 'yes', 9),
 (7, 12, 'yes', 8),
-(8, 12, 'yes', 7);
+(8, 12, 'yes', 7),
+(9, 18, 'yes', 15);
 
 -- --------------------------------------------------------
 
@@ -524,7 +591,8 @@ INSERT INTO `quiz` (`quiz_id`, `quiz_title`, `quiz_description`, `date_added`, `
 (3, 'Sample Test', 'Test', '2013-12-03 23:01:56', 12),
 (4, 'Chapter 1', 'topics', '2013-12-13 01:51:02', 14),
 (5, 'test3', '123', '2014-01-16 04:12:07', 12),
-(6, 'Sample Quiz', 'Sample 101', '2020-12-21 10:04:11', 9);
+(6, 'Sample Quiz', 'Sample 101', '2020-12-21 10:04:11', 9),
+(7, 'sam[le', 'java', '2020-12-29 09:48:24', 5);
 
 -- --------------------------------------------------------
 
@@ -571,7 +639,8 @@ CREATE TABLE `school_year` (
 
 INSERT INTO `school_year` (`school_year_id`, `school_year`) VALUES
 (2, '2012-2013'),
-(3, '2013-2014');
+(3, '2013-2014'),
+(6, '2020-21(e)');
 
 -- --------------------------------------------------------
 
@@ -583,127 +652,131 @@ CREATE TABLE `student` (
   `student_id` int(11) NOT NULL,
   `firstname` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
+  `dob` int(25) NOT NULL,
   `class_id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `location` varchar(100) NOT NULL,
-  `status` varchar(100) NOT NULL
+  `status` varchar(100) NOT NULL,
+  `per_no` varchar(25) NOT NULL,
+  `gua_no` varchar(25) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `class_id`, `username`, `password`, `location`, `status`) VALUES
-(113, 'Clifford', 'Ledesma', 13, '21100324', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(112, 'Raymond', 'Serion', 13, '2700372', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(111, 'Mark Dominic', 'Sayon', 13, '21100867', 'heni', 'uploads/mark.jpg', 'Unregistered'),
-(108, 'Kaye Angela', 'Cueva', 13, '21101151', '', 'uploads/dp.jpg', 'Unregistered'),
-(105, 'Neljie', 'Guirnela', 13, '21101131', '', 'uploads/Koala.jpg', 'Unregistered'),
-(106, 'Razel', 'Palermo', 13, '29000676', '', 'uploads/razel.jpg', 'Unregistered'),
-(103, 'Jade', 'Gordoncillo', 13, '21100617', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(104, 'Felix Kirby', 'Ubas', 13, '21100277', 'lms10117', 'uploads/kirb.jpg', 'Unregistered'),
-(100, 'Jamilah', 'Lonot', 13, '21100303', '', 'uploads/jamila.jpg', 'Unregistered'),
-(101, 'Xenia Jane', 'Billones', 13, '21100318', 'sen', 'uploads/xenia.jpg', 'Unregistered'),
-(102, 'Carell', 'Catuburan', 13, '21101124', '', 'uploads/carel.jpg', 'Unregistered'),
-(97, 'Mary Joy', 'Lambosan', 13, '20101289', '', 'uploads/Desert.jpg', 'Unregistered'),
-(98, 'Christine Joy', 'Macaya', 13, '21100579', '', 'uploads/tin.jpg', 'Unregistered'),
-(95, 'Ergin Joy', 'Satoc', 13, '21101142', '', 'uploads/ergin.jpg', 'Unregistered'),
-(93, 'John Kevin ', 'Lorayna', 7, '111', 'teph', 'uploads/3094_384893504898082_1563225657_n.jpg', 'Registered'),
-(94, 'Leah Mae', 'Padilla', 13, '21100471', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(76, 'Jamaica Mae', 'Alipe', 13, '21100555', '123', 'uploads/maica.jpg', 'Registered'),
-(107, 'Jose Harry', 'Polondaya', 13, '29001002', 'florypis', 'uploads/harry.jpg', 'Registered'),
-(110, 'Zyryn', 'Corugda', 13, '21100881', '', 'uploads/baby.jpg', 'Unregistered'),
-(109, 'Rena', 'Lamberto', 13, '29001081', '', 'uploads/ca.jpg', 'Unregistered'),
-(99, 'Ryan Teofilo', 'Malbata-an', 13, '21100315', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(96, 'Glecy Marie', 'Navarosa', 13, '20101436', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(209, 'dhalia', 'hofilena', 20, '21300311', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(75, 'Miralyn', 'Pabalate', 13, '21100855', 'em', 'uploads/em2.jpg', 'Unregistered'),
-(74, 'Ma. Nonie', 'Mendoza', 13, '21100913', '', 'uploads/nonie.jpg', 'Unregistered'),
-(73, 'Stephanie', 'Villanueva', 13, '21101042', 'tephai', 'uploads/3094_384893504898082_1563225657_n.jpg', 'Registered'),
-(72, 'Jayvon', 'Pig-ao', 13, '21100547', 'test', 'uploads/von.jpg', 'Unregistered'),
-(71, 'Noli', 'Mendoza', 13, '21100556', 'noledel', 'uploads/noli.jpg', 'Registered'),
-(134, 'Victor Anthony', 'Jacobo', 12, '21101050', 'akositon', 'uploads/win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', 'Registered'),
-(135, 'Albert Kezzel', 'Naynay', 14, '20101361', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(136, 'Jorgielyn', 'Serfino', 7, '20100331', 'jorgie', 'uploads/Koala.jpg', 'Registered'),
-(137, 'Wina Mae', 'Espenorio', 8, '20100447', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(138, 'Brian Paul', 'Sablan', 7, '29000557', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(139, 'Rodzil', 'Camato', 7, '20100RC', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(140, 'Dean Martin', 'Tingson', 14, '21100665', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(141, 'Jared Reu', 'Windam', 15, '21100695', 'iloveyoujam', 'uploads/1463666_678111108874417_1795412912_n.jpg', 'Registered'),
-(142, 'Lee Ann', 'Vertucio', 12, '21100351', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(143, 'Danica', 'Lamis', 12, '21100396', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(144, 'Neovi', 'Devierte', 12, '21100557', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(145, 'Eril Pio', 'Mercado', 12, '21100291', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(146, 'Johnedel', 'Bauno', 12, '21100411', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(147, 'Jerwin', 'Delos Reyes', 12, '21100369', 'jerwin27 cute', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered'),
-(148, 'Jendrix', 'Victosa', 12, '21100431', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(149, 'Jebson', 'Tordillos', 12, '21100406', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(150, 'Jethro', 'Pansales', 12, '21101273', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(151, 'Karyl June', 'Bacobo', 12, '21100895', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(152, 'Kristelle Shaine', 'Rubi', 12, '21101063', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(153, 'Richelle', 'Villarmia', 12, '20101392', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(154, 'Mae Ann', 'Panugaling', 12, '21100904', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(155, 'Ma. Roxette', 'Infante', 12, '21100421', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(156, 'Savrena Joy', 'Rael', 12, '2100287', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(157, 'Ace John', 'Casuyon', 12, '21100393', 'DianaraSayon', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered'),
-(158, 'Rose Mae', 'Pido', 12, '21101195', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(159, 'Mary Ann', 'Panaguiton', 12, '21100701', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(162, 'kimberly kaye', 'salvatierra', 14, '21101182', 'kimzteng', 'uploads/29001002.jpg', 'Registered'),
-(210, 'cherylda', 'ohiman', 20, '21300036', 'sawsa', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered'),
-(164, 'Alit', 'Arvin', 14, '20101605', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(165, 'Ana Mae', 'Alquizar', 14, '21100785', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(166, 'Thessalonica', 'Arroz', 14, '21100651', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(167, 'Leslie', 'Campo', 14, '21100265', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(168, 'Ace', 'Casolino', 14, '27000921', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(169, 'Michael Jed', 'Flores', 14, '21100820', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(172, 'Hennie Rose', 'Laz', 14, '21100805', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(171, 'Joy', 'Macahilig', 14, '21100464', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(173, 'Ma. Nieva', 'Manuel ', 14, '21100711', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(174, 'Devina', 'Navarro', 14, '21100711', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(175, 'Aimee', 'Orlido', 14, '21100654', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(176, 'Mary Grace', 'Quizan', 14, '21100772', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(177, 'John Christopher', 'Reguindin', 14, '21100418', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(178, 'Mary Ann', 'Somosa', 14, '21101150', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(179, 'Marrianne', 'Tumala', 14, '21100710', 'test', 'uploads/win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', 'Registered'),
-(180, 'Deo Christopher', 'Tribaco', 14, '21101227', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(181, 'Jerson', 'Vargas', 14, '21100819', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(182, 'Valencia', 'Jeralice', 14, '29000405', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(183, 'Cristine', 'Yanson', 14, '21101148', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(184, 'Ariane', 'Alix', 17, '21201166', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(185, 'Mark Arvin', 'Arandilla', 17, '21201453', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(186, 'Ryan Carl', 'Biaquis', 17, '21201244', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(187, 'Ria', 'Bitar', 17, '21201282', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(188, 'Jeremae', 'Bustamante', 17, '21200798', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(189, 'Rhen Mark', 'Callado', 17, '21201012', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(190, 'Ma. Geraldine', 'Carisma', 17, '21201219', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(191, 'Jenny', 'Casapao', 17, '21200855', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(192, 'Welson', 'Castro', 17, '120733', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(193, 'Kimberly Hope', 'Centina', 17, '21201338', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(194, 'Sandra', 'Gomez', 17, '21201335', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(195, 'Dona Jean', 'Guardialao', 17, '21201113', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(196, 'Jeara Mae', 'Guttierrez', 17, '21200782', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(197, 'Mary Joy', 'Jimenez', 17, '21201437', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(198, 'Cyril', 'Lambayong', 17, '21201163', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(199, 'Angelie', 'Lape', 17, '21201356', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(200, 'Jamine', 'Navarosa', 17, '21201115', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(201, 'Allen Joshua', 'Nicor', 17, '21201430', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(202, 'Charis', 'Onate', 17, '21200984', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(203, 'Ikea', 'Padonio', 17, '20100527', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(204, 'Marissa', 'Pasco', 17, '21200935', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(205, 'Kenneth', 'Sayon', 17, '21201268', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(206, 'Mary Grace', 'Morales', 14, '21100293', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(207, 'Danica', 'Delarmente', 14, '21100613', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(208, 'Irish Dawn', 'Belo', 19, '21300413', 'olebirish', 'uploads/Desert.jpg', 'Registered'),
-(211, 'val', 'roushen', 7, '201011231', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(212, 'chrystelle Marie', 'Belecina', 15, '21200363', 'chrys', 'uploads/380903_288008981235527_682004916_n.jpg', 'Registered'),
-(213, 'kearl joy', 'bartolome', 18, '21300410', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(214, 'marie', 'rojo', 18, '21300375', 'maayeeh', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered'),
-(215, 'cristine', 'trespuer', 18, '21300258', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(216, 'arian', 'baldostamon', 18, '21300176', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(217, 'Alyssa', 'David', 17, '21200507', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered'),
-(218, 'josie', 'banday', 7, '20100452', 'heaven', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered'),
-(219, 'Claire ', 'Blake', 18, '2011120', 'cblake123', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered');
+INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `dob`, `class_id`, `username`, `password`, `location`, `status`, `per_no`, `gua_no`) VALUES
+(113, 'Clifford', 'Ledesma', 0, 13, '21100324', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(112, 'Raymond', 'Serion', 0, 13, '2700372', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(111, 'Mark Dominic', 'Sayon', 0, 13, '21100867', 'heni', 'uploads/mark.jpg', 'Unregistered', '0', '0'),
+(108, 'Kaye Angela', 'Cueva', 0, 13, '21101151', '', 'uploads/dp.jpg', 'Unregistered', '0', '0'),
+(105, 'Neljie', 'Guirnela', 0, 13, '21101131', '', 'uploads/Koala.jpg', 'Unregistered', '0', '0'),
+(106, 'Razel', 'Palermo', 0, 13, '29000676', '', 'uploads/razel.jpg', 'Unregistered', '0', '0'),
+(103, 'Jade', 'Gordoncillo', 0, 13, '21100617', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(104, 'Felix Kirby', 'Ubas', 0, 13, '21100277', 'lms10117', 'uploads/kirb.jpg', 'Unregistered', '0', '0'),
+(100, 'Jamilah', 'Lonot', 0, 13, '21100303', '', 'uploads/jamila.jpg', 'Unregistered', '0', '0'),
+(101, 'Xenia Jane', 'Billones', 0, 13, '21100318', 'sen', 'uploads/xenia.jpg', 'Unregistered', '0', '0'),
+(102, 'Carell', 'Catuburan', 0, 13, '21101124', '', 'uploads/carel.jpg', 'Unregistered', '0', '0'),
+(97, 'Mary Joy', 'Lambosan', 0, 13, '20101289', '', 'uploads/Desert.jpg', 'Unregistered', '0', '0'),
+(98, 'Christine Joy', 'Macaya', 0, 13, '21100579', '', 'uploads/tin.jpg', 'Unregistered', '0', '0'),
+(95, 'Ergin Joy', 'Satoc', 0, 13, '21101142', '', 'uploads/ergin.jpg', 'Unregistered', '0', '0'),
+(93, 'John Kevin ', 'Lorayna', 0, 7, '111', 'teph', 'uploads/3094_384893504898082_1563225657_n.jpg', 'Registered', '0', '0'),
+(94, 'Leah Mae', 'Padilla', 0, 13, '21100471', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(76, 'Jamaica Mae', 'Alipe', 0, 13, '21100555', '123', 'uploads/maica.jpg', 'Registered', '0', '0'),
+(107, 'Jose Harry', 'Polondaya', 0, 13, '29001002', 'florypis', 'uploads/harry.jpg', 'Registered', '0', '0'),
+(110, 'Zyryn', 'Corugda', 0, 13, '21100881', '', 'uploads/baby.jpg', 'Unregistered', '0', '0'),
+(109, 'Rena', 'Lamberto', 0, 13, '29001081', '', 'uploads/ca.jpg', 'Unregistered', '0', '0'),
+(99, 'Ryan Teofilo', 'Malbata-an', 0, 13, '21100315', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(96, 'Glecy Marie', 'Navarosa', 0, 13, '20101436', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(209, 'dhalia', 'hofilena', 0, 20, '21300311', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(75, 'Miralyn', 'Pabalate', 0, 13, '21100855', 'em', 'uploads/em2.jpg', 'Unregistered', '0', '0'),
+(74, 'Ma. Nonie', 'Mendoza', 0, 13, '21100913', '', 'uploads/nonie.jpg', 'Unregistered', '0', '0'),
+(73, 'Stephanie', 'Villanueva', 0, 13, '21101042', 'tephai', 'uploads/3094_384893504898082_1563225657_n.jpg', 'Registered', '0', '0'),
+(72, 'Jayvon', 'Pig-ao', 0, 13, '21100547', 'test', 'uploads/von.jpg', 'Unregistered', '0', '0'),
+(71, 'Noli', 'Mendoza', 0, 13, '21100556', 'noledel', 'uploads/noli.jpg', 'Registered', '0', '0'),
+(134, 'Victor Anthony', 'Jacobo', 0, 12, '21101050', 'akositon', 'uploads/win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', 'Registered', '0', '0'),
+(135, 'Albert Kezzel', 'Naynay', 0, 14, '20101361', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(136, 'Jorgielyn', 'Serfino', 0, 7, '20100331', 'jorgie', 'uploads/Koala.jpg', 'Registered', '0', '0'),
+(137, 'Wina Mae', 'Espenorio', 0, 8, '20100447', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(138, 'Brian Paul', 'Sablan', 0, 7, '29000557', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(139, 'Rodzil', 'Camato', 0, 7, '20100RC', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(140, 'Dean Martin', 'Tingson', 0, 14, '21100665', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(141, 'Jared Reu', 'Windam', 0, 15, '21100695', 'iloveyoujam', 'uploads/1463666_678111108874417_1795412912_n.jpg', 'Registered', '0', '0'),
+(142, 'Lee Ann', 'Vertucio', 0, 12, '21100351', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(143, 'Danica', 'Lamis', 0, 12, '21100396', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(144, 'Neovi', 'Devierte', 0, 12, '21100557', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(145, 'Eril Pio', 'Mercado', 0, 12, '21100291', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(146, 'Johnedel', 'Bauno', 0, 12, '21100411', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(147, 'Jerwin', 'Delos Reyes', 0, 12, '21100369', 'jerwin27 cute', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0'),
+(148, 'Jendrix', 'Victosa', 0, 12, '21100431', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(149, 'Jebson', 'Tordillos', 0, 12, '21100406', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(150, 'Jethro', 'Pansales', 0, 12, '21101273', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(151, 'Karyl June', 'Bacobo', 0, 12, '21100895', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(152, 'Kristelle Shaine', 'Rubi', 0, 12, '21101063', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(153, 'Richelle', 'Villarmia', 0, 12, '20101392', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(154, 'Mae Ann', 'Panugaling', 0, 12, '21100904', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(155, 'Ma. Roxette', 'Infante', 0, 12, '21100421', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(156, 'Savrena Joy', 'Rael', 0, 12, '2100287', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(157, 'Ace John', 'Casuyon', 0, 12, '21100393', 'DianaraSayon', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0'),
+(158, 'Rose Mae', 'Pido', 0, 12, '21101195', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(159, 'Mary Ann', 'Panaguiton', 0, 12, '21100701', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(162, 'kimberly kaye', 'salvatierra', 0, 14, '21101182', 'kimzteng', 'uploads/29001002.jpg', 'Registered', '0', '0'),
+(210, 'cherylda', 'ohiman', 0, 20, '21300036', 'sawsa', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0'),
+(164, 'Alit', 'Arvin', 0, 14, '20101605', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(165, 'Ana Mae', 'Alquizar', 0, 14, '21100785', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(166, 'Thessalonica', 'Arroz', 0, 14, '21100651', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(167, 'Leslie', 'Campo', 0, 14, '21100265', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(168, 'Ace', 'Casolino', 0, 14, '27000921', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(169, 'Michael Jed', 'Flores', 0, 14, '21100820', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(172, 'Hennie Rose', 'Laz', 0, 14, '21100805', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(171, 'Joy', 'Macahilig', 0, 14, '21100464', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(173, 'Ma. Nieva', 'Manuel ', 0, 14, '21100711', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(174, 'Devina', 'Navarro', 0, 14, '21100711', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(175, 'Aimee', 'Orlido', 0, 14, '21100654', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(176, 'Mary Grace', 'Quizan', 0, 14, '21100772', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(177, 'John Christopher', 'Reguindin', 0, 14, '21100418', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(178, 'Mary Ann', 'Somosa', 0, 14, '21101150', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(179, 'Marrianne', 'Tumala', 0, 14, '21100710', 'test', 'uploads/win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', 'Registered', '0', '0'),
+(180, 'Deo Christopher', 'Tribaco', 0, 14, '21101227', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(181, 'Jerson', 'Vargas', 0, 14, '21100819', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(182, 'Valencia', 'Jeralice', 0, 14, '29000405', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(183, 'Cristine', 'Yanson', 0, 14, '21101148', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(184, 'Ariane', 'Alix', 0, 17, '21201166', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(185, 'Mark Arvin', 'Arandilla', 0, 17, '21201453', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(186, 'Ryan Carl', 'Biaquis', 0, 17, '21201244', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(187, 'Ria', 'Bitar', 0, 17, '21201282', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(188, 'Jeremae', 'Bustamante', 0, 17, '21200798', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(189, 'Rhen Mark', 'Callado', 0, 17, '21201012', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(190, 'Ma. Geraldine', 'Carisma', 0, 17, '21201219', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(191, 'Jenny', 'Casapao', 0, 17, '21200855', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(192, 'Welson', 'Castro', 0, 17, '120733', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(193, 'Kimberly Hope', 'Centina', 0, 17, '21201338', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(194, 'Sandra', 'Gomez', 0, 17, '21201335', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(195, 'Dona Jean', 'Guardialao', 0, 17, '21201113', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(196, 'Jeara Mae', 'Guttierrez', 0, 17, '21200782', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(197, 'Mary Joy', 'Jimenez', 0, 17, '21201437', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(198, 'Cyril', 'Lambayong', 0, 17, '21201163', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(199, 'Angelie', 'Lape', 0, 17, '21201356', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(200, 'Jamine', 'Navarosa', 0, 17, '21201115', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(201, 'Allen Joshua', 'Nicor', 0, 17, '21201430', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(202, 'Charis', 'Onate', 0, 17, '21200984', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(203, 'Ikea', 'Padonio', 0, 17, '20100527', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(204, 'Marissa', 'Pasco', 0, 17, '21200935', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(205, 'Kenneth', 'Sayon', 0, 17, '21201268', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(206, 'Mary Grace', 'Morales', 0, 14, '21100293', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(207, 'Danica', 'Delarmente', 0, 14, '21100613', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(208, 'Irish Dawn', 'Belo', 0, 19, '21300413', 'olebirish', 'uploads/Desert.jpg', 'Registered', '0', '0'),
+(211, 'val', 'roushen', 0, 7, '201011231', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(212, 'chrystelle Marie', 'Belecina', 0, 15, '21200363', 'chrys', 'uploads/380903_288008981235527_682004916_n.jpg', 'Registered', '0', '0'),
+(213, 'kearl joy', 'bartolome', 0, 18, '21300410', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(214, 'marie', 'rojo', 0, 18, '21300375', 'maayeeh', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0'),
+(215, 'cristine', 'trespuer', 0, 18, '21300258', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(216, 'arian', 'baldostamon', 0, 18, '21300176', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(217, 'Alyssa', 'David', 0, 17, '21200507', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(218, 'josie', 'banday', 0, 7, '20100452', 'heaven', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0'),
+(219, 'Claire ', 'Blake', 0, 18, '2011120', 'cblake123', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0'),
+(232, 'sagar', 'sagar', 77889999, 7, '112233', 'sagar', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '7019190195', '7019190198');
 
 -- --------------------------------------------------------
 
@@ -727,7 +800,8 @@ CREATE TABLE `student_assignment` (
 --
 
 INSERT INTO `student_assignment` (`student_assignment_id`, `assignment_id`, `floc`, `assignment_fdatein`, `fdesc`, `fname`, `student_id`, `grade`) VALUES
-(1, 31, 'admin/uploads/7820_File_sample.pdf', '2020-12-21 10:12:04', 'aaa', 'asdasd', 219, '');
+(1, 31, 'admin/uploads/7820_File_sample.pdf', '2020-12-21 10:12:04', 'aaa', 'asdasd', 219, ''),
+(2, 41, 'admin/uploads/6991_File_Jan-2019.pdf', '2020-12-31 18:56:28', 'test', 'test', 111, '');
 
 -- --------------------------------------------------------
 
@@ -775,7 +849,8 @@ CREATE TABLE `student_class_quiz` (
 INSERT INTO `student_class_quiz` (`student_class_quiz_id`, `class_quiz_id`, `student_id`, `student_quiz_time`, `grade`) VALUES
 (1, 15, 107, '3600', '0 out of 2'),
 (2, 16, 136, '3600', '0 out of 0'),
-(3, 17, 219, '3600', '1 out of 3');
+(3, 17, 219, '3600', '1 out of 3'),
+(4, 19, 111, '1189', '');
 
 -- --------------------------------------------------------
 
@@ -791,39 +866,25 @@ CREATE TABLE `subject` (
   `description` longtext NOT NULL,
   `unit` int(11) NOT NULL,
   `Pre_req` varchar(100) NOT NULL,
-  `semester` varchar(100) NOT NULL
+  `semester` varchar(100) NOT NULL,
+  `cid` int(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subject`
 --
 
-INSERT INTO `subject` (`subject_id`, `subject_code`, `subject_title`, `category`, `description`, `unit`, `Pre_req`, `semester`) VALUES
-(14, 'IS 411A', 'Senior Systems Project 1', '', '<p><span style=\"font-size: medium;\"><em>About the Subject</em></span></p>\r\n<p>This subject comprisea topics about systems development, SDLC methodologies, Conceptual Framework, diagrams such as DFD, ERD and Flowchart and writing a thesis proposal.</p>\r\n<p>&nbsp;</p>\r\n<p>The project requirement for this subject are:</p>\r\n<p>Chapters (1-5) Thesis Proposal</p>\r\n<p>100% Running System at the end of semester</p>\r\n<p>&nbsp;</p>', 3, '', ''),
-(15, 'IS 412', 'Effective Human Communication for IT Professional', '', '<p><span style=\"font-size: medium;\"><em>About the Subject</em></span></p>\r\n<p>This subject is intended for IT students to develop or enhance communication skills that will be beneficial especially when used in the business industry. The lesson includes Verbal Communication (Written and Oral), Non-verbal Communication, etc.</p>', 3, '', ''),
-(16, 'IS 311', 'Programming Languages', '', '<pre class=\"coursera-course-heading\" data-msg=\"coursera-course-about\"><span style=\"font-size: medium;\"><em>About the Subject</em></span></pre>\r\n<div class=\"coursera-course-detail\" data-user-generated=\"data-user-generated\">Learn many of the concepts that underlie all programming languages. Develop a programming style known as functional programming and contrast it with object-oriented programming. Through experience writing programs and studying three different languages, learn the key issues in designing and using programming languages, such as modularity and the complementary benefits of static and dynamic typing. This course is neither particularly theoretical nor just about programming specifics &ndash; it will give you a framework for understanding how to use language constructs effectively and how to design correct and elegant programs. By using different languages, you learn to think more deeply than in terms of the particular syntax of one language. The emphasis on functional programming is essential for learning how to write robust, reusable, composable, and elegant programs &ndash; in any language.</div>\r\n<h2 class=\"coursera-course-detail\" data-user-generated=\"data-user-generated\">&nbsp;</h2>\r\n<pre class=\"coursera-course-detail\" data-user-generated=\"data-user-generated\"><span style=\"font-size: medium;\"><em>&nbsp;Course Syllabus</em></span></pre>\r\n<div class=\"coursera-course-detail\" data-user-generated=\"data-user-generated\">\r\n<ul>\r\n<li>Syntax vs. semantics vs. idioms vs. libraries vs. tools</li>\r\n<li>ML basics (bindings, conditionals, records, functions)</li>\r\n<li>Recursive functions and recursive types</li>\r\n<li>Benefits of no mutation</li>\r\n<li>Algebraic datatypes, pattern matching</li>\r\n<li>Tail recursion</li>\r\n<li>First-class functions and function closures</li>\r\n<li>Lexical scope</li>\r\n<li>Equivalence and effects</li>\r\n<li>Parametric polymorphism and container types</li>\r\n<li>Type inference</li>\r\n<li>Abstract types and modules</li>\r\n<li>Racket basics</li>\r\n<li>Dynamic vs. static typing</li>\r\n<li>Implementing languages, especially higher-order functions</li>\r\n<li>Macro</li>\r\n<li>Ruby basics</li>\r\n<li>Object-oriented programming</li>\r\n<li>Pure object-orientation</li>\r\n<li>Implementing dynamic dispatch</li>\r\n<li>Multiple inheritance, interfaces, and mixins</li>\r\n<li>OOP vs. functional decomposition and extensibility</li>\r\n<li>Subtyping for records, functions, and objects</li>\r\n<li>Subtyping</li>\r\n<li>Class-based subtyping</li>\r\n<li>Subtyping vs. parametric polymorphism; bounded polymorphism</li>\r\n</ul>\r\n</div>', 3, '', ''),
-(17, 'IS 413', 'Introduction to the IM Professional and Ethics', '', '<p>This subject discusses about Ethics, E-Commerce, Cybercrime Law, Computer Security, etc.</p>', 0, '', ''),
-(22, 'IS 221', 'Application Development', '', '', 3, '', '2nd'),
-(23, 'IS 222', 'Network and Internet Technology', '', '', 3, '', '2nd'),
-(24, 'IS 223', 'Business Process', '', '', 3, '', '2nd'),
-(25, 'IS 224', 'Discrete Structures', '', '', 3, '', '2nd'),
-(26, 'IS 227', 'IS Programming 2', '', '', 3, '', '2nd'),
-(27, 'SS POL GOV', 'Politics and Governance with Philippine Constitution', '', '', 3, '', '2nd'),
-(28, 'LIT 1', 'Philippine  Literature', '', '', 3, '', '2nd'),
-(29, 'ACCTG 2', 'Fundamentals of Accounting 2', '', '', 3, '', '2nd'),
-(30, 'PE 4', 'Team Sports', '', '', 3, '', '2nd'),
-(31, 'IS 302', 'Survey of Programming Languages', '', '', 3, '', '2nd'),
-(32, 'IS 303', 'Structured Query Language', '', '', 3, '', '2nd'),
-(33, 'IS 321', 'Information System Planning', '', '', 3, '', '2nd'),
-(34, 'IS 322', 'Management of Technology', '', '', 3, '', '2nd'),
-(35, 'IS 323', 'E-commerce Strategy Architectural', '', '', 3, '', '2nd'),
-(36, 'IS 324', 'System Analysis and Design', '', '', 3, '', '2nd'),
-(37, 'Law 1', 'Law on Obligation and Contracts', '', '', 3, '', '2nd'),
-(38, 'Philo 1', 'Social Philosophy & Logic', '', '', 3, '', '2nd'),
-(39, 'MQTB', 'Quantitative Techniques in Business', '', '', 3, '', '2nd'),
-(40, 'RIZAL', 'Rizal: Life and Works', '', '<p>COURSE OUTLINE<br />\r\n1. Course Code : RIZAL</p>\r\n\r\n<p>2. Course Title &nbsp;: RIZAL (Rizal Life and Works)<br />\r\n3. Pre-requisite : none<br />\r\n5. Credit/ Class Schedule : 3 units; 3 hrs/week<br />\r\n6. Course Description&nbsp;<br />\r\n1. A critical analysis of Jose Rizal&rsquo;s life and ideas as reflected in his biography, his novels Noli Me Tangere and El Filibusterismo and in his other writings composed of essays and poems to provide the students a value based reference for reacting to certain ideas and behavior.<br />\r\n<br />\r\n<strong>PROGRAM OBJECTIVES</strong><br />\r\n1. To instill in the students human values and cultural refinement through the humanities and social sciences.<br />\r\n2. To inculcate high ethical standards in the students through its integration in the learning activities.<br />\r\n3. To have critical studies and discussions why Rizal is made the national hero of the Philippines.<br />\r\n<br />\r\nTOPICS:&nbsp;<br />\r\n1. A Hero is Born&nbsp;<br />\r\n2. Childhood Days in Calamba<br />\r\n3. School Days in Binan<br />\r\n4. Triumphs in the Ateneo<br />\r\n5. At the UST<br />\r\n6. In Spain<br />\r\n7. Paris to Berlin<br />\r\n8. Noli Me Tangere<br />\r\n9. Elias and Salome<br />\r\n10. Rizal&rsquo;s Tour of Europe with with Viola<br />\r\n11. Back to Calamba<br />\r\n12. HK, Macao and Japan<br />\r\n13. Rizal in Japan<br />\r\n14. Rizal in America<br />\r\n15. Life and Works in London<br />\r\n16. In Gay Paris<br />\r\n17. Rizal in Brussles<br />\r\n18. In Madrid<br />\r\n19. El Filibusterismo<br />\r\n20. In Hong Kong<br />\r\n21. Exile in Dapitan<br />\r\n22. The Trial of Rizal<br />\r\n23. Martyrdom at Bagumbayan<br />\r\n<br />\r\nTextbook and References:<br />\r\n1. Rizal&rsquo;s Life, Works and Writings (The Centennial Edition) by: Gregorio F. Zaide<br />\r\nand Sonia M. Zaide Quezon City, 1988. All Nations Publishing Co.<br />\r\n2. Coates, Austin. Rizal: First Filipino Nationalist and Martyr, Quezon City, UP Press 1999.<br />\r\n3. Constantino, Renato. Veneration Without Understanding. Quezon City, UP Press Inc., 2001.<br />\r\n4. Dela Cruz, W. &amp; Zulueta, M. Rizal: Buhay at Kaisipan. Manila, NBS Publications 2002.<br />\r\n5. Ocampo, Ambeth. Rizal Without the Overcoat (New Edition). Pasig City, anvil Publishing House 2002.<br />\r\n6. Odullo-de Guzman, Maria. Noli Me Tangere and El Filibusterismo. Manila, NBS Publications 1998.<br />\r\n7. Palma, Rafael. Rizal: The Pride of the Malay Race. Manila, Saint Anthony Company 2000.<br />\r\n8.Romero, M.C. &amp; Sta Roman, J. Rizal &amp; the Development of Filipino Consciousness (Third Edition). Manila, JMC Press Inc., 2001.<br />\r\n<br />\r\nCourse Evaluation:<br />\r\n<br />\r\n1. Quizzes : 30 %<br />\r\n2. Exams : 40 %<br />\r\n3. Class Standing : 20 %<br />\r\n- recitation<br />\r\n- attendance<br />\r\n- behavior<br />\r\n4. Final Grade<br />\r\n- 40 % previous grade<br />\r\n- 60 % current grade</p>\r\n', 3, '', '2nd'),
-(41, 'IS 411B', 'Senior Systems Project 2', '', '', 3, '', '2nd'),
-(42, '1234', 'Sample Subject', '', '<p>Sample Only</p>\r\n', 3, '', '1st');
+INSERT INTO `subject` (`subject_id`, `subject_code`, `subject_title`, `category`, `description`, `unit`, `Pre_req`, `semester`, `cid`) VALUES
+(14, '17MAT31-A', 'engineering maths-A', '', 'Engineering Mathematics – III', 3, '', '', 7),
+(43, '17CS45-A ', 'OOC-A', '', 'object oriented concepts', 4, '', '4', 12),
+(44, '15CS4-B ', 'OOC-B', '', 'object oriented concepts', 0, '', '4', 13),
+(15, '17MAT31-B', 'engineering maths-B', '', '<p><span style=\"font-size: medium;\"><em>About the Subject</em></span></p>\r\n<p>This subject is intended for IT students to develop or enhance communication skills that will be beneficial especially when used in the business industry. The lesson includes Verbal Communication (Written and Oral), Non-verbal Communication, etc.</p>', 3, '', '', 8),
+(16, '17CS32-A', 'ADE-A', '', '<pre class=\"coursera-course-heading\" data-msg=\"coursera-course-about\"><span style=\"font-size: medium;\"><em>About the Subject</em></span></pre>\r\n<div class=\"coursera-course-detail\" data-user-generated=\"data-user-generated\">Learn many of the concepts that underlie all programming languages. Develop a programming style known as functional programming and contrast it with object-oriented programming. Through experience writing programs and studying three different languages, learn the key issues in designing and using programming languages, such as modularity and the complementary benefits of static and dynamic typing. This course is neither particularly theoretical nor just about programming specifics &ndash; it will give you a framework for understanding how to use language constructs effectively and how to design correct and elegant programs. By using different languages, you learn to think more deeply than in terms of the particular syntax of one language. The emphasis on functional programming is essential for learning how to write robust, reusable, composable, and elegant programs &ndash; in any language.</div>\r\n<h2 class=\"coursera-course-detail\" data-user-generated=\"data-user-generated\">&nbsp;</h2>\r\n<pre class=\"coursera-course-detail\" data-user-generated=\"data-user-generated\"><span style=\"font-size: medium;\"><em>&nbsp;Course Syllabus</em></span></pre>\r\n<div class=\"coursera-course-detail\" data-user-generated=\"data-user-generated\">\r\n<ul>\r\n<li>Syntax vs. semantics vs. idioms vs. libraries vs. tools</li>\r\n<li>ML basics (bindings, conditionals, records, functions)</li>\r\n<li>Recursive functions and recursive types</li>\r\n<li>Benefits of no mutation</li>\r\n<li>Algebraic datatypes, pattern matching</li>\r\n<li>Tail recursion</li>\r\n<li>First-class functions and function closures</li>\r\n<li>Lexical scope</li>\r\n<li>Equivalence and effects</li>\r\n<li>Parametric polymorphism and container types</li>\r\n<li>Type inference</li>\r\n<li>Abstract types and modules</li>\r\n<li>Racket basics</li>\r\n<li>Dynamic vs. static typing</li>\r\n<li>Implementing languages, especially higher-order functions</li>\r\n<li>Macro</li>\r\n<li>Ruby basics</li>\r\n<li>Object-oriented programming</li>\r\n<li>Pure object-orientation</li>\r\n<li>Implementing dynamic dispatch</li>\r\n<li>Multiple inheritance, interfaces, and mixins</li>\r\n<li>OOP vs. functional decomposition and extensibility</li>\r\n<li>Subtyping for records, functions, and objects</li>\r\n<li>Subtyping</li>\r\n<li>Class-based subtyping</li>\r\n<li>Subtyping vs. parametric polymorphism; bounded polymorphism</li>\r\n</ul>\r\n</div>', 3, '', '', 7),
+(17, '17CS32-B', 'ADE-B', '', '<p>This subject discusses about Ethics, E-Commerce, Cybercrime Law, Computer Security, etc.</p>', 0, '', '', 8),
+(22, '17CS42-A', 'software engineering-A', '', '', 3, '', '4', 12),
+(23, '17CS42-B ', 'software engineering-B', '', '', 3, '', '4', 13),
+(24, '17CS43-A', 'DA-A', '', '', 3, '', '4', 12),
+(25, '17CS43-B ', 'DA-B', '', '', 3, '', '4', 13);
 
 -- --------------------------------------------------------
 
@@ -887,41 +948,53 @@ CREATE TABLE `teacher_class` (
   `class_id` int(11) NOT NULL,
   `subject_id` int(11) NOT NULL,
   `thumbnails` varchar(100) NOT NULL,
-  `school_year` varchar(100) NOT NULL
+  `school_year` varchar(100) NOT NULL,
+  `department_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `teacher_class`
 --
 
-INSERT INTO `teacher_class` (`teacher_class_id`, `teacher_id`, `class_id`, `subject_id`, `thumbnails`, `school_year`) VALUES
-(97, 9, 7, 15, 'admin/uploads/thumbnails.jpg', '2012-2013'),
-(135, 0, 22, 29, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(151, 5, 7, 14, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(152, 5, 8, 14, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(153, 5, 13, 36, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(157, 18, 15, 23, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(158, 18, 16, 23, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(159, 18, 12, 23, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(160, 18, 7, 29, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(165, 134, 15, 23, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(167, 12, 13, 35, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(168, 12, 14, 35, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(170, 12, 16, 24, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(172, 18, 13, 39, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(173, 18, 14, 39, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(174, 13, 12, 16, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(175, 13, 13, 16, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(176, 13, 14, 16, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(177, 14, 12, 32, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(178, 14, 13, 32, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(179, 14, 14, 32, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(180, 19, 13, 22, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(181, 12, 20, 24, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(183, 12, 18, 24, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(184, 12, 17, 25, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(185, 12, 7, 22, 'admin/uploads/thumbnails.jpg', '2013-2014'),
-(186, 9, 18, 42, 'admin/uploads/thumbnails.jpg', '2013-2014');
+INSERT INTO `teacher_class` (`teacher_class_id`, `teacher_id`, `class_id`, `subject_id`, `thumbnails`, `school_year`, `department_id`) VALUES
+(97, 9, 7, 15, 'admin/uploads/thumbnails.jpg', '2012-2013', 0),
+(135, 0, 22, 29, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(151, 5, 7, 14, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(152, 5, 8, 14, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(153, 5, 13, 36, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(157, 18, 15, 23, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(158, 18, 16, 23, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(159, 18, 12, 23, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(160, 18, 7, 29, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(165, 134, 15, 23, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(167, 12, 13, 35, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(168, 12, 14, 35, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(170, 12, 16, 24, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(172, 18, 13, 39, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(173, 18, 14, 39, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(174, 13, 12, 16, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(175, 13, 13, 16, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(176, 13, 14, 16, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(177, 14, 12, 32, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(178, 14, 13, 32, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(179, 14, 14, 32, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(180, 19, 13, 22, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(181, 12, 20, 24, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(183, 12, 18, 24, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(184, 12, 17, 25, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(185, 12, 7, 22, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(187, 0, 0, 0, 'admin/uploads/thumbnails.jpg', '2013-2014', 0),
+(196, 9, 8, 15, 'admin/uploads/thumbnails.jpg', '2020-21(e)', 4),
+(197, 18, 8, 15, 'admin/uploads/thumbnails.jpg', '2020-21(e)', 4),
+(198, 9, 12, 24, 'admin/uploads/thumbnails.jpg', '2020-21(e)', 4),
+(199, 18, 12, 43, 'admin/uploads/thumbnails.jpg', '', 4),
+(200, 18, 12, 24, 'admin/uploads/thumbnails.jpg', '', 4),
+(201, 18, 12, 24, 'admin/uploads/thumbnails.jpg', '', 4),
+(202, 18, 8, 15, 'admin/uploads/thumbnails.jpg', '', 4),
+(203, 18, 8, 17, 'admin/uploads/thumbnails.jpg', '', 4),
+(204, 18, 8, 17, 'admin/uploads/thumbnails.jpg', '', 4),
+(205, 18, 8, 17, 'admin/uploads/thumbnails.jpg', '2020-21(e)', 4),
+(206, 18, 12, 24, 'admin/uploads/thumbnails.jpg', '2020-21(e)', 4);
 
 -- --------------------------------------------------------
 
@@ -951,7 +1024,8 @@ INSERT INTO `teacher_class_announcements` (`teacher_class_announcements_id`, `co
 (36, '<p>BSIS 1A: Submit assignment on November 20, 2013 before 5pm.</p>\r\n', '12', 154, '2013-11-18 15:29:34'),
 (37, '<p>aaaaa<br />\r\n&nbsp;</p>\r\n', '12', 167, '2014-01-17 14:36:32'),
 (38, '<p>wala klase<img alt=\"sad\" src=\"http://localhost/lms/admin/vendors/ckeditor/plugins/smiley/images/sad_smile.gif\" style=\"height:20px; width:20px\" title=\"sad\" /></p>\r\n', '12', 167, '2014-02-13 13:45:59'),
-(39, '<p>Test</p>\r\n', '9', 186, '2020-12-21 09:59:00');
+(40, '<p>q908rt4</p>\r\n', '9', 196, '2020-12-30 10:48:48'),
+(41, '<div style=\"background:#eee;border:1px solid #ccc;padding:5px 10px;\">dfsa</div>\r\n', '18', 197, '2020-12-30 13:57:29');
 
 -- --------------------------------------------------------
 
@@ -1270,11 +1344,110 @@ INSERT INTO `teacher_class_student` (`teacher_class_student_id`, `teacher_class_
 (375, 185, 138, 12),
 (376, 185, 139, 12),
 (377, 185, 211, 12),
-(378, 186, 213, 9),
-(379, 186, 214, 9),
-(380, 186, 215, 9),
-(381, 186, 216, 9),
-(382, 186, 219, 9);
+(385, 152, 113, 5),
+(386, 152, 111, 111),
+(472, 196, 137, 9),
+(473, 196, 111, 9),
+(474, 197, 137, 18),
+(475, 198, 134, 9),
+(476, 198, 142, 9),
+(477, 198, 143, 9),
+(478, 198, 144, 9),
+(479, 198, 145, 9),
+(480, 198, 146, 9),
+(481, 198, 147, 9),
+(482, 198, 148, 9),
+(483, 198, 149, 9),
+(484, 198, 150, 9),
+(485, 198, 151, 9),
+(486, 198, 152, 9),
+(487, 198, 153, 9),
+(488, 198, 154, 9),
+(489, 198, 155, 9),
+(490, 198, 156, 9),
+(491, 198, 157, 9),
+(492, 198, 158, 9),
+(493, 198, 159, 9),
+(494, 199, 134, 18),
+(495, 199, 142, 18),
+(496, 199, 143, 18),
+(497, 199, 144, 18),
+(498, 199, 145, 18),
+(499, 199, 146, 18),
+(500, 199, 147, 18),
+(501, 199, 148, 18),
+(502, 199, 149, 18),
+(503, 199, 150, 18),
+(504, 199, 151, 18),
+(505, 199, 152, 18),
+(506, 199, 153, 18),
+(507, 199, 154, 18),
+(508, 199, 155, 18),
+(509, 199, 156, 18),
+(510, 199, 157, 18),
+(511, 199, 158, 18),
+(512, 199, 159, 18),
+(513, 200, 134, 18),
+(514, 200, 142, 18),
+(515, 200, 143, 18),
+(516, 200, 144, 18),
+(517, 200, 145, 18),
+(518, 200, 146, 18),
+(519, 200, 147, 18),
+(520, 200, 148, 18),
+(521, 200, 149, 18),
+(522, 200, 150, 18),
+(523, 200, 151, 18),
+(524, 200, 152, 18),
+(525, 200, 153, 18),
+(526, 200, 154, 18),
+(527, 200, 155, 18),
+(528, 200, 156, 18),
+(529, 200, 157, 18),
+(530, 200, 158, 18),
+(531, 200, 159, 18),
+(532, 201, 134, 18),
+(533, 201, 142, 18),
+(534, 201, 143, 18),
+(535, 201, 144, 18),
+(536, 201, 145, 18),
+(537, 201, 146, 18),
+(538, 201, 147, 18),
+(539, 201, 148, 18),
+(540, 201, 149, 18),
+(541, 201, 150, 18),
+(542, 201, 151, 18),
+(543, 201, 152, 18),
+(544, 201, 153, 18),
+(545, 201, 154, 18),
+(546, 201, 155, 18),
+(547, 201, 156, 18),
+(548, 201, 157, 18),
+(549, 201, 158, 18),
+(550, 201, 159, 18),
+(551, 202, 137, 18),
+(552, 203, 137, 18),
+(553, 204, 137, 18),
+(554, 205, 137, 18),
+(555, 206, 134, 18),
+(556, 206, 142, 18),
+(557, 206, 143, 18),
+(558, 206, 144, 18),
+(559, 206, 145, 18),
+(560, 206, 146, 18),
+(561, 206, 147, 18),
+(562, 206, 148, 18),
+(563, 206, 149, 18),
+(564, 206, 150, 18),
+(565, 206, 151, 18),
+(566, 206, 152, 18),
+(567, 206, 153, 18),
+(568, 206, 154, 18),
+(569, 206, 155, 18),
+(570, 206, 156, 18),
+(571, 206, 157, 18),
+(572, 206, 158, 18),
+(573, 206, 159, 18);
 
 -- --------------------------------------------------------
 
@@ -1299,7 +1472,7 @@ CREATE TABLE `teacher_notification` (
 INSERT INTO `teacher_notification` (`teacher_notification_id`, `teacher_class_id`, `notification`, `date_of_notification`, `link`, `student_id`, `assignment_id`) VALUES
 (15, 160, 'Submit Assignment file name <b>my_assginment</b>', '2013-11-25 10:39:52', 'view_submit_assignment.php', 93, 16),
 (17, 161, 'Submit Assignment file name <b>q</b>', '2013-11-25 15:54:19', 'view_submit_assignment.php', 71, 17),
-(18, 186, 'Submit Assignment file name <b>asdasd</b>', '2020-12-21 10:12:04', 'view_submit_assignment.php', 219, 31);
+(19, 196, 'Submit Assignment file name <b>test</b>', '2020-12-31 18:56:28', 'view_submit_assignment.php', 111, 41);
 
 -- --------------------------------------------------------
 
@@ -1431,26 +1604,48 @@ INSERT INTO `user_log` (`user_log_id`, `username`, `login_date`, `logout_date`, 
 (63, 'jkev', '2014-01-16 14:42:02', '2014-02-13 11:19:36', 14),
 (64, 'jkev', '2014-01-17 09:16:17', '2014-02-13 11:19:36', 14),
 (65, 'jkev', '2014-01-17 13:25:51', '2014-02-13 11:19:36', 14),
-(66, 'admin', '2014-01-17 14:41:30', '2020-12-21 08:48:16', 15),
-(67, 'admin', '2014-01-17 15:56:32', '2020-12-21 08:48:16', 15),
-(68, 'admin', '2014-01-26 17:45:31', '2020-12-21 08:48:16', 15),
-(69, 'admin', '2014-02-13 10:45:17', '2020-12-21 08:48:16', 15),
-(70, 'admin', '2014-02-13 11:05:27', '2020-12-21 08:48:16', 15),
+(66, 'admin', '2014-01-17 14:41:30', '2020-12-26 12:55:42', 15),
+(67, 'admin', '2014-01-17 15:56:32', '2020-12-26 12:55:42', 15),
+(68, 'admin', '2014-01-26 17:45:31', '2020-12-26 12:55:42', 15),
+(69, 'admin', '2014-02-13 10:45:17', '2020-12-26 12:55:42', 15),
+(70, 'admin', '2014-02-13 11:05:27', '2020-12-26 12:55:42', 15),
 (71, 'jkev', '2014-02-13 11:16:48', '2014-02-13 11:19:36', 14),
-(72, 'admin', '2014-02-13 11:55:36', '2020-12-21 08:48:16', 15),
-(73, 'admin', '2014-02-13 12:32:38', '2020-12-21 08:48:16', 15),
-(74, 'admin', '2014-02-13 12:52:05', '2020-12-21 08:48:16', 15),
-(75, 'admin', '2014-02-13 13:04:35', '2020-12-21 08:48:16', 15),
+(72, 'admin', '2014-02-13 11:55:36', '2020-12-26 12:55:42', 15),
+(73, 'admin', '2014-02-13 12:32:38', '2020-12-26 12:55:42', 15),
+(74, 'admin', '2014-02-13 12:52:05', '2020-12-26 12:55:42', 15),
+(75, 'admin', '2014-02-13 13:04:35', '2020-12-26 12:55:42', 15),
 (76, 'jkev', '2014-02-13 14:35:27', '', 14),
-(77, 'admin', '2014-02-20 09:40:39', '2020-12-21 08:48:16', 15),
-(78, 'admin', '2014-02-20 09:42:21', '2020-12-21 08:48:16', 15),
-(79, 'admin', '2014-02-27 22:40:15', '2020-12-21 08:48:16', 15),
-(80, 'admin', '2014-02-28 13:12:52', '2020-12-21 08:48:16', 15),
-(81, 'admin', '2014-04-02 17:27:47', '2020-12-21 08:48:16', 15),
-(82, 'admin', '2014-04-03 15:29:38', '2020-12-21 08:48:16', 15),
-(83, 'admin', '2014-06-15 12:31:51', '2020-12-21 08:48:16', 15),
-(84, 'Admin', '2020-12-21 08:32:51', '2020-12-21 08:48:16', 15),
-(85, 'admin', '2020-12-21 08:48:23', '', 15);
+(77, 'admin', '2014-02-20 09:40:39', '2020-12-26 12:55:42', 15),
+(78, 'admin', '2014-02-20 09:42:21', '2020-12-26 12:55:42', 15),
+(79, 'admin', '2014-02-27 22:40:15', '2020-12-26 12:55:42', 15),
+(80, 'admin', '2014-02-28 13:12:52', '2020-12-26 12:55:42', 15),
+(81, 'admin', '2014-04-02 17:27:47', '2020-12-26 12:55:42', 15),
+(82, 'admin', '2014-04-03 15:29:38', '2020-12-26 12:55:42', 15),
+(83, 'admin', '2014-06-15 12:31:51', '2020-12-26 12:55:42', 15),
+(84, 'Admin', '2020-12-21 08:32:51', '2020-12-26 12:55:42', 15),
+(85, 'admin', '2020-12-21 08:48:23', '2020-12-26 12:55:42', 15),
+(86, 'admin', '2020-12-24 21:29:17', '2020-12-26 12:55:42', 15),
+(87, 'admin', '2020-12-26 00:38:43', '2020-12-26 12:55:42', 15),
+(88, 'admin', '2020-12-26 00:52:35', '2020-12-26 12:55:42', 15),
+(89, 'admin', '2020-12-26 10:48:35', '2020-12-26 12:55:42', 15),
+(90, 'admin', '2020-12-26 11:11:36', '2020-12-26 12:55:42', 15),
+(91, 'admin', '2020-12-26 12:41:02', '2020-12-26 12:55:42', 15),
+(92, 'admin', '2020-12-26 12:55:29', '2020-12-26 12:55:42', 15),
+(93, 'admin', '2020-12-28 12:53:41', '', 15),
+(94, 'admin', '2020-12-28 16:26:03', '', 15),
+(95, 'admin', '2020-12-29 09:12:14', '', 15),
+(96, 'admin', '2020-12-29 09:32:40', '', 15),
+(97, 'admin', '2020-12-29 15:46:16', '', 15),
+(98, 'admin', '2020-12-31 14:41:00', '', 15),
+(99, 'admin', '2020-12-31 15:52:19', '', 15),
+(100, 'admin', '2020-12-31 16:09:30', '', 15),
+(101, 'admin', '2020-12-31 17:00:25', '', 15),
+(102, 'admin', '2020-12-31 17:02:43', '', 15),
+(103, 'admin', '2020-12-31 17:13:31', '', 15),
+(104, 'admin', '2020-12-31 17:24:03', '', 15),
+(105, 'admin', '2020-12-31 17:26:59', '', 15),
+(106, 'admin', '2020-12-31 17:28:52', '', 15),
+(107, 'admin', '2020-12-31 17:53:58', '', 15);
 
 --
 -- Indexes for dumped tables
@@ -1499,10 +1694,22 @@ ALTER TABLE `content`
   ADD PRIMARY KEY (`content_id`);
 
 --
+-- Indexes for table `course`
+--
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`course_id`);
+
+--
 -- Indexes for table `department`
 --
 ALTER TABLE `department`
   ADD PRIMARY KEY (`department_id`);
+
+--
+-- Indexes for table `edit_profile`
+--
+ALTER TABLE `edit_profile`
+  ADD PRIMARY KEY (`profile_id`);
 
 --
 -- Indexes for table `event`
@@ -1662,7 +1869,7 @@ ALTER TABLE `user_log`
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `activity_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `activity_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `answer`
@@ -1674,7 +1881,7 @@ ALTER TABLE `answer`
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
-  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `class`
@@ -1686,7 +1893,7 @@ ALTER TABLE `class`
 -- AUTO_INCREMENT for table `class_quiz`
 --
 ALTER TABLE `class_quiz`
-  MODIFY `class_quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `class_quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `class_subject_overview`
@@ -1701,10 +1908,22 @@ ALTER TABLE `content`
   MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT for table `course`
+--
+ALTER TABLE `course`
+  MODIFY `course_id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `edit_profile`
+--
+ALTER TABLE `edit_profile`
+  MODIFY `profile_id` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `event`
@@ -1716,7 +1935,7 @@ ALTER TABLE `event`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
+  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -1734,25 +1953,25 @@ ALTER TABLE `message_sent`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `notification_read`
 --
 ALTER TABLE `notification_read`
-  MODIFY `notification_read_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `notification_read_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `notification_read_teacher`
 --
 ALTER TABLE `notification_read_teacher`
-  MODIFY `notification_read_teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `notification_read_teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `quiz_question`
@@ -1764,19 +1983,19 @@ ALTER TABLE `quiz_question`
 -- AUTO_INCREMENT for table `school_year`
 --
 ALTER TABLE `school_year`
-  MODIFY `school_year_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `school_year_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=233;
 
 --
 -- AUTO_INCREMENT for table `student_assignment`
 --
 ALTER TABLE `student_assignment`
-  MODIFY `student_assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `student_assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student_backpack`
@@ -1788,13 +2007,13 @@ ALTER TABLE `student_backpack`
 -- AUTO_INCREMENT for table `student_class_quiz`
 --
 ALTER TABLE `student_class_quiz`
-  MODIFY `student_class_quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `student_class_quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `teacher`
@@ -1812,25 +2031,25 @@ ALTER TABLE `teacher_backpack`
 -- AUTO_INCREMENT for table `teacher_class`
 --
 ALTER TABLE `teacher_class`
-  MODIFY `teacher_class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
+  MODIFY `teacher_class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
 
 --
 -- AUTO_INCREMENT for table `teacher_class_announcements`
 --
 ALTER TABLE `teacher_class_announcements`
-  MODIFY `teacher_class_announcements_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `teacher_class_announcements_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `teacher_class_student`
 --
 ALTER TABLE `teacher_class_student`
-  MODIFY `teacher_class_student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=383;
+  MODIFY `teacher_class_student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=574;
 
 --
 -- AUTO_INCREMENT for table `teacher_notification`
 --
 ALTER TABLE `teacher_notification`
-  MODIFY `teacher_notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `teacher_notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `teacher_shared`
@@ -1848,7 +2067,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_log`
 --
 ALTER TABLE `user_log`
-  MODIFY `user_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `user_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

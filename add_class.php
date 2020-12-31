@@ -7,91 +7,56 @@
                                 <div class="span12">
 								<form method="post" id="add_class">
 									<div class="control-group">
-											<label>Course:</label>
-                                          <div class="controls">
-                                            <select name="department"  class="" required>
-                                             	<option value="" disabled selected>-select course-</option>
-											<?php
-											$query = mysqli_query($conn,"select * from course order by course_name");
-											while($row = mysqli_fetch_array($query)){
 											
-											?>
-											<option value="<?php echo $row['course_id']; ?>"><?php echo $row['course_name']; ?></option>
-											<?php } ?>
-                                            </select>
-                                          </div>
-                                        </div>
 
-									  <div class="control-group">
-											<label>Department:</label>
-                                          <div class="controls">
-                                            <select name="department"  class="" required>
-                                             	<option value="" disabled selected>-select department-</option>
-											<?php
-											$query = mysqli_query($conn,"select * from department order by department_name");
-											while($row = mysqli_fetch_array($query)){
-											
-											?>
+										<div class="container">
+												
+													<div class="form-group">
+													<label>Department:</label>
+														<select name="department_id" class="form-control form-control-lg department_id" id="department"  required>
+															<option value="" disabled selected>-Select department-</option>
+															<?php
+															$query = mysqli_query($conn,"select * from department order by department_name");
+															while($row = mysqli_fetch_array($query)){
+															
+															?>
 											<option value="<?php echo $row['department_id']; ?>"><?php echo $row['department_name']; ?></option>
 											<?php } ?>
-                                            </select><!--checked -->
-                                          </div>
-                                        </div>
+														</select>
+													</div>
+
+
+
+													<div class="form-group">
+													<label>Class Name:</label>
+													<input type="hidden" name="session_id" class="session_id" value="<?php echo $session_id; ?>">
+														<select name="class_id" class="form-control form-control-lg class_id" id="class_name" required>
+															<option value="" disabled selected>-Select class-</option>
+
+															
+															
+														</select>
+													</div>
+													<div class="form-group">
+													<label>Subject:</label>
+														<select name="subject_id" class="form-control form-control-lg subject_id" id="subject_code" required>
+															<option value="" disabled selected>-Select subject-</option>
+
+																													
+														</select>
+													</div>
+												
+										</div>
+
+									 	
 										<div class="control-group">
-											<label>Class Name:</label>
+											<label>School Year:</label>
                                           <div class="controls">
-											<input type="hidden" name="session_id" class="session_id" value="<?php echo $session_id; ?>">
-                                            <select name="class_id"  class="class_id" required>
-                                             	<option value="" disabled selected>-select class-</option>
 											<?php
-											$query = mysqli_query($conn,"select * from class order by class_name");
-											while($row = mysqli_fetch_array($query)){
-											
+											$query = mysqli_query($conn,"select * from school_year order by school_year DESC");
+											$row = mysqli_fetch_array($query);
 											?>
-											<option value="<?php echo $row['class_id']; ?>"><?php echo $row['class_name']; ?></option>
-											<?php } ?>
-                                            </select>
-                                          </div>
-                                        </div>
-										
-										<div class="control-group">
-											<label>Subject:</label>
-                                          <div class="controls">
-                                            <select name="subject_id"  class="subject_id" required>
-                                             	<option value="" disabled selected>-select subject-</option>
-											<?php
-											$query = mysqli_query($conn,"select * from subject order by subject_code");
-											while($row = mysqli_fetch_array($query)){
-											
-											?>
-											<option value="<?php echo $row['subject_id']; ?>"><?php echo $row['subject_code']; ?></option>
-											<?php } ?>
-                                            </select>
-                                          </div>
-                                        </div>
-										
-										<div class="control-group">
-											<label>Academic Year:</label>
-                                          <div class="controls">
-                                          	<?php
-												$sy;
-												if(isset($_GET['year'])  && !empty($_GET['year'])) {
-													$sy = $_GET['year'];
-													$school_year_query = mysqli_query($conn,"select * from school_year where  school_year = '$sy'")or die(mysqli_error());
-													$school_year_query_row = mysqli_fetch_array($school_year_query);
-													$school_year = $school_year_query_row['school_year'];
-												} else {
-													$school_year_query = mysqli_query($conn,"select * from school_year")or die(mysqli_error());
-													$school_year_query_row[0] = mysqli_fetch_array($school_year_query);
-													$school_year = $school_year_query_row['school_year'];
-													if(isset($_GET['dashboard']) && $_GET['dashboard'] == 1) {
-															echo "<script>window.location.href='dasboard_teacher.php?year=$school_year';</script>";
-	
-													}
-													
-												}
-											?>
-											<input id="school_year" class="span5" type="text" class="school_year" name="school_year" value="<?php echo $_GET['year']?>" disabled>
+											<input id="" type="text" name="school_year" class="span5 school_year" value="<?php  echo $row['school_year']; ?>"disabled >
                                           </div>
                                         </div>
 											<div class="control-group">
@@ -104,32 +69,54 @@
             <script>
 			jQuery(document).ready(function($){
 				$("#add_class").submit(function(e){
-					const session_id = document.querySelector('.session_id').value;
+					e.preventDefault();
+					const department_id = document.querySelector('.department_id').value;
 					const class_id = document.querySelector('.class_id').value;
+					const session_id = document.querySelector('.session_id').value;
 					const subject_id = document.querySelector('.subject_id').value;
 					const school_year = document.querySelector('.school_year').value;
 					$.ajax({
 						type: "POST",
 						url: "add_class_action.php",
 						data: {
-							session_id: session_id,
+							department_id: department_id,
 							class_id: class_id,
 							subject_id: subject_id,
-							school_year: school_year
-						},
-						beforeSend: function() {
-							console.log('Adding Class');
+							session_id: session_id,
+							school_year: school_year,
+						}, beforeSend: function() {
+							console.log("Adding Class");
 						},
 						success: function(html){
-							console.log(html);
-						//if(html=="true")
-						//{
-						//$.jGrowl("Class Already Exist", { header: 'Add Class Failed' });
-						//}else{
-						//	$.jGrowl("Classs Successfully  Added", { header: 'Class Added' });
-						//	var delay = 500;
-						//	setTimeout(function(){ window.location = 'dasboard_teacher.php'  }, delay);  
-						//}
+							window.location.reload();
+						}
+					});
+				});
+			});
+
+			$(document).ready(function(){
+				$("#department").change(function(){
+					var department_id=$(this).val();
+					$.ajax({
+						url:"action.php",
+						type:"POST",
+						data:{departmentID:department_id},
+						success:function(data){
+							$("#class_name").html(data);
+						}
+					});
+				});
+			});
+
+			$(document).ready(function(){
+				$("#class_name").change(function(){
+					var class_id=$(this).val();
+					$.ajax({
+						url:"actionclass.php",
+						type:"POST",
+						data:{classID:class_id},
+						success:function(data){
+							$("#subject_code").html(data);
 						}
 					});
 				});

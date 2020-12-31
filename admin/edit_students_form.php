@@ -46,6 +46,12 @@
                                             <input  name="ln"  value="<?php echo $row['lastname']; ?>" class="input focused" id="focusedInput" type="text" placeholder = "Lastname" required>
                                           </div>
                                         </div>
+                                        <div class="control-group">
+                                          <div class="controls">
+                                            
+                                            <input  name="zn" value="<?php echo $row['dob']; ?>" class="input focused" id="focusedInput" type="number" pattern="/^-?\d+\.??\d*$/" onkeyup="this.value = this.value.replace(/[^0-9]/,'')"  placeholder = "DDMMYYYY" onKeyPress="if(this.value.length==8) return false;" >
+                                          </div>
+                                        </div>
 								
 										
 											<div class="control-group">
@@ -69,6 +75,7 @@
                                 $un = $_POST['un'];
                                 $fn = $_POST['fn'];
                                 $ln = $_POST['ln'];
+                                $zn = $_POST['zn'];
                                 $cys = $_POST['cys'];
                       
 

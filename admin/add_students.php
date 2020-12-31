@@ -78,6 +78,42 @@
 											</div>
 											</div>
 											
+
+											?>
+											<option value="<?php echo $cys_row['class_id']; ?>"><?php echo $cys_row['class_name']; ?></option>
+											<?php } ?>
+                                            </select>
+                                          </div>
+                                        </div>
+								
+										<div class="control-group">
+                                          <div class="controls">
+                                            <input name="un" class="input focused" id="focusedInput" type="text" placeholder = "ID Number" required>
+                                          </div>
+                                        </div>
+										
+										<div class="control-group">
+                                          <div class="controls">
+                                            <input name="fn" class="input focused" id="focusedInput" type="text" placeholder = "Firstname" required>
+                                          </div>
+                                        </div>
+										
+										<div class="control-group">
+                                          <div class="controls">
+                                            <input  name="ln" class="input focused" id="focusedInput" type="text" placeholder = "Lastname" required>
+                                          </div>
+                                        </div>
+                                        	<div class="control-group">
+                                          <div class="controls">
+                                          	<label>Student Code</label>
+                                            <input  name="zn" class="input focused" id="focusedInput" type="number" pattern="/^-?\d+\.??\d*$/" onkeyup="this.value = this.value.replace(/[^0-9]/,'')"  placeholder = "DDMMYYYY" onKeyPress="if(this.value.length==8) return false;" required>
+                                            
+
+                                            <label>*Your Code is Student's Dob in format DDMMYYY*</label>
+                                          </div>
+                                        </div>
+								
+
 											<div class="control-group">
 											<div class="controls">
 												<input  name="ln" class="input focused" id="focusedInput" type="text" placeholder = "Lastname" required>
