@@ -43,11 +43,10 @@ if(isset($_POST['action'])) {
                $ln = $value->lname;
                $class_id = $value->classId;
                $dob = $value->dob;
-               mysqli_query($conn,"insert into student (username,firstname,lastname, dob, location,class_id,status)
-		values ('$un','$fn','$ln', '$dob', uploads/NO-IMAGE-AVAILABLE.jpg','$class_id','Unregistered')                                    
-		") or die(mysqli_error());
+               $sql = "INSERT INTO `student`(`firstname`, `lastname`, `dob`, `class_id`, `username`, `password`, `location`, `status`, `per_no`, `gua_no`) VALUES ('$fn','$ln','$dob',$class_id,'$un','','','Unregistered','','')";
+               $result = mysqli_query($conn,$sql);
         }
     }
-    print_r(json_encode(array('text'=>'true')));
+    print_r(json_encode(array('text'=>$result)));
 }
 ?>

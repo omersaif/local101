@@ -78,42 +78,6 @@
 											</div>
 											</div>
 											
-
-											?>
-											<option value="<?php echo $cys_row['class_id']; ?>"><?php echo $cys_row['class_name']; ?></option>
-											<?php } ?>
-                                            </select>
-                                          </div>
-                                        </div>
-								
-										<div class="control-group">
-                                          <div class="controls">
-                                            <input name="un" class="input focused" id="focusedInput" type="text" placeholder = "ID Number" required>
-                                          </div>
-                                        </div>
-										
-										<div class="control-group">
-                                          <div class="controls">
-                                            <input name="fn" class="input focused" id="focusedInput" type="text" placeholder = "Firstname" required>
-                                          </div>
-                                        </div>
-										
-										<div class="control-group">
-                                          <div class="controls">
-                                            <input  name="ln" class="input focused" id="focusedInput" type="text" placeholder = "Lastname" required>
-                                          </div>
-                                        </div>
-                                        	<div class="control-group">
-                                          <div class="controls">
-                                          	<label>Student Code</label>
-                                            <input  name="zn" class="input focused" id="focusedInput" type="number" pattern="/^-?\d+\.??\d*$/" onkeyup="this.value = this.value.replace(/[^0-9]/,'')"  placeholder = "DDMMYYYY" onKeyPress="if(this.value.length==8) return false;" required>
-                                            
-
-                                            <label>*Your Code is Student's Dob in format DDMMYYY*</label>
-                                          </div>
-                                        </div>
-								
-
 											<div class="control-group">
 											<div class="controls">
 												<input  name="ln" class="input focused" id="focusedInput" type="text" placeholder = "Lastname" required>
@@ -213,13 +177,12 @@
 					let objectKeys = Object.keys(json['Sheet1'][0]);
 					if (objectKeys[0] != 'FirstName' || objectKeys[1] != 'LastName' || objectKeys[2] != 'USN' || objectKeys[3] != 'DOB') {
 						showAdd = false;
-						console.log(objectKeys);
 					} else {
 						document.querySelector('.result').innerHTML = `
 							<table style="width: 100%; border-collapse: collapse;" border=1>
 								<thead>
 									<tr>
-										<th></th>
+										<th><input onchange="checkAll()" class='checkAll' type="checkbox" checked></th>
 										<th>First Name</th>	
 										<th>Last Name</th>	
 										<th>USN</th>	
@@ -265,6 +228,12 @@
 					alert("Excel Sheet Doesn't have a valid data!!");
 				}
 			}
+			function checkAll() {
+				let checkboxs = document.querySelectorAll('.studentCheckBox');
+				checkboxs.forEach(check=>{
+					(document.querySelector('.checkAll').checked)?(check.checked=true):(check.checked=false);
+				})
+			}
 			function addStudents() {
 				var students = [];
 				let checkboxs = document.querySelectorAll('.studentCheckBox');
@@ -278,7 +247,7 @@
 						student['fname'] = fname;
 						student['lname'] = lname;
 						student['usn'] = usn;
-						student['dob'] = fname;
+						student['dob'] = Number(dob);
 						student['classId'] = Number(document.querySelector('.class_id_sheet').value);
 						students.push(student);
 					}
@@ -291,10 +260,14 @@
 						data: JSON.stringify(students),
 					}, beforeSend: function() {
 						console.log("Adding Students");
+						console.log(students);
 					}, success: function(response) {
+						console.log(response);
 						try {
-							if(JSON.parse(response).text === 'true') {
+							if(JSON.parse(response).text === true) {
 								window.location.reload();
+							} else {
+								console.log(JSON.parse(response));
 							}
 						} catch (error) {
 							console.log('response ',response);
