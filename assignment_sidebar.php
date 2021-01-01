@@ -33,6 +33,13 @@
                              <!--   <input type="text" name="desc" Placeholder="Description"  class="input" required> -->
                             </div>
                         </div>
+
+                        <div class="control-group">
+                      
+                            <div class="controls">
+                                <input type="text" name="maxmarks" Placeholder="Max Marks"  class="input">
+                            </div>
+                        </div>
                         <div class="control-group">
                             <div class="controls">
 

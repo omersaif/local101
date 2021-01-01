@@ -42,6 +42,15 @@
                                             <input  name="ln" class="input focused" id="focusedInput" type="text" placeholder = "Lastname" required>
                                           </div>
                                         </div>
+                                        	<div class="control-group">
+                                          <div class="controls">
+                                          	<label>Student Code</label>
+                                            <input  name="zn" class="input focused" id="focusedInput" type="number" pattern="/^-?\d+\.??\d*$/" onkeyup="this.value = this.value.replace(/[^0-9]/,'')"  placeholder = "DDMMYYYY" onKeyPress="if(this.value.length==8) return false;" required>
+                                            
+
+                                            <label>*Your Code is Student's Dob in format DDMMYYY*</label>
+                                          </div>
+                                        </div>
 								
 										
 											<div class="control-group">

@@ -40,7 +40,7 @@
 										        <tr>
 												<th>Date Upload</th>
 												<th>Assignment</th>
-												<th>Max Marks</th>
+												<th>Description</th>
 											
 												<th>Grade</th>
 												</tr>

@@ -22,6 +22,7 @@
 				
 					<th>Name</th>
 					<th>ID Number</th>
+					<th>DoB</th>
 			
 					<th>Course Yr & Section</th>
 					<th></th>
@@ -41,7 +42,8 @@
 		</td>
 	
 		<td><?php echo $row['firstname'] . " " . $row['lastname']; ?></td> 
-		<td><?php echo $row['username']; ?></td> 
+		<td><?php echo $row['username']; ?></td>
+		<td><?php echo $row['dob']; ?></td> 
 	
 		<td width="100"><?php echo $row['class_name']; ?></td> 
 	

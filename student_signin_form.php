@@ -15,8 +15,11 @@
 				}
 				?>
 			</select>
+			<input  name="dob" class="input-block-level" id="focusedInput" type="number" pattern="/^-?\d+\.??\d*$/" onkeyup="this.value = this.value.replace(/[^0-9]/,'')"  placeholder = "DDMMYYYY" onKeyPress="if(this.value.length==8)  return false;" required>
 			<input type="password" class="input-block-level" id="password" name="password" placeholder="Password" required>
 			<input type="password" class="input-block-level" id="cpassword" name="cpassword" placeholder="Re-type Password" required>
+			<input  name="number1" class="input-block-level" id="number1" type="number" pattern="/^-?\d+\.??\d*$/" onkeyup="this.value = this.value.replace(/[^0-9]/,'')"  placeholder = "Student Number" onKeyPress="if(this.value.length==10) return false;" required>
+			<input  name="number2" class="input-block-level" id="number2" type="number" pattern="/^-?\d+\.??\d*$/" onkeyup="this.value = this.value.replace(/[^0-9]/,'')"  placeholder = "Guardian's Number" onKeyPress="if(this.value.length==10) return false;" required>
 			<button id="signin" name="login" class="btn btn-info" type="submit"><i class="icon-check icon-large"></i> Sign in</button>
 			</form>
 			
@@ -40,11 +43,11 @@
 						success: function(html){
 						if(html=='true')
 						{
-						$.jGrowl("Welcome to CHMSC Learning Management System", { header: 'Sign up Success' });
+						$.jGrowl("Welcome to BIDS Learning Management System", { header: 'Sign up Success' });
 						var delay = 2000;
 							setTimeout(function(){ window.location = 'dashboard_student.php'  }, delay);  
 						}else if(html=='false'){
-							$.jGrowl("student does not found in the database Please Sure to Check Your ID Number or Firstname, Lastname and the Section You Belong. ", { header: 'Sign Up Failed' });
+							$.jGrowl("student does not found in the database Please Sure to Check Your ID Number or Firstname, Lastname You Belong and the Section and both the provided numbers should not be same . ", { header: 'Sign Up Failed' });
 						}
 						}
 						

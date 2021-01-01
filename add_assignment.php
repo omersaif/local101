@@ -46,6 +46,11 @@
 													<textarea id="assigntextare" placeholder="Description" name="desc" required></textarea>
 													</div>
 												</div>
+												<div class="control-group">
+													<div class="controls">
+														<input type="text" name="maxmarks" Placeholder="Max Marks"  class="input">
+													</div>
+												</div>
                 
 					
 											<script>

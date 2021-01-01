@@ -12,10 +12,8 @@
 									
 					     <ul class="breadcrumb">
 						<?php
-						$sy;
-						if(isset($_GET['year'])) {
-							$sy = $_GET['year'];
-						}
+						$sy = $_POST['school_year'];
+						
 						$school_year_query = mysqli_query($conn,"select * from school_year where  school_year = '$sy'")or die(mysqli_error());
 						$school_year_query_row = mysqli_fetch_array($school_year_query);
 						$school_year = $school_year_query_row['school_year'];
@@ -24,6 +22,7 @@
 							<li><a href="#"><?php echo $school_year_query_row['school_year']; ?></a></li>
 						</ul>
 						 <!-- end breadcrumb -->
+					 
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
@@ -39,6 +38,7 @@
 										where teacher_id = '$session_id' and school_year = '$school_year' ")or die(mysqli_error());
 										while($row = mysqli_fetch_array($query)){
 										$id = $row['teacher_class_id'];
+				
 										?>
 											<li>
 												<a href="my_students.php<?php echo '?id='.$id; ?>">
