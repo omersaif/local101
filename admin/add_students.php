@@ -32,6 +32,10 @@
 			   font-weight: bold;
 			   opacity: 1 !important;
 		   }
+		   table {
+			   max-height: 100px;
+			   overflow-y: auto;
+		   }
 	   </style>
                         <!-- block -->
                         <div class="block">
@@ -264,10 +268,24 @@
 					}, success: function(response) {
 						console.log(response);
 						try {
-							if(JSON.parse(response).text === true) {
-								window.location.reload();
+							const responseObj = JSON.parse(response);
+							if(responseObj.text === true) {
+								document.querySelector('#fileSheet').style.display = 'none';
+								if(responseObj.errors.length > 0) {
+									var p = document.createElement("p");
+									p.classList.add('errorMessage');
+									p.style.color = 'red';
+									p.innerHTML = "Students already exists USNs: ";
+									responseObj.errors.forEach(error=>{
+										p.innerHTML += `${error} `;
+									})
+									p.innerHTML += `<a onclick='window.location.reload()' style='cursor: pointer;'>Refresh</a>`;
+									document.querySelector('.result').appendChild(p); 
+								} else {
+									window.location.reload();
+								}
 							} else {
-								console.log(JSON.parse(response));
+								console.log(responseObj);
 							}
 						} catch (error) {
 							console.log('response ',response);
