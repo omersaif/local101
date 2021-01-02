@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2021 at 04:28 AM
+-- Generation Time: Jan 02, 2021 at 08:58 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -141,7 +141,22 @@ INSERT INTO `assignment` (`assignment_id`, `floc`, `fdatein`, `fdesc`, `teacher_
 (37, 'admin/uploads/2281_File_Jan-2019.pdf', '2020-12-31 18:36:12', 'assign', 9, 196, 'assign', ''),
 (38, 'admin/uploads/6836_File_Jan-2019.pdf', '2020-12-31 18:38:46', 'daffafssaf', 9, 196, 'assign-1000', '100'),
 (39, 'admin/uploads/6836_File_Jan-2019.pdf', '2020-12-31 18:38:46', 'daffafssaf', 9, 198, 'assign-1000', '100'),
-(41, 'admin/uploads/1274_File_Jan-2019.pdf', '2020-12-31 18:52:38', 'sagu', 9, 196, 'sagu', '50');
+(41, 'admin/uploads/1274_File_Jan-2019.pdf', '2020-12-31 18:52:38', 'sagu', 9, 196, 'sagu', '50'),
+(42, 'admin/uploads/9242_File_studentsSheet.xlsx', '2021-01-01 10:20:52', 'assign', 9, 196, 'assign', '100'),
+(43, 'admin/uploads/4020_File_studentsSheet.xlsx', '2021-01-01 10:57:35', 'sagar``````', 9, 196, 'sagar`', '100'),
+(44, 'admin/uploads/4020_File_studentsSheet.xlsx', '2021-01-01 10:57:35', 'sagar``````', 9, 198, 'sagar`', '100'),
+(45, 'admin/uploads/7926_File_studentsSheet.xlsx', '2021-01-01 11:29:20', 'dsssd', 9, 196, 'sdds', '100'),
+(46, 'admin/uploads/7926_File_studentsSheet.xlsx', '2021-01-01 11:29:20', 'dsssd', 9, 198, 'sdds', '100'),
+(47, 'admin/uploads/9677_File_studentsSheet.xlsx', '2021-01-01 11:42:29', 'sagu', 9, 196, 'sagu', '500'),
+(48, 'admin/uploads/9677_File_studentsSheet.xlsx', '2021-01-01 11:42:29', 'sagu', 9, 198, 'sagu', '500'),
+(49, 'admin/uploads/7363_File_studentsSheet.xlsx', '2021-01-01 11:45:36', 'qwerty', 9, 196, 'qwwqqw', '1000'),
+(50, 'admin/uploads/7363_File_studentsSheet.xlsx', '2021-01-01 11:45:36', 'qwerty', 9, 198, 'qwwqqw', '1000'),
+(51, 'admin/uploads/2908_File_studentsSheet.xlsx', '2021-01-01 11:47:24', 'trewq', 9, 196, 'qwertt', '1000'),
+(52, 'admin/uploads/2908_File_studentsSheet.xlsx', '2021-01-01 11:47:24', 'trewq', 9, 198, 'qwertt', '1000'),
+(53, 'admin/uploads/9472_File_studentsSheet.xlsx', '2021-01-01 11:57:43', 'ddddssss', 9, 196, 'sddddd', '500'),
+(54, 'admin/uploads/9472_File_studentsSheet.xlsx', '2021-01-01 11:57:43', 'ddddssss', 9, 198, 'sddddd', '500'),
+(55, 'admin/uploads/1847_File_studentsSheet.xlsx', '2021-01-01 12:22:52', 'hggg111', 9, 196, 'hgggg', '500'),
+(56, 'admin/uploads/1847_File_studentsSheet.xlsx', '2021-01-01 12:22:52', 'hggg111', 9, 198, 'hgggg', '500');
 
 -- --------------------------------------------------------
 
@@ -263,6 +278,13 @@ CREATE TABLE `course` (
   `course_id` int(20) NOT NULL,
   `course_name` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`course_id`, `course_name`) VALUES
+(1, '');
 
 -- --------------------------------------------------------
 
@@ -494,7 +516,22 @@ INSERT INTO `notification` (`notification_id`, `teacher_class_id`, `notification
 (36, 196, 'Add Assignment name <b>assign-1000</b>', '2020-12-31 18:38:46', 'assignment_student.php'),
 (37, 198, 'Add Assignment name <b>assign-1000</b>', '2020-12-31 18:38:46', 'assignment_student.php'),
 (38, 196, 'Add Assignment file name <b>sagu</b>', '2020-12-31 18:51:11', 'assignment_student.php'),
-(39, 196, 'Add Assignment file name <b>sagu</b>', '2020-12-31 18:52:38', 'assignment_student.php');
+(39, 196, 'Add Assignment file name <b>sagu</b>', '2020-12-31 18:52:38', 'assignment_student.php'),
+(40, 196, 'Add Assignment name <b>assign</b>', '2021-01-01 10:20:52', 'assignment_student.php'),
+(41, 196, 'Add Assignment name <b>sagar`</b>', '2021-01-01 10:57:35', 'assignment_student.php'),
+(42, 198, 'Add Assignment name <b>sagar`</b>', '2021-01-01 10:57:35', 'assignment_student.php'),
+(43, 196, 'Add Assignment name <b>sdds</b>', '2021-01-01 11:29:20', 'assignment_student.php'),
+(44, 198, 'Add Assignment name <b>sdds</b>', '2021-01-01 11:29:20', 'assignment_student.php'),
+(45, 196, 'Add Assignment name <b>sagu</b>', '2021-01-01 11:42:29', 'assignment_student.php'),
+(46, 198, 'Add Assignment name <b>sagu</b>', '2021-01-01 11:42:29', 'assignment_student.php'),
+(47, 196, 'Add Assignment name <b>qwwqqw</b>', '2021-01-01 11:45:36', 'assignment_student.php'),
+(48, 198, 'Add Assignment name <b>qwwqqw</b>', '2021-01-01 11:45:36', 'assignment_student.php'),
+(49, 196, 'Add Assignment name <b>qwertt</b>', '2021-01-01 11:47:24', 'assignment_student.php'),
+(50, 198, 'Add Assignment name <b>qwertt</b>', '2021-01-01 11:47:24', 'assignment_student.php'),
+(51, 196, 'Add Assignment name <b>sddddd</b>', '2021-01-01 11:57:43', 'assignment_student.php'),
+(52, 198, 'Add Assignment name <b>sddddd</b>', '2021-01-01 11:57:43', 'assignment_student.php'),
+(53, 196, 'Add Assignment name <b>hgggg</b>', '2021-01-01 12:22:52', 'assignment_student.php'),
+(54, 198, 'Add Assignment name <b>hgggg</b>', '2021-01-01 12:22:52', 'assignment_student.php');
 
 -- --------------------------------------------------------
 
@@ -670,7 +707,7 @@ INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `dob`, `class_id`,
 (113, 'Clifford', 'Ledesma', 0, 13, '21100324', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
 (112, 'Raymond', 'Serion', 0, 13, '2700372', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
 (111, 'Mark Dominic', 'Sayon', 0, 13, '21100867', 'heni', 'uploads/mark.jpg', 'Unregistered', '0', '0'),
-(108, 'Kaye Angela', 'Cueva', 0, 13, '21101151', '', 'uploads/dp.jpg', 'Unregistered', '0', '0'),
+(234, 'Vishal', 'Agasar', 2081999, 8, '2BL17ME132', '', '', 'Unregistered', '', ''),
 (105, 'Neljie', 'Guirnela', 0, 13, '21101131', '', 'uploads/Koala.jpg', 'Unregistered', '0', '0'),
 (106, 'Razel', 'Palermo', 0, 13, '29000676', '', 'uploads/razel.jpg', 'Unregistered', '0', '0'),
 (103, 'Jade', 'Gordoncillo', 0, 13, '21100617', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
@@ -684,9 +721,9 @@ INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `dob`, `class_id`,
 (93, 'John Kevin ', 'Lorayna', 0, 7, '111', 'teph', 'uploads/3094_384893504898082_1563225657_n.jpg', 'Registered', '0', '0'),
 (94, 'Leah Mae', 'Padilla', 0, 13, '21100471', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
 (76, 'Jamaica Mae', 'Alipe', 0, 13, '21100555', '123', 'uploads/maica.jpg', 'Registered', '0', '0'),
-(107, 'Jose Harry', 'Polondaya', 0, 13, '29001002', 'florypis', 'uploads/harry.jpg', 'Registered', '0', '0'),
+(235, 'Sarvesh', 'Goddagi', 2081999, 8, '2BL17ME133', '', '', 'Unregistered', '', ''),
 (110, 'Zyryn', 'Corugda', 0, 13, '21100881', '', 'uploads/baby.jpg', 'Unregistered', '0', '0'),
-(109, 'Rena', 'Lamberto', 0, 13, '29001081', '', 'uploads/ca.jpg', 'Unregistered', '0', '0'),
+(233, 'Uday', 'Patil', 2081999, 8, '2BL17ME131', '', '', 'Unregistered', '', ''),
 (99, 'Ryan Teofilo', 'Malbata-an', 0, 13, '21100315', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
 (96, 'Glecy Marie', 'Navarosa', 0, 13, '20101436', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
 (209, 'dhalia', 'hofilena', 0, 20, '21300311', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
@@ -698,7 +735,7 @@ INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `dob`, `class_id`,
 (134, 'Victor Anthony', 'Jacobo', 0, 12, '21101050', 'akositon', 'uploads/win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', 'Registered', '0', '0'),
 (135, 'Albert Kezzel', 'Naynay', 0, 14, '20101361', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
 (136, 'Jorgielyn', 'Serfino', 0, 7, '20100331', 'jorgie', 'uploads/Koala.jpg', 'Registered', '0', '0'),
-(137, 'Wina Mae', 'Espenorio', 0, 8, '20100447', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
+(137, 'Wina Mae', 'Espenorio', 0, 8, '20100447', 'sagu123', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '7000000000', '8000000000'),
 (138, 'Brian Paul', 'Sablan', 0, 7, '29000557', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
 (139, 'Rodzil', 'Camato', 0, 7, '20100RC', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
 (140, 'Dean Martin', 'Tingson', 0, 14, '21100665', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
@@ -776,7 +813,15 @@ INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `dob`, `class_id`,
 (217, 'Alyssa', 'David', 0, 17, '21200507', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
 (218, 'josie', 'banday', 0, 7, '20100452', 'heaven', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0'),
 (219, 'Claire ', 'Blake', 0, 18, '2011120', 'cblake123', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0'),
-(232, 'sagar', 'sagar', 77889999, 7, '112233', 'sagar', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '7019190195', '7019190198');
+(232, 'sagar', 'sagar', 77889999, 7, '112233', 'sagar', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '7019190195', '7019190198'),
+(236, 'Uday', 'Patil', 2081999, 8, '2BL17ME134', '', '', 'Unregistered', '', ''),
+(237, 'Uday', 'Patil', 2081999, 8, '2BL17ME135', '', '', 'Unregistered', '', ''),
+(238, 'Uday', 'Patil', 2081999, 8, '2BL17ME136', '', '', 'Unregistered', '', ''),
+(239, 'Uday', 'Patil', 2081999, 8, '2BL17ME137', '', '', 'Unregistered', '', ''),
+(240, 'Uday', 'Patil', 2081999, 8, '2BL17ME138', '', '', 'Unregistered', '', ''),
+(241, 'Uday', 'Patil', 2081999, 8, '2BL17ME139', '', '', 'Unregistered', '', ''),
+(242, 'Uday', 'Patil', 2081999, 8, '2BL17ME140', '', '', 'Unregistered', '', ''),
+(243, 'Uday', 'Patil', 2081999, 8, '2BL17ME141', '', '', 'Unregistered', '', '');
 
 -- --------------------------------------------------------
 
@@ -792,16 +837,31 @@ CREATE TABLE `student_assignment` (
   `fdesc` varchar(100) NOT NULL,
   `fname` varchar(50) NOT NULL,
   `student_id` int(11) NOT NULL,
-  `grade` varchar(5) NOT NULL
+  `grade` varchar(5) NOT NULL,
+  `roll_no` varchar(215) NOT NULL,
+  `marks_alloc` varchar(250) NOT NULL,
+  `totalmarks` varchar(115) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student_assignment`
 --
 
-INSERT INTO `student_assignment` (`student_assignment_id`, `assignment_id`, `floc`, `assignment_fdatein`, `fdesc`, `fname`, `student_id`, `grade`) VALUES
-(1, 31, 'admin/uploads/7820_File_sample.pdf', '2020-12-21 10:12:04', 'aaa', 'asdasd', 219, ''),
-(2, 41, 'admin/uploads/6991_File_Jan-2019.pdf', '2020-12-31 18:56:28', 'test', 'test', 111, '');
+INSERT INTO `student_assignment` (`student_assignment_id`, `assignment_id`, `floc`, `assignment_fdatein`, `fdesc`, `fname`, `student_id`, `grade`, `roll_no`, `marks_alloc`, `totalmarks`) VALUES
+(1, 31, 'admin/uploads/7820_File_sample.pdf', '2020-12-21 10:12:04', 'aaa', 'asdasd', 219, '', '', '', ''),
+(2, 41, 'admin/uploads/6991_File_Jan-2019.pdf', '2020-12-31 18:56:28', 'test', 'test', 111, '', '', '', ''),
+(3, 32, 'admin/uploads/1378_File_studentsSheet.xlsx', '2021-01-01 10:21:51', 'roll no-50', 'assign', 111, '', '', '', ''),
+(4, 43, 'admin/uploads/8900_File_studentsSheet.xlsx', '2021-01-01 10:58:22', 'roll no-50', 'assign', 111, '50', '', '', ''),
+(5, 45, 'admin/uploads/2706_File_studentsSheet.xlsx', '2021-01-01 11:30:11', 'dsd', 'sdsd', 111, '', '', '', ''),
+(6, 47, 'admin/uploads/1504_File_studentsSheet.xlsx', '2021-01-01 11:43:32', 'ass', 'asss', 111, '', '', '', ''),
+(7, 55, 'admin/uploads/2824_File_studentsSheet.xlsx', '2021-01-01 12:23:49', 'roll no-50', 'hgggg', 111, '', '', '', ''),
+(8, 55, 'admin/uploads/3014_File_studentsSheet.xlsx', '2021-01-01 12:27:09', 'roll no-50', 'assign', 137, '', '', '', ''),
+(9, 55, 'admin/uploads/8302_File_studentsSheet.xlsx', '2021-01-01 17:00:58', 'asas', 'hgggg', 111, '', '', '', ''),
+(10, 55, 'admin/uploads/6352_File_studentsSheet.xlsx', '2021-01-01 17:03:41', 'asadsdkdnj', 'assign', 111, '', '', '', ''),
+(11, 55, 'admin/uploads/1892_File_Jan-2019.pdf', '2021-01-01 17:08:27', 'description', 'suhaKJASDH', 111, '', '', '', ''),
+(12, 55, 'admin/uploads/4568_File_Jan-2019.pdf', '2021-01-01 17:14:59', 'DSSAsd', 'asda', 111, '', 'asdaWQ', '[{\"questionNo\":\"1a\",\"marksObtained\":\"25\"},{\"questionNo\":\"2b\",\"marksObtained\":\"50\"}]', '75'),
+(13, 55, 'admin/uploads/1937_File_11414017524-NOV-20365767.PDF', '2021-01-02 11:42:45', 'assignment-0011', 'assignment', 111, '', '50', '', ''),
+(14, 55, 'admin/uploads/5304_File_terms-and-condition.pdf', '2021-01-02 11:56:43', 'assignment-00120', 'assignment', 111, '', '55', '', '');
 
 -- --------------------------------------------------------
 
@@ -1049,7 +1109,6 @@ INSERT INTO `teacher_class_student` (`teacher_class_student_id`, `teacher_class_
 (32, 165, 134, 134),
 (54, 167, 113, 12),
 (55, 167, 112, 12),
-(57, 167, 108, 12),
 (58, 167, 105, 12),
 (59, 167, 106, 12),
 (60, 167, 103, 12),
@@ -1062,9 +1121,7 @@ INSERT INTO `teacher_class_student` (`teacher_class_student_id`, `teacher_class_
 (67, 167, 95, 12),
 (68, 167, 94, 12),
 (69, 167, 76, 12),
-(70, 167, 107, 12),
 (71, 167, 110, 12),
-(72, 167, 109, 12),
 (73, 167, 99, 12),
 (74, 167, 96, 12),
 (75, 167, 75, 12),
@@ -1099,7 +1156,6 @@ INSERT INTO `teacher_class_student` (`teacher_class_student_id`, `teacher_class_
 (127, 172, 113, 18),
 (128, 172, 112, 18),
 (129, 172, 111, 18),
-(130, 172, 108, 18),
 (131, 172, 105, 18),
 (132, 172, 106, 18),
 (133, 172, 103, 18),
@@ -1112,9 +1168,7 @@ INSERT INTO `teacher_class_student` (`teacher_class_student_id`, `teacher_class_
 (140, 172, 95, 18),
 (141, 172, 94, 18),
 (142, 172, 76, 18),
-(143, 172, 107, 18),
 (144, 172, 110, 18),
-(145, 172, 109, 18),
 (146, 172, 99, 18),
 (147, 172, 96, 18),
 (148, 172, 75, 18),
@@ -1168,7 +1222,6 @@ INSERT INTO `teacher_class_student` (`teacher_class_student_id`, `teacher_class_
 (196, 175, 113, 13),
 (197, 175, 112, 13),
 (198, 175, 111, 13),
-(199, 175, 108, 13),
 (200, 175, 105, 13),
 (201, 175, 106, 13),
 (202, 175, 103, 13),
@@ -1181,9 +1234,7 @@ INSERT INTO `teacher_class_student` (`teacher_class_student_id`, `teacher_class_
 (209, 175, 95, 13),
 (210, 175, 94, 13),
 (211, 175, 76, 13),
-(212, 175, 107, 13),
 (213, 175, 110, 13),
-(214, 175, 109, 13),
 (215, 175, 99, 13),
 (216, 175, 96, 13),
 (217, 175, 75, 13),
@@ -1237,7 +1288,6 @@ INSERT INTO `teacher_class_student` (`teacher_class_student_id`, `teacher_class_
 (265, 178, 113, 14),
 (266, 178, 112, 14),
 (267, 178, 111, 14),
-(268, 178, 108, 14),
 (269, 178, 105, 14),
 (270, 178, 106, 14),
 (271, 178, 103, 14),
@@ -1250,9 +1300,7 @@ INSERT INTO `teacher_class_student` (`teacher_class_student_id`, `teacher_class_
 (278, 178, 95, 14),
 (279, 178, 94, 14),
 (280, 178, 76, 14),
-(281, 178, 107, 14),
 (282, 178, 110, 14),
-(283, 178, 109, 14),
 (284, 178, 99, 14),
 (285, 178, 96, 14),
 (286, 178, 75, 14),
@@ -1287,7 +1335,6 @@ INSERT INTO `teacher_class_student` (`teacher_class_student_id`, `teacher_class_
 (315, 180, 113, 19),
 (316, 180, 112, 19),
 (317, 180, 111, 19),
-(318, 180, 108, 19),
 (319, 180, 105, 19),
 (320, 180, 106, 19),
 (321, 180, 103, 19),
@@ -1300,9 +1347,7 @@ INSERT INTO `teacher_class_student` (`teacher_class_student_id`, `teacher_class_
 (328, 180, 95, 19),
 (329, 180, 94, 19),
 (330, 180, 76, 19),
-(331, 180, 107, 19),
 (332, 180, 110, 19),
-(333, 180, 109, 19),
 (334, 180, 99, 19),
 (335, 180, 96, 19),
 (336, 180, 75, 19),
@@ -1472,7 +1517,20 @@ CREATE TABLE `teacher_notification` (
 INSERT INTO `teacher_notification` (`teacher_notification_id`, `teacher_class_id`, `notification`, `date_of_notification`, `link`, `student_id`, `assignment_id`) VALUES
 (15, 160, 'Submit Assignment file name <b>my_assginment</b>', '2013-11-25 10:39:52', 'view_submit_assignment.php', 93, 16),
 (17, 161, 'Submit Assignment file name <b>q</b>', '2013-11-25 15:54:19', 'view_submit_assignment.php', 71, 17),
-(19, 196, 'Submit Assignment file name <b>test</b>', '2020-12-31 18:56:28', 'view_submit_assignment.php', 111, 41);
+(19, 196, 'Submit Assignment file name <b>test</b>', '2020-12-31 18:56:28', 'view_submit_assignment.php', 111, 41),
+(20, 196, 'Submit Assignment file name <b>assign</b>', '2021-01-01 10:21:51', 'view_submit_assignment.php', 111, 32),
+(21, 196, 'Submit Assignment file name <b>assign</b>', '2021-01-01 10:58:22', 'view_submit_assignment.php', 111, 43),
+(22, 196, 'Submit Assignment file name <b>sdsd</b>', '2021-01-01 11:30:11', 'view_submit_assignment.php', 111, 45),
+(23, 196, 'Submit Assignment file name <b>asss</b>', '2021-01-01 11:43:32', 'view_submit_assignment.php', 111, 47),
+(24, 196, 'Submit Assignment file name <b>hgggg</b>', '2021-01-01 12:23:49', 'view_submit_assignment.php', 111, 55),
+(25, 196, 'Submit Assignment file name <b>assign</b>', '2021-01-01 12:27:09', 'view_submit_assignment.php', 137, 55),
+(26, 196, 'Submit Assignment file name <b>52</b>', '2021-01-01 16:58:59', 'view_submit_assignment.php', 111, 55),
+(27, 196, 'Submit Assignment file name <b>hgggg</b>', '2021-01-01 17:00:58', 'view_submit_assignment.php', 111, 55),
+(28, 196, 'Submit Assignment file name <b>assign</b>', '2021-01-01 17:03:41', 'view_submit_assignment.php', 111, 55),
+(29, 196, 'Submit Assignment file name <b>suhaKJASDH</b>', '2021-01-01 17:08:27', 'view_submit_assignment.php', 111, 55),
+(30, 196, 'Submit Assignment file name <b>asda</b>', '2021-01-01 17:14:59', 'view_submit_assignment.php', 111, 55),
+(31, 196, 'Submit Assignment file name <b>assignment</b>', '2021-01-02 11:42:45', 'view_submit_assignment.php', 111, 55),
+(32, 196, 'Submit Assignment file name <b>assignment</b>', '2021-01-02 11:56:43', 'view_submit_assignment.php', 111, 55);
 
 -- --------------------------------------------------------
 
@@ -1645,7 +1703,11 @@ INSERT INTO `user_log` (`user_log_id`, `username`, `login_date`, `logout_date`, 
 (104, 'admin', '2020-12-31 17:24:03', '', 15),
 (105, 'admin', '2020-12-31 17:26:59', '', 15),
 (106, 'admin', '2020-12-31 17:28:52', '', 15),
-(107, 'admin', '2020-12-31 17:53:58', '', 15);
+(107, 'admin', '2020-12-31 17:53:58', '', 15),
+(108, 'admin', '2020-12-31 20:06:27', '', 15),
+(109, 'admin', '2020-12-31 20:34:00', '', 15),
+(110, 'admin', '2021-01-01 10:18:33', '', 15),
+(111, 'admin', '2021-01-01 11:20:11', '', 15);
 
 --
 -- Indexes for dumped tables
@@ -1881,7 +1943,7 @@ ALTER TABLE `answer`
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
-  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `class`
@@ -1911,7 +1973,7 @@ ALTER TABLE `content`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `course_id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `course_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `department`
@@ -1953,7 +2015,7 @@ ALTER TABLE `message_sent`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `notification_read`
@@ -1989,13 +2051,13 @@ ALTER TABLE `school_year`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=233;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
 
 --
 -- AUTO_INCREMENT for table `student_assignment`
 --
 ALTER TABLE `student_assignment`
-  MODIFY `student_assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `student_assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `student_backpack`
@@ -2049,7 +2111,7 @@ ALTER TABLE `teacher_class_student`
 -- AUTO_INCREMENT for table `teacher_notification`
 --
 ALTER TABLE `teacher_notification`
-  MODIFY `teacher_notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `teacher_notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `teacher_shared`
@@ -2067,7 +2129,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_log`
 --
 ALTER TABLE `user_log`
-  MODIFY `user_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `user_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

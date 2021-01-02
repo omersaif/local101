@@ -1,6 +1,8 @@
 <?php include('header_dashboard.php'); ?>
 <?php include('session.php'); ?>
-<?php $get_id = $_GET['id'];?>
+<?php $get_id = $_GET['id'];
+	$student_assignment_id = $_GET['student_assignment_id'];
+?>
 <?php 
 	  $post_id = $_GET['post_id'];
 	  if($post_id == ''){
@@ -18,6 +20,15 @@
 	  }
 	
  ?>
+ <?php
+
+			 $checkSql = mysqli_query($conn, "SELECT `floc` FROM `student_assignment` WHERE (`student_assignment_id` = $student_assignment_id)");
+				  	while($row=mysqli_fetch_array($checkSql)) {
+				  		$fileloc = $row['floc'];
+				  	}
+				  		
+
+	  		?>
 <style> 
 	#pdfdisplay {
 		max-width: 100%;
@@ -28,7 +39,7 @@
 	
 	
 </style>
-<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+<script src="assets/pdf.js"></script>
     <body>
 		<?php include('navbar_teacher.php'); ?>
         <div class="container-fluid">
@@ -91,7 +102,7 @@
                                             }
                                         };
                                         pdfjsLib
-                                        .getDocument('admin/uploads/1274_File_Jan-2019.pdf')
+                                        .getDocument('<?php echo $fileloc;?>')
                                         .promise.then(pdfDoc_ => {
                                             pdfDoc = pdfDoc_;
                                             renderPage(pageNum);
