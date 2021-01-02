@@ -1,6 +1,7 @@
 <?php include('header_dashboard.php'); ?>
 <?php include('session.php'); ?>
 <?php $get_id = $_GET['id']; ?>
+
     <body>
 		<?php include('navbar_teacher.php'); ?>
         <div class="container-fluid">

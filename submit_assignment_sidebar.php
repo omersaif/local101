@@ -13,7 +13,7 @@
                             <div class="controls">
 				
 									
-								<input name="uploaded_file"  class="input-file uniform_on" id="fileInput" type="file" required>
+								<input name="uploaded_file"  class="input-file uniform_on" accept=".pdf" id="fileInput" type="file" required>
                          
                                 <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
                                 <input type="hidden" name="id" value="<?php echo $post_id; ?>"/>
@@ -24,6 +24,12 @@
                       
                             <div class="controls">
                                 <input type="text" name="name" Placeholder="File Name"  class="input" required>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                      
+                            <div class="controls">
+                                <input type="text" name="rollno" Placeholder="Roll No" class="input rollno" required>
                             </div>
                         </div>
                         <div class="control-group">
@@ -49,6 +55,8 @@
 					e.preventDefault();
 					var _this = $(e.target);
 					var formData = new FormData($(this)[0]);
+					formData.append('rollno', `${document.querySelector('.rollno').value}`);
+					console.log(formData);
 					$.ajax({
 						type: "POST",
 						url: "upload_assignment.php",

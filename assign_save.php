@@ -31,6 +31,7 @@ if ($input_name == ""){
 			$name_notification  = 'Add Assignment file name'." ".'<b>'.$name.'</b>';
 	   
                 mysqli_query($conn,"INSERT INTO assignment (fdesc,fdatein,teacher_id,class_id,fname,maxmarks) VALUES ('$filedesc',NOW(),'$session_id','$id_class','$name','$maxmarks')")or die(mysqli_error());
+                mysqli_query($conn,"INSERT INTO student_assignment (maxmarks) VALUES ('$maxmarks')")or die(mysqli_error());
 				 mysqli_query($conn,"insert into notification (teacher_class_id,notification,date_of_notification,link) value('$get_id','$name_notification',NOW(),'assignment_student.php')")or die(mysqli_error());               
 ?>            
 			<script>
@@ -60,7 +61,7 @@ if ($input_name == ""){
                 $qry2 = "INSERT INTO assignment (fdesc,floc,fdatein,teacher_id,class_id,fname,maxmarks) VALUES ('$filedesc','$newname',NOW(),'$session_id','$id_class','$name','$maxmarks')";
 				$query = mysqli_query($conn,"insert into notification (teacher_class_id,notification,date_of_notification,link) value('$get_id','$name_notification',NOW(),'assignment_student.php')")or die(mysqli_error());               
 			   //$result = @mysqli_query($conn,$qry);
-                $result2 = $connector->query($qry2);
+                $result2 = $connector->query($qry2);               
                 if ($result2) {
                     $errmsg_arr[] = 'record was saved in the database and the file was uploaded';
                     $errflag = true;

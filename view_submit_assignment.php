@@ -64,7 +64,7 @@
 												<th>Date Upload</th>
 												<th>File Name</th>
 												<th>Description</th>
-				
+												
 												<th>Submitted by:</th>
 												<th></th>
 												<th></th>
@@ -74,16 +74,18 @@
 										<tbody>
 											
                               		<?php
+                              		    
 										$query = mysqli_query($conn,"select * FROM student_assignment 
 										LEFT JOIN student on student.student_id  = student_assignment.student_id
-										where assignment_id = '$post_id'  order by assignment_fdatein DESC")or die(mysqli_error());
+										where assignment_id = '$post_id'  order by assignment_fdatein  DESC")or die(mysqli_error());
 										while($row = mysqli_fetch_array($query)){
 										$id  = $row['student_assignment_id'];
 									?>                              
 										<tr>
 										 <td><?php echo $row['assignment_fdatein']; ?></td>
-                                         <td><?php  echo $row['fname']; ?></td>
-                                         <td><?php echo $row['fdesc']; ?></td>                                                                        
+                                         <td><a href="assignment_pdf.php?id=<?php echo $get_id ?>&post_id=<?php echo $post_id ?>&student_id=<?php echo $row['student_id'];?>"><?php  echo $row['fname']; ?></a></td>
+                                         <td><?php echo $row['fdesc']; ?></td>
+										                                                                                                                 
                                          <td><?php echo $row['firstname']." ".$row['lastname']; ?></td>                                                                        
                                          <td><a href="<?php echo $row['floc']; ?>"><i class="icon-download icon-large"></i></a></td>                                                                        
                                          <td width="140">
