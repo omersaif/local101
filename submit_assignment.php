@@ -77,7 +77,7 @@
 									?>                              
 										<tr>
 										 <td><?php echo $row['assignment_fdatein']; ?></td>
-                                         <td><?php  echo $row['fname']; ?></td>
+                                         <td><a href="submit_pdf.php?id=<?php echo $get_id ?>&post_id=<?php echo $post_id ?>&student_id=<?php echo $row['student_id'];?>&student_assignment_id=<?php echo $row['student_assignment_id']; ?>"><?php  echo $row['fname']; ?></a></td>
                                          <td><?php echo $row['fdesc']; ?></td>                                                                        
                                          <td><?php echo $row['firstname']." ".$row['lastname']; ?></td>   
 										 <?php if ($session_id == $student_id){ ?>
