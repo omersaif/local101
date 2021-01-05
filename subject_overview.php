@@ -93,8 +93,12 @@
 				margin: 0;
     			margin-top: 50px;
     			width: 90%;
+
 				display: grid;
     			height: 25px; 
+    			height: 25px;
+    			display: grid;
+
     		}
     		.progressModule .moduleProgressNo {
     			border: 1px solid green;
@@ -103,7 +107,6 @@
     			background: green;
     			position: relative;
     			height: 25px;
-    			width: 25%;
     		}
 			.moduleDetails {
 				position: absolute;
@@ -150,7 +153,7 @@
     			<div class="control-group">	
 					<div class="form-group modules">
 					<div class='module_0 module'>
-						<p style='display: inline;'>Module: </p><input style='display: inline;' class='moduleName' type="text"><button class="btn btn-success addModule" onclick='addModule(0)'>Add Mobule</button><button class="btn btn-success addTopic" onclick='addTopic(0)'>Add Topic</button>
+						<p style='display: inline;'>Module: </p><input style='display: inline;' class='moduleName' type="text"><button class="btn btn-success addModule" onclick='addModule(0)'>Add Module</button><button class="btn btn-success addTopic" onclick='addTopic(0)'>Add Topic</button>
 					</div>
 					</div>
 				</div>
@@ -268,6 +271,7 @@
 							<li><a href="#"><b>Subject Overview</b></a></li>
 						</ul>
 						 <!-- end breadcrumb -->
+
                         <!-- block -->
                         <div id="block_bg" class="block">
                             <div class="navbar navbar-inner block-header">
@@ -286,7 +290,7 @@
 										     <a href="add_subject_overview.php<?php echo '?id='.$get_id; ?>" class="btn btn-success"><i class="icon-plus-sign"></i> Add Subject Overview</a>
 									 <?php } ?>
 								</div>
-                            </div>
+                            </div>  
                             <div class="block-content collapse in">
                                 <div class="span12">
 										<?php echo $row['content']; ?>
@@ -308,6 +312,7 @@
     				newModule.innerHTML = `
 					<div class='module'>
 						<p style='display: inline;'>Module: </p><input disabled style='display: inline;' value=${module} class='moduleName' type="text">
+						<input type='checkbox' style='margin: auto 0;'>
 					</div>
     				`;
     				document.querySelector('.resultShowed').appendChild(newModule);
@@ -317,7 +322,7 @@
 					let newTopic = document.createElement('div');
 					newTopic.innerHTML = `
 						<div class='topic'>
-							<p style='display: inline;'>Topic: </p><input disabled value=${topic} class='topicName' style='display: inline;' type="text">
+							<p style='display: inline;'>Topic: </p><input disabled value=${topic} class='topicName' style='display: inline;' type="text"><input type='checkbox' style='margin: auto 0;'>
 						</div>
 					`;
 					document.querySelector(`.resultShowed`).appendChild(newTopic);
@@ -330,12 +335,16 @@
 					document.querySelector('.moduleDetails').innerHTML = '';
     				try {
     					const fetchedResult = JSON.parse('<?php echo $fetedSyllabus; ?>');
+
 						const progressBarLength = fetchedResult.length;
 						document.querySelector('.progressModule').style.gridTemplateColumns = `repeat(${progressBarLength}, 1fr)`;
 						document.querySelector('.moduleDetails').innerHTML += `
     							<div></div>
 							`;
 						document.querySelector('.progressModule').innerHTML = '';
+    					const eachProgressLength = fetchedResult.length;
+    					document.querySelector('.progressModule').style.gridTemplateColumns = `repeat(${eachProgressLength}, 1fr)`;
+
     					fetchedResult.forEach(result=>{
     						addShowModule(result.moduleName);
     						document.querySelector('.progressModule').innerHTML += `
