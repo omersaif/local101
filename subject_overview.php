@@ -54,6 +54,7 @@
     		}
     		.closeButtonSideBar {
     			top: 50px;
+				z-index: 15;
     		}
     		.closeButton:hover, .closeButtonSideBar:hover {
     			background: red;
@@ -89,10 +90,15 @@
     			z-index: 11;
     		}
     		.progressModule {
+				margin: 0;
     			margin-top: 50px;
     			width: 90%;
+
+				display: grid;
+    			height: 25px; 
     			height: 25px;
     			display: grid;
+
     		}
     		.progressModule .moduleProgressNo {
     			border: 1px solid green;
@@ -102,6 +108,44 @@
     			position: relative;
     			height: 25px;
     		}
+			.moduleDetails {
+				position: absolute;
+				display: none;
+				top:30px;
+				width: 95%;
+			}
+			.moduleDetails div {
+				height: 200px;
+				padding: 15px;
+				background: white;
+				border: 0;
+				border-radius: 8px;
+				box-shadow: 1px 1px 1px 1px grey;
+				margin: 10px;
+				width: 90%;
+				display: inline-block;
+			}
+			.modulePointer {
+				position: absolute;
+				display: none;
+				width: 100%;
+				width: 20px !important;
+				height: 20px !important;
+				background: white !important;
+				box-sizing: border-box;
+				border: 1px solid grey;
+				border-top-color: grey;
+				border-bottom-color: transparent;
+				border-left-color: grey;
+				border-right-color: transparent;
+				transition: 0.5s;
+			}
+			.modulePointer {
+				bottom: -30px;
+				margin-left: 20px;
+				z-index: 15;
+				transform: rotate(45deg);
+			}
     	</style>
     	<div class="moduleFloating"> 
     		<div style="position: relative;"><div class="closeButton">X</div></div>
@@ -198,7 +242,11 @@
     		</div>
     		<div class='moduleDisplaySidebar'> 
     			<div style="position: relative;"><div class="closeButtonSideBar">X</div></div>
-    			<div class="progressModule"></div>
+				<div style='position: relative;'>
+					<div class="progressModule"></div>
+					<div class="moduleDetails">
+					</div>
+				</div>
     			<h4>Syllabus</h4>
     			<div class="resultShowed" style="margin-left: 15px;">
     			</div>
@@ -283,23 +331,44 @@
             	document.querySelector('.ShowModule').addEventListener('click', function(event) {
             		event.preventDefault();
             		document.querySelector(`.resultShowed`).innerHTML = '';
-            		document.querySelector('.progressModule').innerHTML = '';
+					document.querySelector('.progressModule').innerHTML = '';
+					document.querySelector('.moduleDetails').innerHTML = '';
     				try {
     					const fetchedResult = JSON.parse('<?php echo $fetedSyllabus; ?>');
+
+						const progressBarLength = fetchedResult.length;
+						document.querySelector('.progressModule').style.gridTemplateColumns = `repeat(${progressBarLength}, 1fr)`;
+						document.querySelector('.moduleDetails').innerHTML += `
+    							<div></div>
+							`;
+						document.querySelector('.progressModule').innerHTML = '';
     					const eachProgressLength = fetchedResult.length;
     					document.querySelector('.progressModule').style.gridTemplateColumns = `repeat(${eachProgressLength}, 1fr)`;
+
     					fetchedResult.forEach(result=>{
     						addShowModule(result.moduleName);
     						document.querySelector('.progressModule').innerHTML += `
-    							<div class="moduleProgressNo" style="height: 25px; margin-right: -4px;">
-    								<div></div>
+								<div class="moduleProgressNo" style="height: 25px; margin-right: -4px;">
+									<div>
+										<div class="modulePointer"></div>
+									</div>
     							</div>
     						`;
     						result.topics.forEach(topic=>{
     							addShowTopic(topic.topicName);
     						})
-    					})
-    					
+						})
+						let moduleProgressNos = document.querySelectorAll('.moduleProgressNo');
+    					moduleProgressNos.forEach(progress=>{
+							progress.addEventListener('mouseover', function(event) {
+								progress.querySelector('.modulePointer').style.display = 'block';
+								document.querySelector('.moduleDetails').style.display = 'block';
+							})
+							progress.addEventListener('mouseout', function (event) {
+								progress.querySelector('.modulePointer').style.display = 'none';
+								document.querySelector('.moduleDetails').style.display = 'none';
+							})
+						})
 
 
 
