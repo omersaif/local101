@@ -100,13 +100,14 @@
     			display: grid;
 
     		}
-    		.progressModule .moduleProgressNo {
+    		.moduleProgressNo {
     			border: 1px solid green;
     		}
     		.moduleProgressNo div {
     			background: green;
     			position: relative;
     			height: 25px;
+    			width: 25%;
     		}
 			.moduleDetails {
 				position: absolute;
