@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2021 at 02:59 PM
+-- Generation Time: Jan 15, 2021 at 05:57 AM
 -- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -103,66 +103,74 @@ CREATE TABLE `assignment` (
   `teacher_id` int(11) NOT NULL,
   `class_id` int(11) NOT NULL,
   `fname` varchar(100) NOT NULL,
-  `maxmarks` varchar(215) NOT NULL
+  `maxmarks` varchar(215) NOT NULL,
+  `qmaxmarks` text NOT NULL,
+  `status` int(11) NOT NULL,
+  `deadline_date` varchar(220) NOT NULL,
+  `deadline_time` varchar(220) NOT NULL,
+  `auto_deadline` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `assignment`
 --
 
-INSERT INTO `assignment` (`assignment_id`, `floc`, `fdatein`, `fdesc`, `teacher_id`, `class_id`, `fname`, `maxmarks`) VALUES
-(2, 'uploads/6843_File_Doc3.docx', '2013-10-11 01:24:32', 'fasfasf', 13, 36, 'Assignment number 1', ''),
-(3, 'uploads/3617_File_login.mdb', '2013-10-28 19:35:28', 'q', 9, 80, 'q', ''),
-(4, 'admin/uploads/7146_File_normalization.ppt', '2013-10-30 18:48:15', 'fsaf', 9, 95, 'fsaf', ''),
-(5, 'admin/uploads/7784_File_ABSTRACT.docx', '2013-10-30 18:48:33', 'fsaf', 9, 95, 'dsaf', ''),
-(6, 'admin/uploads/4536_File_ABSTRACT.docx', '2013-10-30 18:53:32', 'file', 9, 95, 'abstract', ''),
-(10, 'admin/uploads/2209_File_598378_543547629007198_436971088_n.jpg', '2013-11-01 13:13:18', 'fsafasf', 9, 95, 'Assignment#2', ''),
-(11, 'admin/uploads/1511_File_bootstrap.css', '2013-11-01 13:18:25', 'sdsa', 9, 95, 'css', ''),
-(12, 'admin/uploads/4309_File_new  2.txt', '2013-11-17 23:21:46', 'test', 12, 145, 'test', ''),
-(13, 'admin/uploads/5901_File_IS 112-Personal Productivity Using IS.doc', '2013-11-18 16:59:35', 'q', 12, 145, 'q', ''),
-(15, 'admin/uploads/7077_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-11-25 10:38:45', 'afs', 18, 159, 'dasf', ''),
-(16, 'admin/uploads/8470_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-11-25 10:39:19', 'test', 18, 160, 'assign1', ''),
-(17, 'admin/uploads/2840_File_IMG_0698.jpg', '2013-11-25 15:53:20', 'q', 12, 161, 'q', ''),
-(19, '', '2013-12-07 20:11:39', 'kevin test', 12, 162, '', ''),
-(20, '', '2013-12-07 20:26:43', 'dasddsd', 12, 145, '', ''),
-(21, '', '2013-12-07 20:26:43', 'dasddsd', 12, 162, '', ''),
-(22, '', '2013-12-07 20:27:18', 'dasffsafsaf', 12, 162, '', ''),
-(23, '', '2013-12-07 20:33:11', 'test', 12, 162, '', ''),
-(24, 'admin/uploads/7053_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:39:05', 'kevin', 12, 0, 'kevin', ''),
-(25, 'admin/uploads/2417_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:41:10', 'kevin', 12, 0, 'kevin', ''),
-(26, 'admin/uploads/8095_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:43:25', 'kevin', 12, 0, 'kevin', ''),
-(27, 'admin/uploads/4089_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:47:48', 'fasfafaf', 12, 0, 'fasf', ''),
-(28, 'admin/uploads/2948_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:48:59', 'dasdasd', 12, 0, 'dasd', ''),
-(29, 'admin/uploads/5971_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:50:47', 'dasdasd', 12, 0, 'dsad', ''),
-(30, 'admin/uploads/6926_File_Resume.docx', '2014-02-13 11:27:59', 'q', 12, 167, 'q', ''),
-(31, 'admin/uploads/8289_File_sample.pdf', '2020-12-21 09:56:48', 'asdasd', 9, 186, 'asdasd', ''),
-(32, 'admin/uploads/3292_File_JUNE-JULY-2017 - CS-min (1).pdf', '2020-12-30 10:35:42', 'adjsd', 111, 196, 'assign-1', ''),
-(33, 'admin/uploads/5950_File_Jan-2019.pdf', '2020-12-31 18:31:47', 'assignment', 9, 196, 'assignment', ''),
-(34, 'admin/uploads/5950_File_Jan-2019.pdf', '2020-12-31 18:31:47', 'assignment', 9, 198, 'assignment', ''),
-(35, 'admin/uploads/5366_File_Jan-2019.pdf', '2020-12-31 18:34:48', 'fadsr', 9, 196, 'maxmarks', ''),
-(36, 'admin/uploads/5366_File_Jan-2019.pdf', '2020-12-31 18:34:48', 'fadsr', 9, 198, 'maxmarks', ''),
-(37, 'admin/uploads/2281_File_Jan-2019.pdf', '2020-12-31 18:36:12', 'assign', 9, 196, 'assign', ''),
-(38, 'admin/uploads/6836_File_Jan-2019.pdf', '2020-12-31 18:38:46', 'daffafssaf', 9, 196, 'assign-1000', '100'),
-(39, 'admin/uploads/6836_File_Jan-2019.pdf', '2020-12-31 18:38:46', 'daffafssaf', 9, 198, 'assign-1000', '100'),
-(41, 'admin/uploads/1274_File_Jan-2019.pdf', '2020-12-31 18:52:38', 'sagu', 9, 196, 'sagu', '50'),
-(42, 'admin/uploads/9242_File_studentsSheet.xlsx', '2021-01-01 10:20:52', 'assign', 9, 196, 'assign', '100'),
-(43, 'admin/uploads/4020_File_studentsSheet.xlsx', '2021-01-01 10:57:35', 'sagar``````', 9, 196, 'sagar`', '100'),
-(44, 'admin/uploads/4020_File_studentsSheet.xlsx', '2021-01-01 10:57:35', 'sagar``````', 9, 198, 'sagar`', '100'),
-(45, 'admin/uploads/7926_File_studentsSheet.xlsx', '2021-01-01 11:29:20', 'dsssd', 9, 196, 'sdds', '100'),
-(46, 'admin/uploads/7926_File_studentsSheet.xlsx', '2021-01-01 11:29:20', 'dsssd', 9, 198, 'sdds', '100'),
-(47, 'admin/uploads/9677_File_studentsSheet.xlsx', '2021-01-01 11:42:29', 'sagu', 9, 196, 'sagu', '500'),
-(48, 'admin/uploads/9677_File_studentsSheet.xlsx', '2021-01-01 11:42:29', 'sagu', 9, 198, 'sagu', '500'),
-(49, 'admin/uploads/7363_File_studentsSheet.xlsx', '2021-01-01 11:45:36', 'qwerty', 9, 196, 'qwwqqw', '1000'),
-(50, 'admin/uploads/7363_File_studentsSheet.xlsx', '2021-01-01 11:45:36', 'qwerty', 9, 198, 'qwwqqw', '1000'),
-(51, 'admin/uploads/2908_File_studentsSheet.xlsx', '2021-01-01 11:47:24', 'trewq', 9, 196, 'qwertt', '1000'),
-(52, 'admin/uploads/2908_File_studentsSheet.xlsx', '2021-01-01 11:47:24', 'trewq', 9, 198, 'qwertt', '1000'),
-(53, 'admin/uploads/9472_File_studentsSheet.xlsx', '2021-01-01 11:57:43', 'ddddssss', 9, 196, 'sddddd', '500'),
-(54, 'admin/uploads/9472_File_studentsSheet.xlsx', '2021-01-01 11:57:43', 'ddddssss', 9, 198, 'sddddd', '500'),
-(55, 'admin/uploads/1847_File_studentsSheet.xlsx', '2021-01-01 12:22:52', 'hggg111', 9, 196, 'hgggg', '500'),
-(56, 'admin/uploads/1847_File_studentsSheet.xlsx', '2021-01-01 12:22:52', 'hggg111', 9, 198, 'hgggg', '500'),
-(57, 'admin/uploads/1316_File_add_class.php', '2021-01-07 16:31:00', 'jhj', 9, 196, 'jhg', ''),
-(58, 'admin/uploads/1316_File_add_class.php', '2021-01-07 16:31:01', 'jhj', 9, 198, 'jhg', ''),
-(59, 'admin/uploads/1316_File_add_class.php', '2021-01-07 16:31:01', 'jhj', 9, 207, 'jhg', '');
+INSERT INTO `assignment` (`assignment_id`, `floc`, `fdatein`, `fdesc`, `teacher_id`, `class_id`, `fname`, `maxmarks`, `qmaxmarks`, `status`, `deadline_date`, `deadline_time`, `auto_deadline`) VALUES
+(2, 'uploads/6843_File_Doc3.docx', '2013-10-11 01:24:32', 'fasfasf', 13, 36, 'Assignment number 1', '', '', 0, '', '', 0),
+(3, 'uploads/3617_File_login.mdb', '2013-10-28 19:35:28', 'q', 9, 80, 'q', '', '', 0, '', '', 0),
+(4, 'admin/uploads/7146_File_normalization.ppt', '2013-10-30 18:48:15', 'fsaf', 9, 95, 'fsaf', '', '', 0, '', '', 0),
+(5, 'admin/uploads/7784_File_ABSTRACT.docx', '2013-10-30 18:48:33', 'fsaf', 9, 95, 'dsaf', '', '', 0, '', '', 0),
+(6, 'admin/uploads/4536_File_ABSTRACT.docx', '2013-10-30 18:53:32', 'file', 9, 95, 'abstract', '', '', 0, '', '', 0),
+(10, 'admin/uploads/2209_File_598378_543547629007198_436971088_n.jpg', '2013-11-01 13:13:18', 'fsafasf', 9, 95, 'Assignment#2', '', '', 0, '', '', 0),
+(11, 'admin/uploads/1511_File_bootstrap.css', '2013-11-01 13:18:25', 'sdsa', 9, 95, 'css', '', '', 0, '', '', 0),
+(12, 'admin/uploads/4309_File_new  2.txt', '2013-11-17 23:21:46', 'test', 12, 145, 'test', '', '', 0, '', '', 0),
+(13, 'admin/uploads/5901_File_IS 112-Personal Productivity Using IS.doc', '2013-11-18 16:59:35', 'q', 12, 145, 'q', '', '', 0, '', '', 0),
+(15, 'admin/uploads/7077_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-11-25 10:38:45', 'afs', 18, 159, 'dasf', '', '', 0, '', '', 0),
+(16, 'admin/uploads/8470_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-11-25 10:39:19', 'test', 18, 160, 'assign1', '', '', 0, '', '', 0),
+(17, 'admin/uploads/2840_File_IMG_0698.jpg', '2013-11-25 15:53:20', 'q', 12, 161, 'q', '', '', 0, '', '', 0),
+(19, '', '2013-12-07 20:11:39', 'kevin test', 12, 162, '', '', '', 0, '', '', 0),
+(20, '', '2013-12-07 20:26:43', 'dasddsd', 12, 145, '', '', '', 0, '', '', 0),
+(21, '', '2013-12-07 20:26:43', 'dasddsd', 12, 162, '', '', '', 0, '', '', 0),
+(22, '', '2013-12-07 20:27:18', 'dasffsafsaf', 12, 162, '', '', '', 0, '', '', 0),
+(23, '', '2013-12-07 20:33:11', 'test', 12, 162, '', '', '', 0, '', '', 0),
+(24, 'admin/uploads/7053_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:39:05', 'kevin', 12, 0, 'kevin', '', '', 0, '', '', 0),
+(25, 'admin/uploads/2417_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:41:10', 'kevin', 12, 0, 'kevin', '', '', 0, '', '', 0),
+(26, 'admin/uploads/8095_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:43:25', 'kevin', 12, 0, 'kevin', '', '', 0, '', '', 0),
+(27, 'admin/uploads/4089_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:47:48', 'fasfafaf', 12, 0, 'fasf', '', '', 0, '', '', 0),
+(28, 'admin/uploads/2948_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:48:59', 'dasdasd', 12, 0, 'dasd', '', '', 0, '', '', 0),
+(29, 'admin/uploads/5971_File_win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', '2013-12-07 20:50:47', 'dasdasd', 12, 0, 'dsad', '', '', 0, '', '', 0),
+(30, 'admin/uploads/6926_File_Resume.docx', '2014-02-13 11:27:59', 'q', 12, 167, 'q', '', '', 0, '', '', 0),
+(31, 'admin/uploads/8289_File_sample.pdf', '2020-12-21 09:56:48', 'asdasd', 9, 186, 'asdasd', '', '', 0, '', '', 0),
+(32, 'admin/uploads/3292_File_JUNE-JULY-2017 - CS-min (1).pdf', '2020-12-30 10:35:42', 'adjsd', 111, 196, 'assign-1', '', '', 0, '', '', 0),
+(33, 'admin/uploads/5950_File_Jan-2019.pdf', '2020-12-31 18:31:47', 'assignment', 9, 196, 'assignment', '', '', 1, '', '', 0),
+(34, 'admin/uploads/5950_File_Jan-2019.pdf', '2020-12-31 18:31:47', 'assignment', 9, 198, 'assignment', '', '', 0, '', '', 0),
+(35, 'admin/uploads/5366_File_Jan-2019.pdf', '2020-12-31 18:34:48', 'fadsr', 9, 196, 'maxmarks', '', '', 1, '', '', 0),
+(36, 'admin/uploads/5366_File_Jan-2019.pdf', '2020-12-31 18:34:48', 'fadsr', 9, 198, 'maxmarks', '', '', 0, '', '', 0),
+(37, 'admin/uploads/2281_File_Jan-2019.pdf', '2020-12-31 18:36:12', 'assign', 9, 196, 'assign', '', '', 1, '', '', 0),
+(38, 'admin/uploads/6836_File_Jan-2019.pdf', '2020-12-31 18:38:46', 'daffafssaf', 9, 196, 'assign-1000', '100', '', 1, '', '', 0),
+(39, 'admin/uploads/6836_File_Jan-2019.pdf', '2020-12-31 18:38:46', 'daffafssaf', 9, 198, 'assign-1000', '100', '', 0, '', '', 0),
+(41, 'admin/uploads/1274_File_Jan-2019.pdf', '2020-12-31 18:52:38', 'sagu', 9, 196, 'sagu', '50', '', 1, '', '', 0),
+(42, 'admin/uploads/9242_File_studentsSheet.xlsx', '2021-01-01 10:20:52', 'assign', 9, 196, 'assign', '100', '', 1, '', '', 0),
+(43, 'admin/uploads/4020_File_studentsSheet.xlsx', '2021-01-01 10:57:35', 'sagar``````', 9, 196, 'sagar`', '100', '', 1, '', '', 0),
+(44, 'admin/uploads/4020_File_studentsSheet.xlsx', '2021-01-01 10:57:35', 'sagar``````', 9, 198, 'sagar`', '100', '', 0, '', '', 0),
+(45, 'admin/uploads/7926_File_studentsSheet.xlsx', '2021-01-01 11:29:20', 'dsssd', 9, 196, 'sdds', '100', '', 1, '', '', 0),
+(46, 'admin/uploads/7926_File_studentsSheet.xlsx', '2021-01-01 11:29:20', 'dsssd', 9, 198, 'sdds', '100', '', 0, '', '', 0),
+(47, 'admin/uploads/9677_File_studentsSheet.xlsx', '2021-01-01 11:42:29', 'sagu', 9, 196, 'sagu', '500', '', 1, '', '', 0),
+(48, 'admin/uploads/9677_File_studentsSheet.xlsx', '2021-01-01 11:42:29', 'sagu', 9, 198, 'sagu', '500', '', 0, '', '', 0),
+(49, 'admin/uploads/7363_File_studentsSheet.xlsx', '2021-01-01 11:45:36', 'qwerty', 9, 196, 'qwwqqw', '1000', '', 1, '', '', 0),
+(50, 'admin/uploads/7363_File_studentsSheet.xlsx', '2021-01-01 11:45:36', 'qwerty', 9, 198, 'qwwqqw', '1000', '', 0, '', '', 0),
+(51, 'admin/uploads/2908_File_studentsSheet.xlsx', '2021-01-01 11:47:24', 'trewq', 9, 196, 'qwertt', '1000', '', 1, '', '', 0),
+(52, 'admin/uploads/2908_File_studentsSheet.xlsx', '2021-01-01 11:47:24', 'trewq', 9, 198, 'qwertt', '1000', '', 0, '', '', 0),
+(53, 'admin/uploads/9472_File_studentsSheet.xlsx', '2021-01-01 11:57:43', 'ddddssss', 9, 196, 'sddddd', '500', '', 1, '', '', 0),
+(54, 'admin/uploads/9472_File_studentsSheet.xlsx', '2021-01-01 11:57:43', 'ddddssss', 9, 198, 'sddddd', '500', '', 0, '', '', 0),
+(55, 'admin/uploads/1847_File_studentsSheet.xlsx', '2021-01-01 12:22:52', 'hggg111', 9, 196, 'hgggg', '500', '', 1, '', '', 0),
+(56, 'admin/uploads/1847_File_studentsSheet.xlsx', '2021-01-01 12:22:52', 'hggg111', 9, 198, 'hgggg', '500', '', 0, '', '', 0),
+(57, 'admin/uploads/1316_File_add_class.php', '2021-01-07 16:31:00', 'jhj', 9, 196, 'jhg', '', '', 1, '', '', 0),
+(58, 'admin/uploads/1316_File_add_class.php', '2021-01-07 16:31:01', 'jhj', 9, 198, 'jhg', '', '', 0, '', '', 0),
+(59, 'admin/uploads/1316_File_add_class.php', '2021-01-07 16:31:01', 'jhj', 9, 207, 'jhg', '', '', 0, '', '', 0),
+(60, 'admin/uploads/9961_File_pdkeaAO_NC071_2021_01_12_13_21_08.pdf', '2021-01-12 19:56:47', 'wwwwww', 9, 196, 'qqqqqq', '100', '{\"questions\":[{\"questionNo\":\"1\",\"queMaxMarks\":\"50\"},{\"questionNo\":\"2\",\"queMaxMarks\":\"50\"}]}', 1, '', '', 0),
+(61, 'admin/uploads/3527_File_unnamed.jpg', '2021-01-14 12:31:00', 'seses', 9, 196, 'deadline_date', '30', '{\"questions\":[{\"questionNo\":\"1\",\"queMaxMarks\":\"10\"}]}', 1, '15/01/2021', '14:30', 1),
+(62, 'admin/uploads/3527_File_unnamed.jpg', '2021-01-14 12:31:00', 'seses', 9, 198, 'deadline_date', '30', '{\"questions\":[{\"questionNo\":\"1\",\"queMaxMarks\":\"10\"}]}', 1, '14/01/2021', '14:30', 1);
 
 -- --------------------------------------------------------
 
@@ -174,6 +182,7 @@ CREATE TABLE `attendence` (
   `id` int(11) NOT NULL,
   `class_id` int(11) NOT NULL,
   `teacher_id` int(11) NOT NULL,
+  `teacher_class_id` varchar(220) NOT NULL,
   `date` varchar(255) NOT NULL,
   `attendence` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -182,8 +191,15 @@ CREATE TABLE `attendence` (
 -- Dumping data for table `attendence`
 --
 
-INSERT INTO `attendence` (`id`, `class_id`, `teacher_id`, `date`, `attendence`) VALUES
-(11, 12, 9, '10/1/2021', '[{\"rollNo\":151,\"firstname\":\"Karyl June\",\"lastname\":\"Bacobo\",\"attendence\":1},{\"rollNo\":146,\"firstname\":\"Johnedel\",\"lastname\":\"Bauno\",\"attendence\":1},{\"rollNo\":157,\"firstname\":\"Ace John\",\"lastname\":\"Casuyon\",\"attendence\":1},{\"rollNo\":147,\"firstname\":\"Jerwin\",\"lastname\":\"Delos Reyes\",\"attendence\":1},{\"rollNo\":144,\"firstname\":\"Neovi\",\"lastname\":\"Devierte\",\"attendence\":1},{\"rollNo\":155,\"firstname\":\"Ma. Roxette\",\"lastname\":\"Infante\",\"attendence\":1},{\"rollNo\":134,\"firstname\":\"Victor Anthony\",\"lastname\":\"Jacobo\",\"attendence\":0},{\"rollNo\":143,\"firstname\":\"Danica\",\"lastname\":\"Lamis\",\"attendence\":1},{\"rollNo\":145,\"firstname\":\"Eril Pio\",\"lastname\":\"Mercado\",\"attendence\":1},{\"rollNo\":159,\"firstname\":\"Mary Ann\",\"lastname\":\"Panaguiton\",\"attendence\":1},{\"rollNo\":150,\"firstname\":\"Jethro\",\"lastname\":\"Pansales\",\"attendence\":1},{\"rollNo\":154,\"firstname\":\"Mae Ann\",\"lastname\":\"Panugaling\",\"attendence\":1},{\"rollNo\":158,\"firstname\":\"Rose Mae\",\"lastname\":\"Pido\",\"attendence\":1},{\"rollNo\":156,\"firstname\":\"Savrena Joy\",\"lastname\":\"Rael\",\"attendence\":1},{\"rollNo\":152,\"firstname\":\"Kristelle Shaine\",\"lastname\":\"Rubi\",\"attendence\":1},{\"rollNo\":149,\"firstname\":\"Jebson\",\"lastname\":\"Tordillos\",\"attendence\":1},{\"rollNo\":142,\"firstname\":\"Lee Ann\",\"lastname\":\"Vertucio\",\"attendence\":1},{\"rollNo\":148,\"firstname\":\"Jendrix\",\"lastname\":\"Victosa\",\"attendence\":0},{\"rollNo\":153,\"firstname\":\"Richelle\",\"lastname\":\"Villarmia\",\"attendence\":1}]');
+INSERT INTO `attendence` (`id`, `class_id`, `teacher_id`, `teacher_class_id`, `date`, `attendence`) VALUES
+(11, 12, 9, '', '10/1/2021', '[{\"rollNo\":151,\"firstname\":\"Karyl June\",\"lastname\":\"Bacobo\",\"attendence\":1},{\"rollNo\":146,\"firstname\":\"Johnedel\",\"lastname\":\"Bauno\",\"attendence\":1},{\"rollNo\":157,\"firstname\":\"Ace John\",\"lastname\":\"Casuyon\",\"attendence\":1},{\"rollNo\":147,\"firstname\":\"Jerwin\",\"lastname\":\"Delos Reyes\",\"attendence\":1},{\"rollNo\":144,\"firstname\":\"Neovi\",\"lastname\":\"Devierte\",\"attendence\":1},{\"rollNo\":155,\"firstname\":\"Ma. Roxette\",\"lastname\":\"Infante\",\"attendence\":1},{\"rollNo\":134,\"firstname\":\"Victor Anthony\",\"lastname\":\"Jacobo\",\"attendence\":0},{\"rollNo\":143,\"firstname\":\"Danica\",\"lastname\":\"Lamis\",\"attendence\":1},{\"rollNo\":145,\"firstname\":\"Eril Pio\",\"lastname\":\"Mercado\",\"attendence\":1},{\"rollNo\":159,\"firstname\":\"Mary Ann\",\"lastname\":\"Panaguiton\",\"attendence\":1},{\"rollNo\":150,\"firstname\":\"Jethro\",\"lastname\":\"Pansales\",\"attendence\":1},{\"rollNo\":154,\"firstname\":\"Mae Ann\",\"lastname\":\"Panugaling\",\"attendence\":1},{\"rollNo\":158,\"firstname\":\"Rose Mae\",\"lastname\":\"Pido\",\"attendence\":1},{\"rollNo\":156,\"firstname\":\"Savrena Joy\",\"lastname\":\"Rael\",\"attendence\":1},{\"rollNo\":152,\"firstname\":\"Kristelle Shaine\",\"lastname\":\"Rubi\",\"attendence\":1},{\"rollNo\":149,\"firstname\":\"Jebson\",\"lastname\":\"Tordillos\",\"attendence\":1},{\"rollNo\":142,\"firstname\":\"Lee Ann\",\"lastname\":\"Vertucio\",\"attendence\":1},{\"rollNo\":148,\"firstname\":\"Jendrix\",\"lastname\":\"Victosa\",\"attendence\":0},{\"rollNo\":153,\"firstname\":\"Richelle\",\"lastname\":\"Villarmia\",\"attendence\":1}]'),
+(12, 8, 9, '196', '12/1/2021', '[{\"rollNo\":137,\"firstname\":\"Wina Mae\",\"lastname\":\"Espenorio\",\"attendence\":1},{\"rollNo\":111,\"firstname\":\"Mark Dominic\",\"lastname\":\"Sayon\",\"attendence\":0}]'),
+(13, 12, 9, '198', '12/1/2021', '[{\"rollNo\":151,\"firstname\":\"Karyl June\",\"lastname\":\"Bacobo\",\"attendence\":1},{\"rollNo\":146,\"firstname\":\"Johnedel\",\"lastname\":\"Bauno\",\"attendence\":1},{\"rollNo\":157,\"firstname\":\"Ace John\",\"lastname\":\"Casuyon\",\"attendence\":1},{\"rollNo\":147,\"firstname\":\"Jerwin\",\"lastname\":\"Delos Reyes\",\"attendence\":1},{\"rollNo\":144,\"firstname\":\"Neovi\",\"lastname\":\"Devierte\",\"attendence\":1},{\"rollNo\":155,\"firstname\":\"Ma. Roxette\",\"lastname\":\"Infante\",\"attendence\":1},{\"rollNo\":134,\"firstname\":\"Victor Anthony\",\"lastname\":\"Jacobo\",\"attendence\":0},{\"rollNo\":143,\"firstname\":\"Danica\",\"lastname\":\"Lamis\",\"attendence\":0},{\"rollNo\":145,\"firstname\":\"Eril Pio\",\"lastname\":\"Mercado\",\"attendence\":0},{\"rollNo\":159,\"firstname\":\"Mary Ann\",\"lastname\":\"Panaguiton\",\"attendence\":1},{\"rollNo\":150,\"firstname\":\"Jethro\",\"lastname\":\"Pansales\",\"attendence\":1},{\"rollNo\":154,\"firstname\":\"Mae Ann\",\"lastname\":\"Panugaling\",\"attendence\":1},{\"rollNo\":158,\"firstname\":\"Rose Mae\",\"lastname\":\"Pido\",\"attendence\":1},{\"rollNo\":156,\"firstname\":\"Savrena Joy\",\"lastname\":\"Rael\",\"attendence\":1},{\"rollNo\":152,\"firstname\":\"Kristelle Shaine\",\"lastname\":\"Rubi\",\"attendence\":1},{\"rollNo\":149,\"firstname\":\"Jebson\",\"lastname\":\"Tordillos\",\"attendence\":1},{\"rollNo\":142,\"firstname\":\"Lee Ann\",\"lastname\":\"Vertucio\",\"attendence\":1},{\"rollNo\":148,\"firstname\":\"Jendrix\",\"lastname\":\"Victosa\",\"attendence\":0},{\"rollNo\":153,\"firstname\":\"Richelle\",\"lastname\":\"Villarmia\",\"attendence\":1}]'),
+(14, 8, 9, '196', '12/1/2021', '[{\"rollNo\":137,\"firstname\":\"Wina Mae\",\"lastname\":\"Espenorio\",\"attendence\":0},{\"rollNo\":111,\"firstname\":\"Mark Dominic\",\"lastname\":\"Sayon\",\"attendence\":0}]'),
+(15, 8, 9, '207', '12/1/2021', '[{\"rollNo\":234,\"firstname\":\"Vishal\",\"lastname\":\"Agasar\",\"attendence\":1},{\"rollNo\":76,\"firstname\":\"Jamaica Mae\",\"lastname\":\"Alipe\",\"attendence\":1},{\"rollNo\":101,\"firstname\":\"Xenia Jane\",\"lastname\":\"Billones\",\"attendence\":1},{\"rollNo\":102,\"firstname\":\"Carell\",\"lastname\":\"Catuburan\",\"attendence\":1},{\"rollNo\":110,\"firstname\":\"Zyryn\",\"lastname\":\"Corugda\",\"attendence\":1},{\"rollNo\":103,\"firstname\":\"Jade\",\"lastname\":\"Gordoncillo\",\"attendence\":1},{\"rollNo\":105,\"firstname\":\"Neljie\",\"lastname\":\"Guirnela\",\"attendence\":1},{\"rollNo\":97,\"firstname\":\"Mary Joy\",\"lastname\":\"Lambosan\",\"attendence\":1},{\"rollNo\":113,\"firstname\":\"Clifford\",\"lastname\":\"Ledesma\",\"attendence\":1},{\"rollNo\":100,\"firstname\":\"Jamilah\",\"lastname\":\"Lonot\",\"attendence\":1},{\"rollNo\":98,\"firstname\":\"Christine Joy\",\"lastname\":\"Macaya\",\"attendence\":1},{\"rollNo\":99,\"firstname\":\"Ryan Teofilo\",\"lastname\":\"Malbata-an\",\"attendence\":0},{\"rollNo\":74,\"firstname\":\"Ma. Nonie\",\"lastname\":\"Mendoza\",\"attendence\":1},{\"rollNo\":71,\"firstname\":\"Noli\",\"lastname\":\"Mendoza\",\"attendence\":1},{\"rollNo\":96,\"firstname\":\"Glecy Marie\",\"lastname\":\"Navarosa\",\"attendence\":1},{\"rollNo\":75,\"firstname\":\"Miralyn\",\"lastname\":\"Pabalate\",\"attendence\":1},{\"rollNo\":94,\"firstname\":\"Leah Mae\",\"lastname\":\"Padilla\",\"attendence\":1},{\"rollNo\":106,\"firstname\":\"Razel\",\"lastname\":\"Palermo\",\"attendence\":1},{\"rollNo\":72,\"firstname\":\"Jayvon\",\"lastname\":\"Pig-ao\",\"attendence\":1},{\"rollNo\":95,\"firstname\":\"Ergin Joy\",\"lastname\":\"Satoc\",\"attendence\":1},{\"rollNo\":111,\"firstname\":\"Mark Dominic\",\"lastname\":\"Sayon\",\"attendence\":1},{\"rollNo\":112,\"firstname\":\"Raymond\",\"lastname\":\"Serion\",\"attendence\":1},{\"rollNo\":104,\"firstname\":\"Felix Kirby\",\"lastname\":\"Ubas\",\"attendence\":0},{\"rollNo\":73,\"firstname\":\"Stephanie\",\"lastname\":\"Villanueva\",\"attendence\":1}]'),
+(16, 8, 9, '196', '22/01/2021', '[{\"rollNo\":137,\"firstname\":\"Wina Mae\",\"lastname\":\"Espenorio\",\"attendence\":1},{\"rollNo\":111,\"firstname\":\"Mark Dominic\",\"lastname\":\"Sayon\",\"attendence\":0}]'),
+(17, 8, 9, '196', '14/01/2021', '[{\"rollNo\":137,\"firstname\":\"Wina Mae\",\"lastname\":\"Espenorio\",\"attendence\":1},{\"rollNo\":111,\"firstname\":\"Mark Dominic\",\"lastname\":\"Sayon\",\"attendence\":0}]'),
+(18, 8, 9, '196', '28/01/2021', '[{\"rollNo\":137,\"firstname\":\"Wina Mae\",\"lastname\":\"Espenorio\",\"attendence\":1},{\"rollNo\":111,\"firstname\":\"Mark Dominic\",\"lastname\":\"Sayon\",\"attendence\":0}]');
 
 -- --------------------------------------------------------
 
@@ -388,7 +404,8 @@ INSERT INTO `event` (`event_id`, `event_title`, `teacher_class_id`, `date_start`
 (15, 'Long Test', 113, '12/05/2013', '12/06/2013'),
 (16, 'Long Test', 0, '12/05/2013', '12/06/2013'),
 (17, 'sdasf', 147, '11/16/2013', '11/16/2013'),
-(18, 'Sample', 186, '12/22/2020', '12/24/2020');
+(18, 'Sample', 186, '12/22/2020', '12/24/2020'),
+(19, 'internals', 0, '01/12/2021', '01/13/2021');
 
 -- --------------------------------------------------------
 
@@ -438,6 +455,18 @@ INSERT INTO `files` (`file_id`, `floc`, `fdatein`, `fdesc`, `teacher_id`, `class
 (143, 'admin/uploads/8379_File_add_assignment.php', '2021-01-07 16:29:13', 'kjh', 9, 196, 'uuu', 'JomarPabuaya'),
 (144, 'admin/uploads/8379_File_add_assignment.php', '2021-01-07 16:29:13', 'kjh', 9, 198, 'uuu', 'JomarPabuaya'),
 (145, 'admin/uploads/8379_File_add_assignment.php', '2021-01-07 16:29:13', 'kjh', 9, 207, 'uuu', 'JomarPabuaya');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `internals`
+--
+
+CREATE TABLE `internals` (
+  `internal_id` int(11) NOT NULL,
+  `internal_class_id` int(11) NOT NULL,
+  `student_marks` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -577,7 +606,10 @@ INSERT INTO `notification` (`notification_id`, `teacher_class_id`, `notification
 (57, 207, 'Add Downloadable Materials file name <b>uuu</b>', '2021-01-07 16:29:13', 'downloadable_student.php'),
 (58, 196, 'Add Assignment name <b>jhg</b>', '2021-01-07 16:31:01', 'assignment_student.php'),
 (59, 198, 'Add Assignment name <b>jhg</b>', '2021-01-07 16:31:01', 'assignment_student.php'),
-(60, 207, 'Add Assignment name <b>jhg</b>', '2021-01-07 16:31:01', 'assignment_student.php');
+(60, 207, 'Add Assignment name <b>jhg</b>', '2021-01-07 16:31:01', 'assignment_student.php'),
+(61, 196, 'Add Assignment name <b>qqqqqq</b>', '2021-01-12 19:56:47', 'assignment_student.php'),
+(62, 196, 'Add Assignment name <b>deadline_date</b>', '2021-01-14 12:31:00', 'assignment_student.php'),
+(63, 198, 'Add Assignment name <b>deadline_date</b>', '2021-01-14 12:31:00', 'assignment_student.php');
 
 -- --------------------------------------------------------
 
@@ -737,137 +769,133 @@ CREATE TABLE `student` (
   `lastname` varchar(100) NOT NULL,
   `dob` int(25) NOT NULL,
   `class_id` int(11) NOT NULL,
+  `did` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `location` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL,
   `per_no` varchar(25) NOT NULL,
-  `gua_no` varchar(25) NOT NULL
+  `gua_no` varchar(25) NOT NULL,
+  `rollno` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `dob`, `class_id`, `username`, `password`, `location`, `status`, `per_no`, `gua_no`) VALUES
-(113, 'Clifford', 'Ledesma', 0, 13, '21100324', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(112, 'Raymond', 'Serion', 0, 13, '2700372', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(111, 'Mark Dominic', 'Sayon', 0, 13, '21100867', 'heni', 'uploads/mark.jpg', 'Unregistered', '0', '0'),
-(234, 'Vishal', 'Agasar', 2081999, 8, '2BL17ME132', '', '', 'Unregistered', '', ''),
-(105, 'Neljie', 'Guirnela', 0, 13, '21101131', '', 'uploads/Koala.jpg', 'Unregistered', '0', '0'),
-(106, 'Razel', 'Palermo', 0, 13, '29000676', '', 'uploads/razel.jpg', 'Unregistered', '0', '0'),
-(103, 'Jade', 'Gordoncillo', 0, 13, '21100617', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(104, 'Felix Kirby', 'Ubas', 0, 13, '21100277', 'lms10117', 'uploads/kirb.jpg', 'Unregistered', '0', '0'),
-(100, 'Jamilah', 'Lonot', 0, 13, '21100303', '', 'uploads/jamila.jpg', 'Unregistered', '0', '0'),
-(101, 'Xenia Jane', 'Billones', 0, 13, '21100318', 'sen', 'uploads/xenia.jpg', 'Unregistered', '0', '0'),
-(102, 'Carell', 'Catuburan', 0, 13, '21101124', '', 'uploads/carel.jpg', 'Unregistered', '0', '0'),
-(97, 'Mary Joy', 'Lambosan', 0, 13, '20101289', '', 'uploads/Desert.jpg', 'Unregistered', '0', '0'),
-(98, 'Christine Joy', 'Macaya', 0, 13, '21100579', '', 'uploads/tin.jpg', 'Unregistered', '0', '0'),
-(95, 'Ergin Joy', 'Satoc', 0, 13, '21101142', '', 'uploads/ergin.jpg', 'Unregistered', '0', '0'),
-(93, 'John Kevin ', 'Lorayna', 0, 7, '111', 'teph', 'uploads/3094_384893504898082_1563225657_n.jpg', 'Registered', '0', '0'),
-(94, 'Leah Mae', 'Padilla', 0, 13, '21100471', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(76, 'Jamaica Mae', 'Alipe', 0, 13, '21100555', '123', 'uploads/maica.jpg', 'Registered', '0', '0'),
-(235, 'Sarvesh', 'Goddagi', 2081999, 8, '2BL17ME133', '', '', 'Unregistered', '', ''),
-(110, 'Zyryn', 'Corugda', 0, 13, '21100881', '', 'uploads/baby.jpg', 'Unregistered', '0', '0'),
-(233, 'Uday', 'Patil', 2081999, 8, '2BL17ME131', '', '', 'Unregistered', '', ''),
-(99, 'Ryan Teofilo', 'Malbata-an', 0, 13, '21100315', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(96, 'Glecy Marie', 'Navarosa', 0, 13, '20101436', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(209, 'dhalia', 'hofilena', 0, 20, '21300311', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(75, 'Miralyn', 'Pabalate', 0, 13, '21100855', 'em', 'uploads/em2.jpg', 'Unregistered', '0', '0'),
-(74, 'Ma. Nonie', 'Mendoza', 0, 13, '21100913', '', 'uploads/nonie.jpg', 'Unregistered', '0', '0'),
-(73, 'Stephanie', 'Villanueva', 0, 13, '21101042', 'tephai', 'uploads/3094_384893504898082_1563225657_n.jpg', 'Registered', '0', '0'),
-(72, 'Jayvon', 'Pig-ao', 0, 13, '21100547', 'test', 'uploads/von.jpg', 'Unregistered', '0', '0'),
-(71, 'Noli', 'Mendoza', 0, 13, '21100556', 'noledel', 'uploads/noli.jpg', 'Registered', '0', '0'),
-(134, 'Victor Anthony', 'Jacobo', 0, 12, '21101050', 'akositon', 'uploads/win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', 'Registered', '0', '0'),
-(135, 'Albert Kezzel', 'Naynay', 0, 14, '20101361', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(136, 'Jorgielyn', 'Serfino', 0, 7, '20100331', 'jorgie', 'uploads/Koala.jpg', 'Registered', '0', '0'),
-(137, 'Wina Mae', 'Espenorio', 0, 8, '20100447', 'sagu123', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '7000000000', '8000000000'),
-(138, 'Brian Paul', 'Sablan', 0, 7, '29000557', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(139, 'Rodzil', 'Camato', 0, 7, '20100RC', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(140, 'Dean Martin', 'Tingson', 0, 14, '21100665', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(141, 'Jared Reu', 'Windam', 0, 15, '21100695', 'iloveyoujam', 'uploads/1463666_678111108874417_1795412912_n.jpg', 'Registered', '0', '0'),
-(142, 'Lee Ann', 'Vertucio', 0, 12, '21100351', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(143, 'Danica', 'Lamis', 0, 12, '21100396', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(144, 'Neovi', 'Devierte', 0, 12, '21100557', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(145, 'Eril Pio', 'Mercado', 0, 12, '21100291', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(146, 'Johnedel', 'Bauno', 0, 12, '21100411', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(147, 'Jerwin', 'Delos Reyes', 0, 12, '21100369', 'jerwin27 cute', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0'),
-(148, 'Jendrix', 'Victosa', 0, 12, '21100431', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(149, 'Jebson', 'Tordillos', 0, 12, '21100406', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(150, 'Jethro', 'Pansales', 0, 12, '21101273', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(151, 'Karyl June', 'Bacobo', 0, 12, '21100895', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(152, 'Kristelle Shaine', 'Rubi', 0, 12, '21101063', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(153, 'Richelle', 'Villarmia', 0, 12, '20101392', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(154, 'Mae Ann', 'Panugaling', 0, 12, '21100904', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(155, 'Ma. Roxette', 'Infante', 0, 12, '21100421', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(156, 'Savrena Joy', 'Rael', 0, 12, '2100287', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(157, 'Ace John', 'Casuyon', 0, 12, '21100393', 'DianaraSayon', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0'),
-(158, 'Rose Mae', 'Pido', 0, 12, '21101195', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(159, 'Mary Ann', 'Panaguiton', 0, 12, '21100701', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(162, 'kimberly kaye', 'salvatierra', 0, 14, '21101182', 'kimzteng', 'uploads/29001002.jpg', 'Registered', '0', '0'),
-(210, 'cherylda', 'ohiman', 0, 20, '21300036', 'sawsa', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0'),
-(164, 'Alit', 'Arvin', 0, 14, '20101605', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(165, 'Ana Mae', 'Alquizar', 0, 14, '21100785', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(166, 'Thessalonica', 'Arroz', 0, 14, '21100651', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(167, 'Leslie', 'Campo', 0, 14, '21100265', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(168, 'Ace', 'Casolino', 0, 14, '27000921', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(169, 'Michael Jed', 'Flores', 0, 14, '21100820', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(172, 'Hennie Rose', 'Laz', 0, 14, '21100805', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(171, 'Joy', 'Macahilig', 0, 14, '21100464', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(173, 'Ma. Nieva', 'Manuel ', 0, 14, '21100711', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(174, 'Devina', 'Navarro', 0, 14, '21100711', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(175, 'Aimee', 'Orlido', 0, 14, '21100654', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(176, 'Mary Grace', 'Quizan', 0, 14, '21100772', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(177, 'John Christopher', 'Reguindin', 0, 14, '21100418', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(178, 'Mary Ann', 'Somosa', 0, 14, '21101150', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(179, 'Marrianne', 'Tumala', 0, 14, '21100710', 'test', 'uploads/win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', 'Registered', '0', '0'),
-(180, 'Deo Christopher', 'Tribaco', 0, 14, '21101227', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(181, 'Jerson', 'Vargas', 0, 14, '21100819', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(182, 'Valencia', 'Jeralice', 0, 14, '29000405', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(183, 'Cristine', 'Yanson', 0, 14, '21101148', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(184, 'Ariane', 'Alix', 0, 17, '21201166', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(185, 'Mark Arvin', 'Arandilla', 0, 17, '21201453', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(186, 'Ryan Carl', 'Biaquis', 0, 17, '21201244', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(187, 'Ria', 'Bitar', 0, 17, '21201282', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(188, 'Jeremae', 'Bustamante', 0, 17, '21200798', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(189, 'Rhen Mark', 'Callado', 0, 17, '21201012', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(190, 'Ma. Geraldine', 'Carisma', 0, 17, '21201219', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(191, 'Jenny', 'Casapao', 0, 17, '21200855', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(192, 'Welson', 'Castro', 0, 17, '120733', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(193, 'Kimberly Hope', 'Centina', 0, 17, '21201338', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(194, 'Sandra', 'Gomez', 0, 17, '21201335', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(195, 'Dona Jean', 'Guardialao', 0, 17, '21201113', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(196, 'Jeara Mae', 'Guttierrez', 0, 17, '21200782', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(197, 'Mary Joy', 'Jimenez', 0, 17, '21201437', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(198, 'Cyril', 'Lambayong', 0, 17, '21201163', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(199, 'Angelie', 'Lape', 0, 17, '21201356', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(200, 'Jamine', 'Navarosa', 0, 17, '21201115', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(201, 'Allen Joshua', 'Nicor', 0, 17, '21201430', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(202, 'Charis', 'Onate', 0, 17, '21200984', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(203, 'Ikea', 'Padonio', 0, 17, '20100527', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(204, 'Marissa', 'Pasco', 0, 17, '21200935', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(205, 'Kenneth', 'Sayon', 0, 17, '21201268', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(206, 'Mary Grace', 'Morales', 0, 14, '21100293', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(207, 'Danica', 'Delarmente', 0, 14, '21100613', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(208, 'Irish Dawn', 'Belo', 0, 19, '21300413', 'olebirish', 'uploads/Desert.jpg', 'Registered', '0', '0'),
-(211, 'val', 'roushen', 0, 7, '201011231', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(212, 'chrystelle Marie', 'Belecina', 0, 15, '21200363', 'chrys', 'uploads/380903_288008981235527_682004916_n.jpg', 'Registered', '0', '0'),
-(213, 'kearl joy', 'bartolome', 0, 18, '21300410', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(214, 'marie', 'rojo', 0, 18, '21300375', 'maayeeh', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0'),
-(215, 'cristine', 'trespuer', 0, 18, '21300258', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(216, 'arian', 'baldostamon', 0, 18, '21300176', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(217, 'Alyssa', 'David', 0, 17, '21200507', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0'),
-(218, 'josie', 'banday', 0, 7, '20100452', 'heaven', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0'),
-(219, 'Claire ', 'Blake', 0, 18, '2011120', 'cblake123', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0'),
-(232, 'sagar', 'sagar', 77889999, 7, '112233', 'sagar', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '7019190195', '7019190198'),
-(236, 'Uday', 'Patil', 2081999, 8, '2BL17ME134', '', '', 'Unregistered', '', ''),
-(237, 'Uday', 'Patil', 2081999, 8, '2BL17ME135', '', '', 'Unregistered', '', ''),
-(238, 'Uday', 'Patil', 2081999, 8, '2BL17ME136', '', '', 'Unregistered', '', ''),
-(239, 'Uday', 'Patil', 2081999, 8, '2BL17ME137', '', '', 'Unregistered', '', ''),
-(240, 'Uday', 'Patil', 2081999, 8, '2BL17ME138', '', '', 'Unregistered', '', ''),
-(241, 'Uday', 'Patil', 2081999, 8, '2BL17ME139', '', '', 'Unregistered', '', ''),
-(242, 'Uday', 'Patil', 2081999, 8, '2BL17ME140', '', '', 'Unregistered', '', ''),
-(243, 'Uday', 'Patil', 2081999, 8, '2BL17ME141', '', '', 'Unregistered', '', '');
+INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `dob`, `class_id`, `did`, `username`, `password`, `location`, `status`, `per_no`, `gua_no`, `rollno`) VALUES
+(113, 'Clifford', 'Ledesma', 0, 13, 0, '21100324', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(112, 'Raymond', 'Serion', 0, 13, 0, '2700372', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(111, 'Mark Dominic', 'Sayon', 0, 13, 0, '21100867', 'heni', 'uploads/mark.jpg', 'Unregistered', '0', '0', 154),
+(234, 'Vishal', 'Agasar', 2081999, 8, 0, '2BL17ME132', '', '', 'Unregistered', '', '', 0),
+(105, 'Neljie', 'Guirnela', 0, 13, 0, '21101131', '', 'uploads/Koala.jpg', 'Unregistered', '0', '0', 0),
+(106, 'Razel', 'Palermo', 0, 13, 0, '29000676', '', 'uploads/razel.jpg', 'Unregistered', '0', '0', 0),
+(103, 'Jade', 'Gordoncillo', 0, 13, 0, '21100617', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(104, 'Felix Kirby', 'Ubas', 0, 13, 0, '21100277', 'lms10117', 'uploads/kirb.jpg', 'Unregistered', '0', '0', 0),
+(100, 'Jamilah', 'Lonot', 0, 13, 0, '21100303', '', 'uploads/jamila.jpg', 'Unregistered', '0', '0', 0),
+(101, 'Xenia Jane', 'Billones', 0, 13, 0, '21100318', 'sen', 'uploads/xenia.jpg', 'Unregistered', '0', '0', 0),
+(102, 'Carell', 'Catuburan', 0, 13, 0, '21101124', '', 'uploads/carel.jpg', 'Unregistered', '0', '0', 0),
+(97, 'Mary Joy', 'Lambosan', 0, 13, 0, '20101289', '', 'uploads/Desert.jpg', 'Unregistered', '0', '0', 0),
+(98, 'Christine Joy', 'Macaya', 0, 13, 0, '21100579', '', 'uploads/tin.jpg', 'Unregistered', '0', '0', 0),
+(95, 'Ergin Joy', 'Satoc', 0, 13, 0, '21101142', '', 'uploads/ergin.jpg', 'Unregistered', '0', '0', 0),
+(93, 'John Kevin ', 'Lorayna', 0, 7, 0, '111', 'teph', 'uploads/3094_384893504898082_1563225657_n.jpg', 'Registered', '0', '0', 0),
+(94, 'Leah Mae', 'Padilla', 0, 13, 0, '21100471', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(76, 'Jamaica Mae', 'Alipe', 0, 13, 0, '21100555', '123', 'uploads/maica.jpg', 'Registered', '0', '0', 0),
+(235, 'Sarvesh', 'Goddagi', 2081999, 8, 0, '2BL17ME133', '', '', 'Unregistered', '', '', 0),
+(110, 'Zyryn', 'Corugda', 0, 13, 0, '21100881', '', 'uploads/baby.jpg', 'Unregistered', '0', '0', 0),
+(233, 'Uday', 'Patil', 2081999, 8, 0, '2BL17ME131', '', '', 'Unregistered', '', '', 0),
+(99, 'Ryan Teofilo', 'Malbata-an', 0, 13, 0, '21100315', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(96, 'Glecy Marie', 'Navarosa', 0, 13, 0, '20101436', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(209, 'dhalia', 'hofilena', 0, 20, 0, '21300311', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(75, 'Miralyn', 'Pabalate', 0, 13, 0, '21100855', 'em', 'uploads/em2.jpg', 'Unregistered', '0', '0', 0),
+(74, 'Ma. Nonie', 'Mendoza', 0, 13, 0, '21100913', '', 'uploads/nonie.jpg', 'Unregistered', '0', '0', 0),
+(73, 'Stephanie', 'Villanueva', 0, 13, 0, '21101042', 'tephai', 'uploads/3094_384893504898082_1563225657_n.jpg', 'Registered', '0', '0', 0),
+(72, 'Jayvon', 'Pig-ao', 0, 13, 0, '21100547', 'test', 'uploads/von.jpg', 'Unregistered', '0', '0', 0),
+(71, 'Noli', 'Mendoza', 0, 13, 0, '21100556', 'noledel', 'uploads/noli.jpg', 'Registered', '0', '0', 0),
+(134, 'Victor Anthony', 'Jacobo', 0, 12, 0, '21101050', 'akositon', 'uploads/win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', 'Registered', '0', '0', 0),
+(135, 'Albert Kezzel', 'Naynay', 0, 14, 0, '20101361', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(136, 'Jorgielyn', 'Serfino', 0, 7, 0, '20100331', 'jorgie', 'uploads/Koala.jpg', 'Registered', '0', '0', 0),
+(137, 'Wina Mae', 'Espenorio', 0, 8, 0, '20100447', 'sagu123', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '7000000000', '8000000000', 0),
+(138, 'Brian Paul', 'Sablan', 0, 7, 0, '29000557', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(139, 'Rodzil', 'Camato', 0, 7, 0, '20100RC', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(140, 'Dean Martin', 'Tingson', 0, 14, 0, '21100665', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(141, 'Jared Reu', 'Windam', 0, 15, 0, '21100695', 'iloveyoujam', 'uploads/1463666_678111108874417_1795412912_n.jpg', 'Registered', '0', '0', 0),
+(142, 'Lee Ann', 'Vertucio', 0, 12, 0, '21100351', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(143, 'Danica', 'Lamis', 0, 12, 0, '21100396', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(144, 'Neovi', 'Devierte', 0, 12, 0, '21100557', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(145, 'Eril Pio', 'Mercado', 0, 12, 0, '21100291', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(146, 'Johnedel', 'Bauno', 0, 12, 0, '21100411', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(147, 'Jerwin', 'Delos Reyes', 0, 12, 0, '21100369', 'jerwin27 cute', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0', 0),
+(148, 'Jendrix', 'Victosa', 0, 12, 0, '21100431', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(149, 'Jebson', 'Tordillos', 0, 12, 0, '21100406', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(150, 'Jethro', 'Pansales', 0, 12, 0, '21101273', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(151, 'Karyl June', 'Bacobo', 0, 12, 0, '21100895', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(152, 'Kristelle Shaine', 'Rubi', 0, 12, 0, '21101063', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(153, 'Richelle', 'Villarmia', 0, 12, 0, '20101392', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(154, 'Mae Ann', 'Panugaling', 0, 12, 0, '21100904', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(155, 'Ma. Roxette', 'Infante', 0, 12, 0, '21100421', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(156, 'Savrena Joy', 'Rael', 0, 12, 0, '2100287', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(157, 'Ace John', 'Casuyon', 0, 12, 0, '21100393', 'DianaraSayon', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0', 0),
+(158, 'Rose Mae', 'Pido', 0, 12, 0, '21101195', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(159, 'Mary Ann', 'Panaguiton', 0, 12, 0, '21100701', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(162, 'kimberly kaye', 'salvatierra', 0, 14, 0, '21101182', 'kimzteng', 'uploads/29001002.jpg', 'Registered', '0', '0', 0),
+(210, 'cherylda', 'ohiman', 0, 20, 0, '21300036', 'sawsa', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0', 0),
+(164, 'Alit', 'Arvin', 0, 14, 0, '20101605', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(165, 'Ana Mae', 'Alquizar', 0, 14, 0, '21100785', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(166, 'Thessalonica', 'Arroz', 0, 14, 0, '21100651', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(167, 'Leslie', 'Campo', 0, 14, 0, '21100265', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(168, 'Ace', 'Casolino', 0, 14, 0, '27000921', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(169, 'Michael Jed', 'Flores', 0, 14, 0, '21100820', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(172, 'Hennie Rose', 'Laz', 0, 14, 0, '21100805', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(171, 'Joy', 'Macahilig', 0, 14, 0, '21100464', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(173, 'Ma. Nieva', 'Manuel ', 0, 14, 0, '21100711', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(174, 'Devina', 'Navarro', 0, 14, 0, '21100711', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(175, 'Aimee', 'Orlido', 0, 14, 0, '21100654', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(176, 'Mary Grace', 'Quizan', 0, 14, 0, '21100772', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(177, 'John Christopher', 'Reguindin', 0, 14, 0, '21100418', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(178, 'Mary Ann', 'Somosa', 0, 14, 0, '21101150', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(179, 'Marrianne', 'Tumala', 0, 14, 0, '21100710', 'test', 'uploads/win_boot_screen_16_9_by_medi_dadu-d4s7dc1.gif', 'Registered', '0', '0', 0),
+(180, 'Deo Christopher', 'Tribaco', 0, 14, 0, '21101227', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(181, 'Jerson', 'Vargas', 0, 14, 0, '21100819', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(182, 'Valencia', 'Jeralice', 0, 14, 0, '29000405', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(183, 'Cristine', 'Yanson', 0, 14, 0, '21101148', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(184, 'Ariane', 'Alix', 0, 17, 0, '21201166', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(185, 'Mark Arvin', 'Arandilla', 0, 17, 0, '21201453', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(186, 'Ryan Carl', 'Biaquis', 0, 17, 0, '21201244', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(187, 'Ria', 'Bitar', 0, 17, 0, '21201282', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(188, 'Jeremae', 'Bustamante', 0, 17, 0, '21200798', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(189, 'Rhen Mark', 'Callado', 0, 17, 0, '21201012', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(190, 'Ma. Geraldine', 'Carisma', 0, 17, 0, '21201219', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(191, 'Jenny', 'Casapao', 0, 17, 0, '21200855', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(192, 'Welson', 'Castro', 0, 17, 0, '120733', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(193, 'Kimberly Hope', 'Centina', 0, 17, 0, '21201338', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(194, 'Sandra', 'Gomez', 0, 17, 0, '21201335', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(195, 'Dona Jean', 'Guardialao', 0, 17, 0, '21201113', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(196, 'Jeara Mae', 'Guttierrez', 0, 17, 0, '21200782', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(197, 'Mary Joy', 'Jimenez', 0, 17, 0, '21201437', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(198, 'Cyril', 'Lambayong', 0, 17, 0, '21201163', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(199, 'Angelie', 'Lape', 0, 17, 0, '21201356', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(200, 'Jamine', 'Navarosa', 0, 17, 0, '21201115', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(201, 'Allen Joshua', 'Nicor', 0, 17, 0, '21201430', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(202, 'Charis', 'Onate', 0, 17, 0, '21200984', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(203, 'Ikea', 'Padonio', 0, 17, 0, '20100527', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(204, 'Marissa', 'Pasco', 0, 17, 0, '21200935', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(205, 'Kenneth', 'Sayon', 0, 17, 0, '21201268', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(206, 'Mary Grace', 'Morales', 0, 14, 0, '21100293', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(207, 'Danica', 'Delarmente', 0, 14, 0, '21100613', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(208, 'Irish Dawn', 'Belo', 0, 19, 0, '21300413', 'olebirish', 'uploads/Desert.jpg', 'Registered', '0', '0', 0),
+(211, 'val', 'roushen', 0, 7, 0, '201011231', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(212, 'chrystelle Marie', 'Belecina', 0, 15, 0, '21200363', 'chrys', 'uploads/380903_288008981235527_682004916_n.jpg', 'Registered', '0', '0', 0),
+(213, 'kearl joy', 'bartolome', 0, 18, 0, '21300410', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(214, 'marie', 'rojo', 0, 18, 0, '21300375', 'maayeeh', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0', 0),
+(215, 'cristine', 'trespuer', 0, 18, 0, '21300258', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(216, 'arian', 'baldostamon', 0, 18, 0, '21300176', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(217, 'Alyssa', 'David', 0, 17, 0, '21200507', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0),
+(218, 'josie', 'banday', 0, 7, 0, '20100452', 'heaven', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0', 0),
+(219, 'Claire ', 'Blake', 0, 18, 0, '2011120', 'cblake123', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '0', '0', 0),
+(232, 'sagar', 'sagar', 77889999, 7, 0, '112233', 'sagar', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Registered', '7019190195', '7019190198', 0),
+(244, 'Uday', 'Patil', 2081999, 22, 5, '2BL17ME136', '', '', 'Unregistered', '', '', 0),
+(245, 'omer', 'kazi', 0, 8, 0, '2bl16cs054', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -886,28 +914,31 @@ CREATE TABLE `student_assignment` (
   `grade` varchar(5) NOT NULL,
   `roll_no` varchar(215) NOT NULL,
   `marks_alloc` varchar(250) NOT NULL,
-  `totalmarks` varchar(115) NOT NULL
+  `totalmarks` varchar(115) NOT NULL,
+  `status` int(11) NOT NULL,
+  `teacher_class_id` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student_assignment`
 --
 
-INSERT INTO `student_assignment` (`student_assignment_id`, `assignment_id`, `floc`, `assignment_fdatein`, `fdesc`, `fname`, `student_id`, `grade`, `roll_no`, `marks_alloc`, `totalmarks`) VALUES
-(1, 31, 'admin/uploads/7820_File_sample.pdf', '2020-12-21 10:12:04', 'aaa', 'asdasd', 219, '', '', '', ''),
-(2, 41, 'admin/uploads/6991_File_Jan-2019.pdf', '2020-12-31 18:56:28', 'test', 'test', 111, '', '', '', ''),
-(3, 32, 'admin/uploads/1378_File_studentsSheet.xlsx', '2021-01-01 10:21:51', 'roll no-50', 'assign', 111, '', '', '', ''),
-(4, 43, 'admin/uploads/8900_File_studentsSheet.xlsx', '2021-01-01 10:58:22', 'roll no-50', 'assign', 111, '50', '', '', ''),
-(5, 45, 'admin/uploads/2706_File_studentsSheet.xlsx', '2021-01-01 11:30:11', 'dsd', 'sdsd', 111, '', '', '', ''),
-(6, 47, 'admin/uploads/1504_File_studentsSheet.xlsx', '2021-01-01 11:43:32', 'ass', 'asss', 111, '', '', '', ''),
-(7, 55, 'admin/uploads/2824_File_studentsSheet.xlsx', '2021-01-01 12:23:49', 'roll no-50', 'hgggg', 111, '', '', '', ''),
-(8, 55, 'admin/uploads/3014_File_studentsSheet.xlsx', '2021-01-01 12:27:09', 'roll no-50', 'assign', 137, '', '', '', ''),
-(9, 55, 'admin/uploads/8302_File_studentsSheet.xlsx', '2021-01-01 17:00:58', 'asas', 'hgggg', 111, '', '', '', ''),
-(10, 55, 'admin/uploads/6352_File_studentsSheet.xlsx', '2021-01-01 17:03:41', 'asadsdkdnj', 'assign', 111, '', '', '', ''),
-(11, 55, 'admin/uploads/1892_File_Jan-2019.pdf', '2021-01-01 17:08:27', 'description', 'suhaKJASDH', 111, '', '', '', ''),
-(12, 55, 'admin/uploads/4568_File_Jan-2019.pdf', '2021-01-01 17:14:59', 'DSSAsd', 'asda', 111, '', 'asdaWQ', '[{\"questionNo\":\"1a\",\"marksObtained\":\"25\"},{\"questionNo\":\"2b\",\"marksObtained\":\"50\"}]', '75'),
-(13, 55, 'admin/uploads/1937_File_11414017524-NOV-20365767.PDF', '2021-01-02 11:42:45', 'assignment-0011', 'assignment', 111, '', '50', '', ''),
-(14, 55, 'admin/uploads/5304_File_terms-and-condition.pdf', '2021-01-02 11:56:43', 'assignment-00120', 'assignment', 111, '', '55', '', '');
+INSERT INTO `student_assignment` (`student_assignment_id`, `assignment_id`, `floc`, `assignment_fdatein`, `fdesc`, `fname`, `student_id`, `grade`, `roll_no`, `marks_alloc`, `totalmarks`, `status`, `teacher_class_id`) VALUES
+(1, 31, 'admin/uploads/7820_File_sample.pdf', '2020-12-21 10:12:04', 'aaa', 'asdasd', 219, '30', '', '', '', 0, ''),
+(2, 41, 'admin/uploads/6991_File_Jan-2019.pdf', '2020-12-31 18:56:28', 'test', 'test', 111, '', '', '', '', 0, ''),
+(3, 32, 'admin/uploads/1378_File_studentsSheet.xlsx', '2021-01-01 10:21:51', 'roll no-50', 'assign', 111, '45', '', '', '', 0, ''),
+(4, 43, 'admin/uploads/8900_File_studentsSheet.xlsx', '2021-01-01 10:58:22', 'roll no-50', 'assign', 111, '50', '', '', '', 0, ''),
+(5, 45, 'admin/uploads/2706_File_studentsSheet.xlsx', '2021-01-01 11:30:11', 'dsd', 'sdsd', 111, '', '', '', '', 0, ''),
+(6, 47, 'admin/uploads/1504_File_studentsSheet.xlsx', '2021-01-01 11:43:32', 'ass', 'asss', 111, '', '', '', '', 0, ''),
+(7, 55, 'admin/uploads/2824_File_studentsSheet.xlsx', '2021-01-01 12:23:49', 'roll no-50', 'hgggg', 111, '', '', '', '', 0, ''),
+(8, 55, 'admin/uploads/3014_File_studentsSheet.xlsx', '2021-01-01 12:27:09', 'roll no-50', 'assign', 137, '', '', '', '', 0, ''),
+(9, 55, 'admin/uploads/8302_File_studentsSheet.xlsx', '2021-01-01 17:00:58', 'asas', 'hgggg', 111, '', '', '', '', 0, ''),
+(10, 55, 'admin/uploads/6352_File_studentsSheet.xlsx', '2021-01-01 17:03:41', 'asadsdkdnj', 'assign', 111, '', '', '', '', 0, ''),
+(11, 55, 'admin/uploads/1892_File_Jan-2019.pdf', '2021-01-01 17:08:27', 'description', 'suhaKJASDH', 111, '', '', '', '', 0, ''),
+(12, 55, 'admin/uploads/4568_File_Jan-2019.pdf', '2021-01-01 17:14:59', 'DSSAsd', 'asda', 111, '', 'asdaWQ', '', '', 0, ''),
+(13, 55, 'admin/uploads/1937_File_11414017524-NOV-20365767.PDF', '2021-01-02 11:42:45', 'assignment-0011', 'assignment', 111, '', '50', '', '', 0, ''),
+(14, 55, 'admin/uploads/5304_File_terms-and-condition.pdf', '2021-01-02 11:56:43', 'assignment-00120', 'assignment', 111, '', '55', '', '', 0, ''),
+(15, 60, 'admin/uploads/3059_File_Jan-2019.pdf', '2021-01-12 19:59:05', 'i sir me', 'sir me sir', 111, '100', '58', '{\"questions\":[{\"questionNo\":\"1\",\"marksObtained\":\"25\"},{\"questionNo\":\"2\",\"marksObtained\":\"20\"}]}', '45', 0, '196');
 
 -- --------------------------------------------------------
 
@@ -1025,7 +1056,8 @@ INSERT INTO `teacher` (`teacher_id`, `username`, `password`, `firstname`, `lastn
 (15, 'chaw', 'chaw', 'Charito ', 'Puray', 4, 'uploads/NO-IMAGE-AVAILABLE.jpg', '', '', 'Activated'),
 (17, '', '', 'Lovelyn ', 'Layson', 5, 'uploads/NO-IMAGE-AVAILABLE.jpg', '', '', 'Activated'),
 (18, 'test123', 'test123', 'Allan', 'Dela Torre', 4, 'uploads/NO-IMAGE-AVAILABLE.jpg', '', 'Registered', 'Activated'),
-(19, 'delam', 'denise', 'Denesa', 'Lamique', 4, 'uploads/NO-IMAGE-AVAILABLE.jpg', '', 'Registered', 'Activated');
+(19, 'delam', 'denise', 'Denesa', 'Lamique', 4, 'uploads/NO-IMAGE-AVAILABLE.jpg', '', 'Registered', 'Activated'),
+(20, '', '', 'Uday', 'Patil', 9, 'uploads/NO-IMAGE-AVAILABLE.jpg', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -1601,7 +1633,8 @@ INSERT INTO `teacher_notification` (`teacher_notification_id`, `teacher_class_id
 (29, 196, 'Submit Assignment file name <b>suhaKJASDH</b>', '2021-01-01 17:08:27', 'view_submit_assignment.php', 111, 55),
 (30, 196, 'Submit Assignment file name <b>asda</b>', '2021-01-01 17:14:59', 'view_submit_assignment.php', 111, 55),
 (31, 196, 'Submit Assignment file name <b>assignment</b>', '2021-01-02 11:42:45', 'view_submit_assignment.php', 111, 55),
-(32, 196, 'Submit Assignment file name <b>assignment</b>', '2021-01-02 11:56:43', 'view_submit_assignment.php', 111, 55);
+(32, 196, 'Submit Assignment file name <b>assignment</b>', '2021-01-02 11:56:43', 'view_submit_assignment.php', 111, 55),
+(33, 196, 'Submit Assignment file name <b>sir me sir</b>', '2021-01-12 19:59:05', 'view_submit_assignment.php', 111, 60);
 
 -- --------------------------------------------------------
 
@@ -1737,68 +1770,85 @@ INSERT INTO `user_log` (`user_log_id`, `username`, `login_date`, `logout_date`, 
 (63, 'jkev', '2014-01-16 14:42:02', '2014-02-13 11:19:36', 14),
 (64, 'jkev', '2014-01-17 09:16:17', '2014-02-13 11:19:36', 14),
 (65, 'jkev', '2014-01-17 13:25:51', '2014-02-13 11:19:36', 14),
-(66, 'admin', '2014-01-17 14:41:30', '2021-01-07 21:09:50', 15),
-(67, 'admin', '2014-01-17 15:56:32', '2021-01-07 21:09:50', 15),
-(68, 'admin', '2014-01-26 17:45:31', '2021-01-07 21:09:50', 15),
-(69, 'admin', '2014-02-13 10:45:17', '2021-01-07 21:09:50', 15),
-(70, 'admin', '2014-02-13 11:05:27', '2021-01-07 21:09:50', 15),
+(66, 'admin', '2014-01-17 14:41:30', '2021-01-12 18:29:40', 15),
+(67, 'admin', '2014-01-17 15:56:32', '2021-01-12 18:29:40', 15),
+(68, 'admin', '2014-01-26 17:45:31', '2021-01-12 18:29:40', 15),
+(69, 'admin', '2014-02-13 10:45:17', '2021-01-12 18:29:40', 15),
+(70, 'admin', '2014-02-13 11:05:27', '2021-01-12 18:29:40', 15),
 (71, 'jkev', '2014-02-13 11:16:48', '2014-02-13 11:19:36', 14),
-(72, 'admin', '2014-02-13 11:55:36', '2021-01-07 21:09:50', 15),
-(73, 'admin', '2014-02-13 12:32:38', '2021-01-07 21:09:50', 15),
-(74, 'admin', '2014-02-13 12:52:05', '2021-01-07 21:09:50', 15),
-(75, 'admin', '2014-02-13 13:04:35', '2021-01-07 21:09:50', 15),
+(72, 'admin', '2014-02-13 11:55:36', '2021-01-12 18:29:40', 15),
+(73, 'admin', '2014-02-13 12:32:38', '2021-01-12 18:29:40', 15),
+(74, 'admin', '2014-02-13 12:52:05', '2021-01-12 18:29:40', 15),
+(75, 'admin', '2014-02-13 13:04:35', '2021-01-12 18:29:40', 15),
 (76, 'jkev', '2014-02-13 14:35:27', '', 14),
-(77, 'admin', '2014-02-20 09:40:39', '2021-01-07 21:09:50', 15),
-(78, 'admin', '2014-02-20 09:42:21', '2021-01-07 21:09:50', 15),
-(79, 'admin', '2014-02-27 22:40:15', '2021-01-07 21:09:50', 15),
-(80, 'admin', '2014-02-28 13:12:52', '2021-01-07 21:09:50', 15),
-(81, 'admin', '2014-04-02 17:27:47', '2021-01-07 21:09:50', 15),
-(82, 'admin', '2014-04-03 15:29:38', '2021-01-07 21:09:50', 15),
-(83, 'admin', '2014-06-15 12:31:51', '2021-01-07 21:09:50', 15),
-(84, 'Admin', '2020-12-21 08:32:51', '2021-01-07 21:09:50', 15),
-(85, 'admin', '2020-12-21 08:48:23', '2021-01-07 21:09:50', 15),
-(86, 'admin', '2020-12-24 21:29:17', '2021-01-07 21:09:50', 15),
-(87, 'admin', '2020-12-26 00:38:43', '2021-01-07 21:09:50', 15),
-(88, 'admin', '2020-12-26 00:52:35', '2021-01-07 21:09:50', 15),
-(89, 'admin', '2020-12-26 10:48:35', '2021-01-07 21:09:50', 15),
-(90, 'admin', '2020-12-26 11:11:36', '2021-01-07 21:09:50', 15),
-(91, 'admin', '2020-12-26 12:41:02', '2021-01-07 21:09:50', 15),
-(92, 'admin', '2020-12-26 12:55:29', '2021-01-07 21:09:50', 15),
-(93, 'admin', '2020-12-28 12:53:41', '2021-01-07 21:09:50', 15),
-(94, 'admin', '2020-12-28 16:26:03', '2021-01-07 21:09:50', 15),
-(95, 'admin', '2020-12-29 09:12:14', '2021-01-07 21:09:50', 15),
-(96, 'admin', '2020-12-29 09:32:40', '2021-01-07 21:09:50', 15),
-(97, 'admin', '2020-12-29 15:46:16', '2021-01-07 21:09:50', 15),
-(98, 'admin', '2020-12-31 14:41:00', '2021-01-07 21:09:50', 15),
-(99, 'admin', '2020-12-31 15:52:19', '2021-01-07 21:09:50', 15),
-(100, 'admin', '2020-12-31 16:09:30', '2021-01-07 21:09:50', 15),
-(101, 'admin', '2020-12-31 17:00:25', '2021-01-07 21:09:50', 15),
-(102, 'admin', '2020-12-31 17:02:43', '2021-01-07 21:09:50', 15),
-(103, 'admin', '2020-12-31 17:13:31', '2021-01-07 21:09:50', 15),
-(104, 'admin', '2020-12-31 17:24:03', '2021-01-07 21:09:50', 15),
-(105, 'admin', '2020-12-31 17:26:59', '2021-01-07 21:09:50', 15),
-(106, 'admin', '2020-12-31 17:28:52', '2021-01-07 21:09:50', 15),
-(107, 'admin', '2020-12-31 17:53:58', '2021-01-07 21:09:50', 15),
-(108, 'admin', '2020-12-31 20:06:27', '2021-01-07 21:09:50', 15),
-(109, 'admin', '2020-12-31 20:34:00', '2021-01-07 21:09:50', 15),
-(110, 'admin', '2021-01-01 10:18:33', '2021-01-07 21:09:50', 15),
-(111, 'admin', '2021-01-01 11:20:11', '2021-01-07 21:09:50', 15),
-(112, 'admin', '2021-01-04 18:06:37', '2021-01-07 21:09:50', 15),
-(113, 'admin', '2021-01-06 18:38:07', '2021-01-07 21:09:50', 15),
-(114, 'admin', '2021-01-07 01:26:27', '2021-01-07 21:09:50', 15),
-(115, 'admin', '2021-01-07 16:24:28', '2021-01-07 21:09:50', 15),
-(116, 'admin', '2021-01-07 16:45:19', '2021-01-07 21:09:50', 15),
-(117, 'admin', '2021-01-07 19:24:02', '2021-01-07 21:09:50', 15),
-(118, 'admin', '2021-01-07 19:38:43', '2021-01-07 21:09:50', 15),
-(119, 'udayptl9', '2021-01-07 19:49:34', '2021-01-07 20:41:31', 16),
-(120, 'admin', '2021-01-07 20:13:32', '2021-01-07 21:09:50', 15),
-(121, 'agasar123', '2021-01-07 20:14:13', '2021-01-07 20:41:12', 17),
-(122, 'udayptl9', '2021-01-07 20:41:20', '2021-01-07 20:41:31', 16),
-(123, 'admin', '2021-01-07 20:41:35', '2021-01-07 21:09:50', 15),
-(124, 'csAdmin', '2021-01-07 20:42:34', '2021-01-07 20:57:19', 18),
-(125, 'udayptl9', '2021-01-07 20:57:37', '', 16),
-(126, 'admin', '2021-01-07 21:04:45', '2021-01-07 21:09:50', 15),
-(127, 'udayptl9', '2021-01-07 21:09:59', '', 16);
+(77, 'admin', '2014-02-20 09:40:39', '2021-01-12 18:29:40', 15),
+(78, 'admin', '2014-02-20 09:42:21', '2021-01-12 18:29:40', 15),
+(79, 'admin', '2014-02-27 22:40:15', '2021-01-12 18:29:40', 15),
+(80, 'admin', '2014-02-28 13:12:52', '2021-01-12 18:29:40', 15),
+(81, 'admin', '2014-04-02 17:27:47', '2021-01-12 18:29:40', 15),
+(82, 'admin', '2014-04-03 15:29:38', '2021-01-12 18:29:40', 15),
+(83, 'admin', '2014-06-15 12:31:51', '2021-01-12 18:29:40', 15),
+(84, 'Admin', '2020-12-21 08:32:51', '2021-01-12 18:29:40', 15),
+(85, 'admin', '2020-12-21 08:48:23', '2021-01-12 18:29:40', 15),
+(86, 'admin', '2020-12-24 21:29:17', '2021-01-12 18:29:40', 15),
+(87, 'admin', '2020-12-26 00:38:43', '2021-01-12 18:29:40', 15),
+(88, 'admin', '2020-12-26 00:52:35', '2021-01-12 18:29:40', 15),
+(89, 'admin', '2020-12-26 10:48:35', '2021-01-12 18:29:40', 15),
+(90, 'admin', '2020-12-26 11:11:36', '2021-01-12 18:29:40', 15),
+(91, 'admin', '2020-12-26 12:41:02', '2021-01-12 18:29:40', 15),
+(92, 'admin', '2020-12-26 12:55:29', '2021-01-12 18:29:40', 15),
+(93, 'admin', '2020-12-28 12:53:41', '2021-01-12 18:29:40', 15),
+(94, 'admin', '2020-12-28 16:26:03', '2021-01-12 18:29:40', 15),
+(95, 'admin', '2020-12-29 09:12:14', '2021-01-12 18:29:40', 15),
+(96, 'admin', '2020-12-29 09:32:40', '2021-01-12 18:29:40', 15),
+(97, 'admin', '2020-12-29 15:46:16', '2021-01-12 18:29:40', 15),
+(98, 'admin', '2020-12-31 14:41:00', '2021-01-12 18:29:40', 15),
+(99, 'admin', '2020-12-31 15:52:19', '2021-01-12 18:29:40', 15),
+(100, 'admin', '2020-12-31 16:09:30', '2021-01-12 18:29:40', 15),
+(101, 'admin', '2020-12-31 17:00:25', '2021-01-12 18:29:40', 15),
+(102, 'admin', '2020-12-31 17:02:43', '2021-01-12 18:29:40', 15),
+(103, 'admin', '2020-12-31 17:13:31', '2021-01-12 18:29:40', 15),
+(104, 'admin', '2020-12-31 17:24:03', '2021-01-12 18:29:40', 15),
+(105, 'admin', '2020-12-31 17:26:59', '2021-01-12 18:29:40', 15),
+(106, 'admin', '2020-12-31 17:28:52', '2021-01-12 18:29:40', 15),
+(107, 'admin', '2020-12-31 17:53:58', '2021-01-12 18:29:40', 15),
+(108, 'admin', '2020-12-31 20:06:27', '2021-01-12 18:29:40', 15),
+(109, 'admin', '2020-12-31 20:34:00', '2021-01-12 18:29:40', 15),
+(110, 'admin', '2021-01-01 10:18:33', '2021-01-12 18:29:40', 15),
+(111, 'admin', '2021-01-01 11:20:11', '2021-01-12 18:29:40', 15),
+(112, 'admin', '2021-01-04 18:06:37', '2021-01-12 18:29:40', 15),
+(113, 'admin', '2021-01-06 18:38:07', '2021-01-12 18:29:40', 15),
+(114, 'admin', '2021-01-07 01:26:27', '2021-01-12 18:29:40', 15),
+(115, 'admin', '2021-01-07 16:24:28', '2021-01-12 18:29:40', 15),
+(116, 'admin', '2021-01-07 16:45:19', '2021-01-12 18:29:40', 15),
+(117, 'admin', '2021-01-07 19:24:02', '2021-01-12 18:29:40', 15),
+(118, 'admin', '2021-01-07 19:38:43', '2021-01-12 18:29:40', 15),
+(119, 'udayptl9', '2021-01-07 19:49:34', '2021-01-12 17:25:06', 16),
+(120, 'admin', '2021-01-07 20:13:32', '2021-01-12 18:29:40', 15),
+(121, 'agasar123', '2021-01-07 20:14:13', '2021-01-12 18:33:11', 17),
+(122, 'udayptl9', '2021-01-07 20:41:20', '2021-01-12 17:25:06', 16),
+(123, 'admin', '2021-01-07 20:41:35', '2021-01-12 18:29:40', 15),
+(124, 'csAdmin', '2021-01-07 20:42:34', '2021-01-12 17:18:52', 18),
+(125, 'udayptl9', '2021-01-07 20:57:37', '2021-01-12 17:25:06', 16),
+(126, 'admin', '2021-01-07 21:04:45', '2021-01-12 18:29:40', 15),
+(127, 'udayptl9', '2021-01-07 21:09:59', '2021-01-12 17:25:06', 16),
+(128, 'admin', '2021-01-12 17:16:32', '2021-01-12 18:29:40', 15),
+(129, 'udayptl9', '2021-01-12 17:17:39', '2021-01-12 17:25:06', 16),
+(130, 'csAdmin', '2021-01-12 17:18:31', '2021-01-12 17:18:52', 18),
+(131, 'agasar123', '2021-01-12 17:19:03', '2021-01-12 18:33:11', 17),
+(132, 'admin', '2021-01-12 17:23:52', '2021-01-12 18:29:40', 15),
+(133, 'udayptl9', '2021-01-12 17:24:24', '2021-01-12 17:25:06', 16),
+(134, 'agasar123', '2021-01-12 17:25:13', '2021-01-12 18:33:11', 17),
+(135, 'admin', '2021-01-12 18:20:55', '2021-01-12 18:29:40', 15),
+(136, 'agasar123', '2021-01-12 18:22:39', '2021-01-12 18:33:11', 17),
+(137, 'agasar123', '2021-01-12 18:25:41', '2021-01-12 18:33:11', 17),
+(138, 'agasar123', '2021-01-12 18:26:02', '2021-01-12 18:33:11', 17),
+(139, 'admin', '2021-01-12 18:26:35', '2021-01-12 18:29:40', 15),
+(140, 'agasar123', '2021-01-12 18:29:54', '2021-01-12 18:33:11', 17),
+(141, 'admin', '2021-01-13 10:29:44', '', 15),
+(142, 'admin', '2021-01-13 14:24:26', '', 15),
+(143, 'csadmin', '2021-01-13 14:51:03', '', 18),
+(144, 'admin', '2021-01-14 17:48:52', '', 15);
 
 --
 -- Indexes for dumped tables
@@ -1881,6 +1931,12 @@ ALTER TABLE `event`
 --
 ALTER TABLE `files`
   ADD PRIMARY KEY (`file_id`);
+
+--
+-- Indexes for table `internals`
+--
+ALTER TABLE `internals`
+  ADD PRIMARY KEY (`internal_id`);
 
 --
 -- Indexes for table `message`
@@ -2040,13 +2096,13 @@ ALTER TABLE `answer`
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
-  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `attendence`
 --
 ALTER TABLE `attendence`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `class`
@@ -2094,13 +2150,19 @@ ALTER TABLE `edit_profile`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
   MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+
+--
+-- AUTO_INCREMENT for table `internals`
+--
+ALTER TABLE `internals`
+  MODIFY `internal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -2118,7 +2180,7 @@ ALTER TABLE `message_sent`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `notification_read`
@@ -2154,13 +2216,13 @@ ALTER TABLE `school_year`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
 
 --
 -- AUTO_INCREMENT for table `student_assignment`
 --
 ALTER TABLE `student_assignment`
-  MODIFY `student_assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `student_assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `student_backpack`
@@ -2184,7 +2246,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `teacher_backpack`
@@ -2214,7 +2276,7 @@ ALTER TABLE `teacher_class_student`
 -- AUTO_INCREMENT for table `teacher_notification`
 --
 ALTER TABLE `teacher_notification`
-  MODIFY `teacher_notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `teacher_notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `teacher_shared`
@@ -2232,7 +2294,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_log`
 --
 ALTER TABLE `user_log`
-  MODIFY `user_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `user_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
