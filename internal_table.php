@@ -48,7 +48,7 @@
 		<input class='topic' style='display: none;' placeholder="Internal Name" type="text"><button class="btn btn-danger" onclick="" style='display: none;'>X</button>
 
 			    <a class="btn btn-info addinternal"><i class="icon-pencil"></i>Add Internal</a>
-			    <a class="btn btn-info submit"><i class="icon-save icon-large"></i> Save</a>
+			    <a class="btn btn-info submit saveinternal"><i class="icon-save icon-large"></i> Save</a>
 			    <a onclick="window.open('print_internal.php<?php echo '?id='.$get_id; ?>')"  class="btn btn-success"><i class="icon-list"></i> Report</a>
 	</div>
 	<script>
@@ -56,13 +56,12 @@
        		document.querySelector('.addinternalsubmit').addEventListener('click', function(event) {
        			event.preventDefault();
 	       		let th = document.createElement('th');
-	       		th.classList.add('newIA');
 	       		th.innerHTML = `${document.querySelector('.internalName').value} (${document.querySelector('.internalName1').value})`;
 	       		document.querySelector('.headings').appendChild(th);
 	       		document.querySelectorAll('.studentrows').forEach(row=>{
 	       			let td = document.createElement('td');
 	       			td.classList.add('newMark');
-	       			td.innerHTML = `<input type='number' placeholder='marks' class='marksEdited' style='width: 50px;'>`;
+	       			td.innerHTML = `<input type='number' placeholder='marks' class='marksEdited' style='width: 50px;'><span class='newIA' style='display: None;'>${document.querySelector('.internalName').value} (${document.querySelector('.internalName1').value})</span>`;
 	       			row.appendChild(td);
 	       		})
 	       		totalIAs++;
@@ -95,53 +94,49 @@
 			 	event.preventDefault();
 			 	document.querySelector('.addinternalpopup').classList.add('internalOut');
 			 	document.querySelector('.addinternalpopup').classList.remove('internalIn');
-			 	
 			 })
-			/* document.querySelector('.saveinternal').addEventListener('click', function(event) {
-    				event.preventDefault();
-    				let students = [];
-    				const totalStudentsDiv = document.querySelectorAll('.studentrows');
-    				for(let i=0; i<totalStudentsDiv.length; i++) {
-    					let student = {};
-    					student['Name'] = totalStudentsDiv.querySelector('.studentName').innerHTML;
-    					student['USN'] = totalStudentsDiv.querySelector('.studentUSN').innerHTML;
-    					student['class'] = '<?php echo $get_id; ?>';
-    					student['IAs'] = [];
-    					const IAs = document.querySelectorAll('.newMark');
-    					for(let j=0; j<IAs.length; i++) {
-    						let studentIA = {};
-    						studentIA['IAName'] = document.querySelectorAll('.newIA')[j].innerHTML;
-    						studentIA['IAMark'] = IAs.value;
-    						student['IAs'].push(studentIA);
-    					}
-    					students.push[student];
-    				}
-
-    				console.log(students)
-    				/*syllabusFinal = syllabus;
-    				$.ajax({
-    					url: 'syllabusFinal.php',
-    					type:'POST',
-    					data: {
-    						syllabus: JSON.stringify(syllabusFinal),
-    						id: <?php echo $get_id ?>
-    					},
-    					beforeSend: function(){
-    						console.log('saving');
-    					},
-    					success:function(response){
-    						try{
-    							if(JSON.parse(response).text){
-    								window.location.reload();
-    							} else {
-    								console.log(JSON.parse(response));
-    							}
-    						} catch(error){
-    							console.log(error);
-    						}
-    					}
-    				})
-    			})*\
+			document.querySelector('.saveinternal').addEventListener('click', function(event) {
+				event.preventDefault();
+				let students = {'students': []};
+				const totalStudentsDiv = document.querySelectorAll('.studentrows');
+				for(let i=0; i<totalStudentsDiv.length; i++) {
+					let student = {};
+					student['Name'] = totalStudentsDiv[i].querySelector('.studentName').innerHTML;
+					student['USN'] = totalStudentsDiv[i].querySelector('.studentUSN').innerHTML;
+					student['class'] = '<?php echo $get_id; ?>';
+					student['IAs'] = [];
+					const IAs = document.querySelectorAll('.newMark');
+					for(let j=0; j<IAs.length; j++) {
+						let studentIA = {};
+						studentIA['IAName'] = document.querySelectorAll('.newIA')[j].innerHTML;
+						studentIA['IAMark'] = IAs[j].querySelector('.marksEdited').value;
+						student['IAs'].push(studentIA);
+					}
+					students['students'].push[student];
+				}
+				$.ajax({
+					url: 'internalfinal.php',
+					type:'POST',
+					data: {
+						syllabus: JSON.stringify(students),
+						id: <?php echo $get_id ?>
+					},
+					beforeSend: function(){
+						console.log(students);
+					},
+					success:function(response){
+						try{
+							if(JSON.parse(response).text){
+								window.location.reload();
+							} else {
+								console.log(JSON.parse(response));
+							}
+						} catch(error){
+							console.log(error);
+						}
+					}
+				})
+			})
 
 	</script>
 
@@ -187,8 +182,7 @@
 if (isset($_POST['submit'])){
 
 	$test = $_POST['test'];
-	for($b = 1; $b <=  $test; $b++)
-	{
+	for($b = 1; $b <=  $test; $b++){
 	
 
 		
@@ -222,18 +216,11 @@ if (isset($_POST['submit'])){
 	mysqli_query($conn,"insert into teacher_class_student (student_id,teacher_class_id,teacher_id) values('$id','$class_id','$teacher_id') ")or die(mysqli_error());
 	
 	
-	}else{
-	
-	
-	
 	}
-	
+}}	
 
 	
-?>
-<script>
- window.location = "my_students.php<?php echo '?id='.$get_id; ?>"; 
-</script>   
+?> 
 
 		
 	

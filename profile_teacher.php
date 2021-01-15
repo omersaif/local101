@@ -24,7 +24,9 @@
                         <!-- block -->
                         <div id="block_bg" class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div id="" class="muted pull-left"></div>
+                                <div id="" class="muted pull-left">
+                                	<img src="bldeacet_header_logo_caps.png">
+                                </div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12 teacherInfo">
@@ -32,7 +34,7 @@
 								<?php $query= mysqli_query($conn,"select * from edit_profile where teacher_id = '$session_id'")or die(mysqli_error());
 								$row = mysqli_fetch_array($query);
 									?>
-									<div class="info">
+									<div class="info" style='position: relative;'>
 										
 
 										<div><h4>Name: <?php echo $row['name']; ?></h4></div>
@@ -41,9 +43,20 @@
 	  									<div><h4>Proficiency: <?php echo $row['proficiency']; ?></h4></div>
 	  									<div><h4>Teaching Experience: <?php echo $row['teaching_exp']; ?></h4></div>
 	  									<div><h4>Projects: <?php echo $row['project']; ?></h4></div>
-	  									<div><h4>Publication: <?php echo $row['publication']; ?></h4></div>
-
-
+	  									<div><h4 class='publicationsDisplay'>Publication: </h4></div>
+	  									<div style='position: absolute; top: 15px; right: 15px;'><img src="<?php echo $row['image']; ?>" style="width: 200px;" alt='profile Image'></div>
+	  									<script type="text/javascript">
+	  										const publicationsObject = JSON.parse('<?php echo $row["publication"]; ?>');
+	  										let index = 1;
+	  										publicationsObject['publications'].forEach(publication=>{
+	  											if(index == publicationsObject['publications'].length) {
+	  												document.querySelector('.publicationsDisplay').innerHTML += `${publication}`;
+	  											} else {
+	  												document.querySelector('.publicationsDisplay').innerHTML += `${publication}, `;
+	  											}
+	  											index++;
+	  										})
+	  									</script>
 										
 									</div>
                                 </div>
@@ -54,7 +67,7 @@
 
 
                 </div>
-				<?php include('teacher_right_sidebar.php') ?>
+				
             </div>
 		<?php include('footer.php'); ?>
         </div>

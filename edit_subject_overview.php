@@ -3,7 +3,6 @@
 <?php $get_id = $_GET['id']; ?>
 <?php $subject_id = $_GET['subject_id']; ?>
     <body>
-    	
 		<?php include('navbar_teacher.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">

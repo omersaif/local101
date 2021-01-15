@@ -16,9 +16,17 @@ $uploaded_by = $uploaded_by_query_row['firstname']."".$uploaded_by_query_row['la
 /* $id_class=$_POST['id_class']; */
 $name=$_POST['name'];
 $maxmarks = $_POST['maxmarks'];
-
-
-									
+$questions = $_POST['questions'];
+$dateFull = $_POST['date'];
+$date = explode('-', $dateFull)[2];
+$month = explode('-', $dateFull)[1];
+$year = explode('-', $dateFull)[0];
+$dateToSave = $date. '/'.$month.'/'.$year;
+$time = $_POST['time'];
+$checkbox = 0;
+if(isset($_POST['checkbox'])) {
+	$checkbox = 1;
+}
 
 
 //Function to sanitize values received from the form. Prevents SQL injection
@@ -86,9 +94,10 @@ if ((!empty($_FILES["uploaded_file"])) && ($_FILES['uploaded_file']['error'] == 
 										
                /*  $qry2 = "INSERT INTO files (fdesc,floc,fdatein,teacher_id,class_id,fname,uploaded_by) VALUES ('$filedesc','$newname',NOW(),'$session_id','$id[$i]','$name','$uploaded_by')"; */
                // echo "INSERT INTO files (fdesc,floc,fdatein,teacher_id,class_id,fname,uploaded_by) VALUES ('$filedesc','$newname',NOW(),'$session_id','$id[$i]','$name','$uploaded_by')";
-                // exit;
-				mysqli_query($conn,"INSERT INTO assignment (fdesc,floc,fdatein,teacher_id,class_id,fname,maxmarks) VALUES ('$filedesc','$newname',NOW(),'$session_id','$id[$i]','$name','$maxmarks')");
+  //               exit;
+				$result = mysqli_query($conn,"INSERT INTO assignment (fdesc,floc,fdatein,teacher_id,class_id,fname,maxmarks,qmaxmarks,deadline_date,deadline_time,auto_deadline) VALUES ('$filedesc','$newname',NOW(),'$session_id','$id[$i]','$name','$maxmarks','$questions','$dateToSave','$time',$checkbox)");
 				mysqli_query($conn,"insert into notification (teacher_class_id,notification,date_of_notification,link) value('$id[$i]','$name_notification',NOW(),'assignment_student.php')")or die(mysqli_error());
+				print_r($result);
 			   
 			  }
 			   
@@ -96,6 +105,7 @@ if ((!empty($_FILES["uploaded_file"])) && ($_FILES['uploaded_file']['error'] == 
 }
 }
 }
+
 
 /* mysqli_close($conn); */
 ?>
