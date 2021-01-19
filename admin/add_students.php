@@ -192,7 +192,7 @@
 			function output(json) {
 				if (showAdd) {
 					let objectKeys = Object.keys(json['Sheet1'][0]);
-					if (objectKeys[0] != 'FirstName' || objectKeys[1] != 'LastName' || objectKeys[2] != 'USN' ||objectKeys[3] != 'Rollno'|| objectKeys[4] != 'DOB') {
+					if (objectKeys[0] != 'FirstName' || objectKeys[1] != 'LastName' || objectKeys[2] != 'USN' ||objectKeys[3] != 'Roll_No'|| objectKeys[4] != 'DOB') {
 						showAdd = false;
 					} else {
 						document.querySelector('.result').innerHTML = `
@@ -203,7 +203,7 @@
 										<th>First Name</th>	
 										<th>Last Name</th>	
 										<th>USN</th>
-										<th>Roll no</th>	
+										<th>Roll_No</th>	
 										<th>DOB</th>	
 									</tr>
 								</thead>
@@ -232,7 +232,7 @@
 								${student.USN}
 							</td>
 							<td class='roll'>
-								${student.rollno}
+								${student.Roll_No}
 							</td>
 							<td class='dob' ${(student.DOB.toString().length < 7) ? ("style='border: 8px solid red;'") : ('')} ${(student.DOB.toString().length == 7) ? ("style='border: 8px solid orange;'") : ('')}>
 								${(student.DOB.toString().length == 7) ? ('0' + student.DOB) : (student.DOB)}

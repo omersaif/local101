@@ -14,7 +14,9 @@
 			</script>';
 		}
 	?>
-	<script>let totalIAs = pastInternals[0]['students'].length;</script>
+	<script>let totalIAs = pastInternals[0]['students'][0]['IAs'].length;
+</script>
+	
     <body>
     	<style> 
     		.historyAttendenece {
@@ -214,7 +216,7 @@ if (isset($_POST['submit'])){
 							td.innerHTML = `${ia['IAMark']}`;
 							row.parentElement.appendChild(td);
 							row.parentElement.querySelector('.totalMarksTd').innerHTML = (Number(row.parentElement
-															.querySelector('.totalMarksTd').innerHTML) + Number(ia['IAMark']) / totalIAs);
+															.querySelector('.totalMarksTd').innerHTML) + Number(ia['IAMark']) / totalIAs).toFixed(2);
 						})
 						check = 0;
 					}
