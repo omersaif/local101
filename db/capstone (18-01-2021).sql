@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2021 at 02:14 AM
+-- Generation Time: Jan 19, 2021 at 02:01 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -56,7 +56,9 @@ INSERT INTO `activity_log` (`activity_log_id`, `username`, `date`, `action`) VAL
 (15, '', '2020-12-29 10:14:54', 'Add School Year 2019-2020'),
 (16, 'admin', '2021-01-07 19:47:54', 'Add User udayptl9'),
 (17, 'admin', '2021-01-07 20:13:58', 'Add User agasar123'),
-(18, 'admin', '2021-01-07 20:42:21', 'Add User csAdmin');
+(18, 'admin', '2021-01-07 20:42:21', 'Add User csAdmin'),
+(19, 'csAdmin', '2021-01-18 00:14:22', 'Add Subject 22ee33'),
+(20, 'csAdmin', '2021-01-18 13:14:56', 'Add Subject 19cs-098');
 
 -- --------------------------------------------------------
 
@@ -150,27 +152,30 @@ INSERT INTO `assignment` (`assignment_id`, `floc`, `fdatein`, `fdesc`, `teacher_
 (38, 'admin/uploads/6836_File_Jan-2019.pdf', '2020-12-31 18:38:46', 'daffafssaf', 9, 196, 'assign-1000', '100', '', 1, '', '', 0),
 (39, 'admin/uploads/6836_File_Jan-2019.pdf', '2020-12-31 18:38:46', 'daffafssaf', 9, 198, 'assign-1000', '100', '', 0, '', '', 0),
 (41, 'admin/uploads/1274_File_Jan-2019.pdf', '2020-12-31 18:52:38', 'sagu', 9, 196, 'sagu', '50', '', 1, '', '', 0),
-(42, 'admin/uploads/9242_File_studentsSheet.xlsx', '2021-01-01 10:20:52', 'assign', 9, 196, 'assign', '100', '', 1, '', '', 0),
-(43, 'admin/uploads/4020_File_studentsSheet.xlsx', '2021-01-01 10:57:35', 'sagar``````', 9, 196, 'sagar`', '100', '', 1, '', '', 0),
+(42, 'admin/uploads/9242_File_studentsSheet.xlsx', '2021-01-01 10:20:52', 'assign', 9, 196, 'assign', '100', '', 0, '', '', 0),
+(43, 'admin/uploads/4020_File_studentsSheet.xlsx', '2021-01-01 10:57:35', 'sagar``````', 9, 196, 'sagar`', '100', '', 0, '', '', 0),
 (44, 'admin/uploads/4020_File_studentsSheet.xlsx', '2021-01-01 10:57:35', 'sagar``````', 9, 198, 'sagar`', '100', '', 0, '', '', 0),
-(45, 'admin/uploads/7926_File_studentsSheet.xlsx', '2021-01-01 11:29:20', 'dsssd', 9, 196, 'sdds', '100', '', 1, '', '', 0),
+(45, 'admin/uploads/7926_File_studentsSheet.xlsx', '2021-01-01 11:29:20', 'dsssd', 9, 196, 'sdds', '100', '', 0, '', '', 0),
 (46, 'admin/uploads/7926_File_studentsSheet.xlsx', '2021-01-01 11:29:20', 'dsssd', 9, 198, 'sdds', '100', '', 0, '', '', 0),
-(47, 'admin/uploads/9677_File_studentsSheet.xlsx', '2021-01-01 11:42:29', 'sagu', 9, 196, 'sagu', '500', '', 1, '', '', 0),
+(47, 'admin/uploads/9677_File_studentsSheet.xlsx', '2021-01-01 11:42:29', 'sagu', 9, 196, 'sagu', '500', '', 0, '', '', 0),
 (48, 'admin/uploads/9677_File_studentsSheet.xlsx', '2021-01-01 11:42:29', 'sagu', 9, 198, 'sagu', '500', '', 0, '', '', 0),
-(49, 'admin/uploads/7363_File_studentsSheet.xlsx', '2021-01-01 11:45:36', 'qwerty', 9, 196, 'qwwqqw', '1000', '', 1, '', '', 0),
+(49, 'admin/uploads/7363_File_studentsSheet.xlsx', '2021-01-01 11:45:36', 'qwerty', 9, 196, 'qwwqqw', '1000', '', 0, '', '', 0),
 (50, 'admin/uploads/7363_File_studentsSheet.xlsx', '2021-01-01 11:45:36', 'qwerty', 9, 198, 'qwwqqw', '1000', '', 0, '', '', 0),
-(51, 'admin/uploads/2908_File_studentsSheet.xlsx', '2021-01-01 11:47:24', 'trewq', 9, 196, 'qwertt', '1000', '', 1, '', '', 0),
+(51, 'admin/uploads/2908_File_studentsSheet.xlsx', '2021-01-01 11:47:24', 'trewq', 9, 196, 'qwertt', '1000', '', 0, '', '', 0),
 (52, 'admin/uploads/2908_File_studentsSheet.xlsx', '2021-01-01 11:47:24', 'trewq', 9, 198, 'qwertt', '1000', '', 0, '', '', 0),
-(53, 'admin/uploads/9472_File_studentsSheet.xlsx', '2021-01-01 11:57:43', 'ddddssss', 9, 196, 'sddddd', '500', '', 1, '', '', 0),
+(53, 'admin/uploads/9472_File_studentsSheet.xlsx', '2021-01-01 11:57:43', 'ddddssss', 9, 196, 'sddddd', '500', '', 0, '', '', 0),
 (54, 'admin/uploads/9472_File_studentsSheet.xlsx', '2021-01-01 11:57:43', 'ddddssss', 9, 198, 'sddddd', '500', '', 0, '', '', 0),
-(55, 'admin/uploads/1847_File_studentsSheet.xlsx', '2021-01-01 12:22:52', 'hggg111', 9, 196, 'hgggg', '500', '', 1, '', '', 0),
+(55, 'admin/uploads/1847_File_studentsSheet.xlsx', '2021-01-01 12:22:52', 'hggg111', 9, 196, 'hgggg', '500', '', 0, '', '', 0),
 (56, 'admin/uploads/1847_File_studentsSheet.xlsx', '2021-01-01 12:22:52', 'hggg111', 9, 198, 'hgggg', '500', '', 0, '', '', 0),
-(57, 'admin/uploads/1316_File_add_class.php', '2021-01-07 16:31:00', 'jhj', 9, 196, 'jhg', '', '', 0, '', '', 0),
+(57, 'admin/uploads/1316_File_add_class.php', '2021-01-07 16:31:00', 'jhj', 9, 196, 'jhg', '', '', 1, '', '', 0),
 (58, 'admin/uploads/1316_File_add_class.php', '2021-01-07 16:31:01', 'jhj', 9, 198, 'jhg', '', '', 0, '', '', 0),
 (59, 'admin/uploads/1316_File_add_class.php', '2021-01-07 16:31:01', 'jhj', 9, 207, 'jhg', '', '', 0, '', '', 0),
-(60, 'admin/uploads/9961_File_pdkeaAO_NC071_2021_01_12_13_21_08.pdf', '2021-01-12 19:56:47', 'wwwwww', 9, 196, 'qqqqqq', '100', '{\"questions\":[{\"questionNo\":\"1\",\"queMaxMarks\":\"50\"},{\"questionNo\":\"2\",\"queMaxMarks\":\"50\"}]}', 0, '16/01/2021', '14:30', 1),
+(60, 'admin/uploads/9961_File_pdkeaAO_NC071_2021_01_12_13_21_08.pdf', '2021-01-12 19:56:47', 'wwwwww', 9, 196, 'qqqqqq', '100', '{\"questions\":[{\"questionNo\":\"1\",\"queMaxMarks\":\"50\"},{\"questionNo\":\"2\",\"queMaxMarks\":\"50\"}]}', 1, '16/01/2021', '14:30', 1),
 (61, 'admin/uploads/3527_File_unnamed.jpg', '2021-01-14 12:31:00', 'seses', 9, 196, 'deadline_date', '30', '{\"questions\":[{\"questionNo\":\"1\",\"queMaxMarks\":\"10\"}]}', 1, '15/01/2021', '14:30', 1),
-(62, 'admin/uploads/3527_File_unnamed.jpg', '2021-01-14 12:31:00', 'seses', 9, 198, 'deadline_date', '30', '{\"questions\":[{\"questionNo\":\"1\",\"queMaxMarks\":\"10\"}]}', 1, '14/01/2021', '14:30', 1);
+(62, 'admin/uploads/3527_File_unnamed.jpg', '2021-01-14 12:31:00', 'seses', 9, 198, 'deadline_date', '30', '{\"questions\":[{\"questionNo\":\"1\",\"queMaxMarks\":\"10\"}]}', 1, '14/01/2021', '14:30', 0),
+(65, 'admin/uploads/8870_File_excel_data (53).xls', '2021-01-18 11:50:26', 'updated', 9, 196, '18-01-2021', '50', '{\"questions\":[{\"questionNo\":\"1\",\"queMaxMarks\":\"25\"},{\"questionNo\":\"2\",\"queMaxMarks\":\"25\"}]}', 1, '18/01/2021', '14:50', 1),
+(66, 'admin/uploads/8870_File_excel_data (53).xls', '2021-01-18 11:50:27', 'updated', 9, 198, '18-01-2021', '50', '{\"questions\":[{\"questionNo\":\"1\",\"queMaxMarks\":\"25\"},{\"questionNo\":\"2\",\"queMaxMarks\":\"25\"}]}', 0, '18/01/2021', '14:50', 1),
+(67, 'admin/uploads/8870_File_excel_data (53).xls', '2021-01-18 11:50:27', 'updated', 9, 207, '18-01-2021', '50', '{\"questions\":[{\"questionNo\":\"1\",\"queMaxMarks\":\"25\"},{\"questionNo\":\"2\",\"queMaxMarks\":\"25\"}]}', 0, '18/01/2021', '14:50', 1);
 
 -- --------------------------------------------------------
 
@@ -476,7 +481,7 @@ CREATE TABLE `internals` (
 --
 
 INSERT INTO `internals` (`internal_id`, `internal_class_id`, `student_marks`) VALUES
-(5, 196, '{\"students\":[{\"Name\":\"Wina Mae Espenorio\",\"USN\":\"20100447\",\"class\":\"196\",\"IAs\":[{\"IAName\":\"ia-1 (25)\",\"IAMark\":\"20\"},{\"IAName\":\"IA 2 (30)\",\"IAMark\":\"25\"}]},{\"Name\":\"Mark Dominic Sayon\",\"USN\":\"21100867\",\"class\":\"196\",\"IAs\":[{\"IAName\":\"ia-1 (25)\",\"IAMark\":\"50\"},{\"IAName\":\"IA 2 (30)\",\"IAMark\":\"26\"}]}]}'),
+(5, 196, '{\"students\":[{\"Name\":\"Wina Mae Espenorio\",\"USN\":\"20100447\",\"class\":\"196\",\"IAs\":[{\"IAName\":\"ia-1 (25)\",\"IAMark\":\"20\"},{\"IAName\":\"IA 2 (30)\",\"IAMark\":\"25\"},{\"IAName\":\"IA 3 (30)\",\"IAMark\":\"10\"}]},{\"Name\":\"Mark Dominic Sayon\",\"USN\":\"21100867\",\"class\":\"196\",\"IAs\":[{\"IAName\":\"ia-1 (25)\",\"IAMark\":\"50\"},{\"IAName\":\"IA 2 (30)\",\"IAMark\":\"26\"},{\"IAName\":\"IA 3 (30)\",\"IAMark\":\"10\"}]}]}'),
 (6, 207, '{\"students\":[{\"Name\":\"Vishal Agasar\",\"USN\":\"2BL17ME132\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Jamaica Mae Alipe\",\"USN\":\"21100555\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Xenia Jane Billones\",\"USN\":\"21100318\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Carell Catuburan\",\"USN\":\"21101124\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Zyryn Corugda\",\"USN\":\"21100881\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Jade Gordoncillo\",\"USN\":\"21100617\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Neljie Guirnela\",\"USN\":\"21101131\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Mary Joy Lambosan\",\"USN\":\"20101289\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Clifford Ledesma\",\"USN\":\"21100324\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Jamilah Lonot\",\"USN\":\"21100303\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Christine Joy Macaya\",\"USN\":\"21100579\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Ryan Teofilo Malbata-an\",\"USN\":\"21100315\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Noli Mendoza\",\"USN\":\"21100556\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Ma. Nonie Mendoza\",\"USN\":\"21100913\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Glecy Marie Navarosa\",\"USN\":\"20101436\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Miralyn Pabalate\",\"USN\":\"21100855\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Leah Mae Padilla\",\"USN\":\"21100471\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Razel Palermo\",\"USN\":\"29000676\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Jayvon Pig-ao\",\"USN\":\"21100547\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Ergin Joy Satoc\",\"USN\":\"21101142\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Mark Dominic Sayon\",\"USN\":\"21100867\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Raymond Serion\",\"USN\":\"2700372\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Felix Kirby Ubas\",\"USN\":\"21100277\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]},{\"Name\":\"Stephanie Villanueva\",\"USN\":\"21101042\",\"class\":\"207\",\"IAs\":[{\"IAName\":\"ia-1 (40)\",\"IAMark\":\"10\"}]}]}');
 
 -- --------------------------------------------------------
@@ -622,7 +627,10 @@ INSERT INTO `notification` (`notification_id`, `teacher_class_id`, `notification
 (62, 196, 'Add Assignment name <b>deadline_date</b>', '2021-01-14 12:31:00', 'assignment_student.php'),
 (63, 198, 'Add Assignment name <b>deadline_date</b>', '2021-01-14 12:31:00', 'assignment_student.php'),
 (64, 198, 'Add Assignment file name <b>course</b>', '2021-01-15 00:29:23', 'assignment_student.php'),
-(65, 196, 'Add Assignment file name <b>course</b>', '2021-01-15 00:37:07', 'assignment_student.php');
+(65, 196, 'Add Assignment file name <b>course</b>', '2021-01-15 00:37:07', 'assignment_student.php'),
+(66, 196, 'Add Assignment name <b>18-01-2021</b>', '2021-01-18 11:50:27', 'assignment_student.php'),
+(67, 198, 'Add Assignment name <b>18-01-2021</b>', '2021-01-18 11:50:27', 'assignment_student.php'),
+(68, 207, 'Add Assignment name <b>18-01-2021</b>', '2021-01-18 11:50:27', 'assignment_student.php');
 
 -- --------------------------------------------------------
 
@@ -677,6 +685,26 @@ INSERT INTO `notification_read_teacher` (`notification_read_teacher_id`, `teache
 (7, 12, 'yes', 8),
 (8, 12, 'yes', 7),
 (9, 18, 'yes', 15);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `offlineassignment`
+--
+
+CREATE TABLE `offlineassignment` (
+  `off_id` int(11) NOT NULL,
+  `offline_class_id` int(11) NOT NULL,
+  `offline_marks` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `offlineassignment`
+--
+
+INSERT INTO `offlineassignment` (`off_id`, `offline_class_id`, `offline_marks`) VALUES
+(0, 198, '{\"students\":[{\"Name\":\"Karyl June Bacobo\",\"USN\":\"21100895\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"10\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"5\"}]},{\"Name\":\"Johnedel Bauno\",\"USN\":\"21100411\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"10\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"2\"}]},{\"Name\":\"Ace John Casuyon\",\"USN\":\"21100393\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"15\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"14\"}]},{\"Name\":\"Jerwin Delos Reyes\",\"USN\":\"21100369\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"10\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"15\"}]},{\"Name\":\"Neovi Devierte\",\"USN\":\"21100557\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"15\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"14\"}]},{\"Name\":\"Ma. Roxette Infante\",\"USN\":\"21100421\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"10\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"8\"}]},{\"Name\":\"Victor Anthony Jacobo\",\"USN\":\"21101050\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"18\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"5\"}]},{\"Name\":\"Danica Lamis\",\"USN\":\"21100396\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"14\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"9\"}]},{\"Name\":\"Eril Pio Mercado\",\"USN\":\"21100291\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"13\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"14\"}]},{\"Name\":\"Mary Ann Panaguiton\",\"USN\":\"21100701\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"11\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"12\"}]},{\"Name\":\"Jethro Pansales\",\"USN\":\"21101273\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"15\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"13\"}]},{\"Name\":\"Mae Ann Panugaling\",\"USN\":\"21100904\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"16\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"14\"}]},{\"Name\":\"Rose Mae Pido\",\"USN\":\"21101195\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"14\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"15\"}]},{\"Name\":\"Savrena Joy Rael\",\"USN\":\"2100287\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"3\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"13\"}]},{\"Name\":\"Kristelle Shaine Rubi\",\"USN\":\"21101063\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"5\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"16\"}]},{\"Name\":\"Jebson Tordillos\",\"USN\":\"21100406\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"6\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"17\"}]},{\"Name\":\"Lee Ann Vertucio\",\"USN\":\"21100351\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"8\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"18\"}]},{\"Name\":\"Jendrix Victosa\",\"USN\":\"21100431\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"11\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"19\"}]},{\"Name\":\"Richelle Villarmia\",\"USN\":\"20101392\",\"class\":\"198\",\"IAs\":[{\"IAName\":\"ASGN-1 (20)\",\"IAMark\":\"14\"},{\"IAName\":\"asgn-2 (20)\",\"IAMark\":\"20\"}]}]}'),
+(0, 196, '{\"students\":[{\"Name\":\"Wina Mae Espenorio\",\"USN\":\"20100447\",\"class\":\"196\",\"IAs\":[{\"IAName\":\"assign-1 (42)\",\"IAMark\":\"40\"}]},{\"Name\":\"Mark Dominic Sayon\",\"USN\":\"21100867\",\"class\":\"196\",\"IAs\":[{\"IAName\":\"assign-1 (42)\",\"IAMark\":\"40\"}]}]}');
 
 -- --------------------------------------------------------
 
@@ -800,7 +828,7 @@ CREATE TABLE `student` (
 INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `dob`, `class_id`, `did`, `username`, `password`, `location`, `status`, `per_no`, `gua_no`, `rollno`, `assig_status`) VALUES
 (113, 'Clifford', 'Ledesma', 0, 13, 0, '21100324', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0, 0),
 (112, 'Raymond', 'Serion', 0, 13, 0, '2700372', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '0', '0', 0, 0),
-(111, 'Mark Dominic', 'Sayon', 0, 13, 0, '21100867', 'heni', 'uploads/mark.jpg', 'Unregistered', '0', '0', 154, 0),
+(111, 'Mark Dominic', 'Sayon', 0, 13, 0, '21100867', 'heni', 'uploads/mark.jpg', 'registered', '0', '0', 154, 0),
 (234, 'Vishal', 'Agasar', 2081999, 8, 0, '2BL17ME132', '', '', 'Unregistered', '', '', 0, 0),
 (105, 'Neljie', 'Guirnela', 0, 13, 0, '21101131', '', 'uploads/Koala.jpg', 'Unregistered', '0', '0', 0, 0),
 (106, 'Razel', 'Palermo', 0, 13, 0, '29000676', '', 'uploads/razel.jpg', 'Unregistered', '0', '0', 0, 0),
@@ -927,7 +955,14 @@ INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `dob`, `class_id`,
 (260, 'tqqqq', 'awwww', 77889999, 8, 4, '22112', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '', '', 0, 0),
 (261, 'tqqqq', 'awwww', 77889999, 8, 4, '22112', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '', '', 0, 0),
 (262, 'tqqqq', 'awwww', 77889999, 8, 4, '22112', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '', '', 0, 0),
-(263, 'qwerty', 'io', 22552222, 13, 4, '11111', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '', '', 0, 0);
+(263, 'qwerty', 'io', 22552222, 13, 4, '11111', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '', '', 0, 0),
+(264, 'omer', 'saif', 19032021, 25, 0, '22ee3322', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '', '', 23, 0),
+(265, 'omer', 'saif', 19032021, 25, 0, '22ee3322', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '', '', 23, 0),
+(266, 'omer', 'saif', 11223333, 25, 0, '22ee3355', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '', '', 21, 0),
+(267, 'omer', 'saif', 11223333, 25, 0, '22ee3355', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '', '', 21, 0),
+(268, 'omer', 'saif', 11224444, 24, 0, '21WW2255', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '', '', 55, 0),
+(269, 'omer', 'saif', 225511111, 26, 0, '21WW2266', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '', '', 52, 0),
+(270, 'omer', 'saif', 88775555, 24, 0, '22ee3322', '', 'uploads/NO-IMAGE-AVAILABLE.jpg', 'Unregistered', '', '', 58, 0);
 
 -- --------------------------------------------------------
 
@@ -970,9 +1005,11 @@ INSERT INTO `student_assignment` (`student_assignment_id`, `assignment_id`, `flo
 (12, 55, 'admin/uploads/4568_File_Jan-2019.pdf', '2021-01-01 17:14:59', 'DSSAsd', 'asda', 111, '', 'asdaWQ', '', '', 0, ''),
 (13, 55, 'admin/uploads/1937_File_11414017524-NOV-20365767.PDF', '2021-01-02 11:42:45', 'assignment-0011', 'assignment', 111, '', '50', '', '', 0, ''),
 (14, 55, 'admin/uploads/5304_File_terms-and-condition.pdf', '2021-01-02 11:56:43', 'assignment-00120', 'assignment', 111, '', '55', '', '', 0, ''),
-(16, 60, 'admin/uploads/1331_File_Jan-2019.pdf', '2021-01-15 13:17:34', 'sadasd', 'hii', 137, '20', '20', '', '', 0, '196'),
-(17, 60, 'admin/uploads/9444_File_Courses_Pharmacy.pdf', '2021-01-15 15:20:53', 'sad', 'saas', 111, '45', '58', '{\"questions\":[{\"questionNo\":\"1\",\"marksObtained\":\"20\"},{\"questionNo\":\"2\",\"marksObtained\":\"25\"}]}', '', 1, '196'),
-(18, 57, 'admin/uploads/5324_File_Jan-2019.pdf', '2021-01-16 11:24:09', 'sad', 'sd', 111, '', '22', '', '', 1, '196');
+(16, 61, 'admin/uploads/1331_File_Jan-2019.pdf', '2021-01-15 13:17:34', 'sadasd', 'hii', 137, '20', '20', '', '', 0, '196'),
+(17, 60, 'admin/uploads/9444_File_Courses_Pharmacy.pdf', '2021-01-15 15:20:53', 'sad', 'saas', 111, '65', '58', '{\"questions\":[{\"questionNo\":\"1\",\"marksObtained\":\"45\"},{\"questionNo\":\"2\",\"marksObtained\":\"20\"}]}', '', 1, '196'),
+(18, 57, 'admin/uploads/5324_File_Jan-2019.pdf', '2021-01-16 11:24:09', 'sad', 'sd', 111, '', '22', '', '', 1, '196'),
+(19, 57, 'admin/uploads/8872_File_pdkeaAO_NC071_2021_01_12_13_21_08.pdf', '2021-01-18 11:35:17', 'khygh', '22222', 111, '', '33', '', '', 1, '196'),
+(20, 65, 'admin/uploads/2106_File_pdkeaAO_NC071_2021_01_12_13_21_08.pdf', '2021-01-18 11:52:35', 'sqdwe224', 'awwqqqqq', 111, '40', '12', '{\"questions\":[{\"questionNo\":\"1\",\"marksObtained\":\"20\"},{\"questionNo\":\"2\",\"marksObtained\":\"20\"}]}', '', 1, '196');
 
 -- --------------------------------------------------------
 
@@ -1055,7 +1092,9 @@ INSERT INTO `subject` (`subject_id`, `subject_code`, `subject_title`, `category`
 (22, '17CS42-A', 'software engineering-A', '', '', 3, '', '4', 12),
 (23, '17CS42-B ', 'software engineering-B', '', '', 3, '', '4', 13),
 (24, '17CS43-A', 'DA-A', '', '', 3, '', '4', 12),
-(25, '17CS43-B ', 'DA-B', '', '', 3, '', '4', 13);
+(25, '17CS43-B ', 'DA-B', '', '', 3, '', '4', 13),
+(45, '22ee33', 'wwqw', '', '', 1, '', '3rd', 7),
+(46, '19cs-098', 'qwerty', '', '', 5, '', '5th', 7);
 
 -- --------------------------------------------------------
 
@@ -1674,7 +1713,9 @@ INSERT INTO `teacher_notification` (`teacher_notification_id`, `teacher_class_id
 (33, 196, 'Submit Assignment file name <b>sir me sir</b>', '2021-01-12 19:59:05', 'view_submit_assignment.php', 111, 60),
 (34, 196, 'Submit Assignment file name <b>hii</b>', '2021-01-15 13:17:34', 'view_submit_assignment.php', 137, 60),
 (35, 196, 'Submit Assignment file name <b>saas</b>', '2021-01-15 15:20:53', 'view_submit_assignment.php', 111, 60),
-(36, 196, 'Submit Assignment file name <b>sd</b>', '2021-01-16 11:24:09', 'view_submit_assignment.php', 111, 57);
+(36, 196, 'Submit Assignment file name <b>sd</b>', '2021-01-16 11:24:09', 'view_submit_assignment.php', 111, 57),
+(37, 196, 'Submit Assignment file name <b>22222</b>', '2021-01-18 11:35:17', 'view_submit_assignment.php', 111, 57),
+(38, 196, 'Submit Assignment file name <b>awwqqqqq</b>', '2021-01-18 11:52:35', 'view_submit_assignment.php', 111, 65);
 
 -- --------------------------------------------------------
 
@@ -1868,13 +1909,13 @@ INSERT INTO `user_log` (`user_log_id`, `username`, `login_date`, `logout_date`, 
 (121, 'agasar123', '2021-01-07 20:14:13', '2021-01-12 18:33:11', 17),
 (122, 'udayptl9', '2021-01-07 20:41:20', '2021-01-16 16:26:52', 16),
 (123, 'admin', '2021-01-07 20:41:35', '2021-01-16 16:53:39', 15),
-(124, 'csAdmin', '2021-01-07 20:42:34', '2021-01-12 17:18:52', 18),
+(124, 'csAdmin', '2021-01-07 20:42:34', '2021-01-18 13:19:56', 18),
 (125, 'udayptl9', '2021-01-07 20:57:37', '2021-01-16 16:26:52', 16),
 (126, 'admin', '2021-01-07 21:04:45', '2021-01-16 16:53:39', 15),
 (127, 'udayptl9', '2021-01-07 21:09:59', '2021-01-16 16:26:52', 16),
 (128, 'admin', '2021-01-12 17:16:32', '2021-01-16 16:53:39', 15),
 (129, 'udayptl9', '2021-01-12 17:17:39', '2021-01-16 16:26:52', 16),
-(130, 'csAdmin', '2021-01-12 17:18:31', '2021-01-12 17:18:52', 18),
+(130, 'csAdmin', '2021-01-12 17:18:31', '2021-01-18 13:19:56', 18),
 (131, 'agasar123', '2021-01-12 17:19:03', '2021-01-12 18:33:11', 17),
 (132, 'admin', '2021-01-12 17:23:52', '2021-01-16 16:53:39', 15),
 (133, 'udayptl9', '2021-01-12 17:24:24', '2021-01-16 16:26:52', 16),
@@ -1887,7 +1928,7 @@ INSERT INTO `user_log` (`user_log_id`, `username`, `login_date`, `logout_date`, 
 (140, 'agasar123', '2021-01-12 18:29:54', '2021-01-12 18:33:11', 17),
 (141, 'admin', '2021-01-13 10:29:44', '2021-01-16 16:53:39', 15),
 (142, 'admin', '2021-01-13 14:24:26', '2021-01-16 16:53:39', 15),
-(143, 'csadmin', '2021-01-13 14:51:03', '', 18),
+(143, 'csadmin', '2021-01-13 14:51:03', '2021-01-18 13:19:56', 18),
 (144, 'admin', '2021-01-14 17:48:52', '2021-01-16 16:53:39', 15),
 (145, 'admin', '2021-01-15 15:52:47', '2021-01-16 16:53:39', 15),
 (146, 'admin', '2021-01-16 13:53:04', '2021-01-16 16:53:39', 15),
@@ -1896,9 +1937,17 @@ INSERT INTO `user_log` (`user_log_id`, `username`, `login_date`, `logout_date`, 
 (149, 'admin', '2021-01-16 15:12:46', '2021-01-16 16:53:39', 15),
 (150, 'udayptl9', '2021-01-16 15:21:02', '2021-01-16 16:26:52', 16),
 (151, 'admin', '2021-01-16 16:26:57', '2021-01-16 16:53:39', 15),
-(152, 'csAdmin', '2021-01-16 16:27:56', '', 18),
+(152, 'csAdmin', '2021-01-16 16:27:56', '2021-01-18 13:19:56', 18),
 (153, 'admin', '2021-01-16 16:52:31', '2021-01-16 16:53:39', 15),
-(154, 'csAdmin', '2021-01-16 16:54:03', '', 18);
+(154, 'csAdmin', '2021-01-16 16:54:03', '2021-01-18 13:19:56', 18),
+(155, 'csAdmin', '2021-01-18 00:13:07', '2021-01-18 13:19:56', 18),
+(156, 'csAdmin', '2021-01-18 00:32:24', '2021-01-18 13:19:56', 18),
+(157, 'csAdmin', '2021-01-18 10:04:38', '2021-01-18 13:19:56', 18),
+(158, 'admin', '2021-01-18 10:07:51', '', 15),
+(159, 'admin', '2021-01-18 12:08:11', '', 15),
+(160, 'csAdmin', '2021-01-18 13:14:24', '2021-01-18 13:19:56', 18),
+(161, 'admin', '2021-01-18 13:20:03', '', 15),
+(162, 'admin', '2021-01-18 14:08:43', '', 15);
 
 --
 -- Indexes for dumped tables
@@ -2134,7 +2183,7 @@ ALTER TABLE `user_log`
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `activity_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `activity_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `answer`
@@ -2146,7 +2195,7 @@ ALTER TABLE `answer`
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
-  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `attendence`
@@ -2230,7 +2279,7 @@ ALTER TABLE `message_sent`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `notification_read`
@@ -2266,13 +2315,13 @@ ALTER TABLE `school_year`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=264;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=271;
 
 --
 -- AUTO_INCREMENT for table `student_assignment`
 --
 ALTER TABLE `student_assignment`
-  MODIFY `student_assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `student_assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `student_backpack`
@@ -2290,7 +2339,7 @@ ALTER TABLE `student_class_quiz`
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `teacher`
@@ -2326,7 +2375,7 @@ ALTER TABLE `teacher_class_student`
 -- AUTO_INCREMENT for table `teacher_notification`
 --
 ALTER TABLE `teacher_notification`
-  MODIFY `teacher_notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `teacher_notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `teacher_shared`
@@ -2344,7 +2393,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_log`
 --
 ALTER TABLE `user_log`
-  MODIFY `user_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
+  MODIFY `user_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

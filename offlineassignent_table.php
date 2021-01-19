@@ -8,14 +8,15 @@
 	</script>
 	<?php 
 		$get_id = $_GET['id'];
-		$sql = "SELECT * FROM `internals` WHERE internal_class_id=$get_id";
+		$sql = "SELECT * FROM `offlineassignment` WHERE offline_class_id=$get_id";
 		$result = mysqli_query($conn, $sql);
 		while($row=mysqli_fetch_array($result)) {
 			echo '<script>
-				pastInternals.push('.$row["student_marks"].');
+				pastInternals.push('.$row["offline_marks"].');
 			</script>';
 		}
 	?>
+	<script>let totalIAs11 = pastInternals[0]['students'].length;</script>
 	<style>
 		.addinternalpopup {
 			position: fixed;
@@ -60,9 +61,6 @@
 			transition: 0.2s;
 		}
 
-		.graphContainer {
-			grid-area: graph;
-		}
 		.internalGraph {
 			font-size: 16px;
 			cursor: pointer;
@@ -81,7 +79,7 @@
 			left: 0;
 			right: 0;
 			margin: auto auto;
-			z-index: 100000;
+			z-index: 5;
 			transform: scale(0);
 		}
 		.graphShow {
@@ -102,7 +100,6 @@
 			background: red;
 			color: white;
 			font-weight: bold;
-			z-index: 10;
 		}
 		.graphContainer {
 			position:absolute;
@@ -110,22 +107,20 @@
 			bottom: 0;
 			left: 0;
 			right: 0;
+			width: 70%;
 			height: 50vh;
 		}
 		.internalDetails {
+			background: grey;
+			position: absolute;
+			right: 0;
 			top: 60px;
-			margin-top: 60px;
-			grid-area: details;
-			max-height: 80vh;
-			overflow-y: auto;
-		}
-		.internalDetails p {
-			font-size: 20px;
+			width: 30%;
+			height: 50%;
 		}
 		.popUpMain {
 			display: grid;
 			grid-template-columns: 70% 30%;
-			grid-template-areas: "graph details";
 		}
 	</style>
 	<div class="graphDisplay">
@@ -134,15 +129,16 @@
 			<div class="graphContainer">
 				<canvas id="myChart"></canvas>
 			</div>
-			<div class='internalDetails'></div>
+			<div class='internalDetails'>
+			</div>
 		</div>
 	</div>
 	<div class="addinternalpopup">
 		<button class="btn btn-danger closeinternalpopup">X</button>
 		<div class="form-group modules">
 			<div class='module_0 module'>
-				<p style='display: inline;'>Internal: </p><input style='display: inline;' class='internalName'
-					placeholder="Internal-Name" type="text"><input style='display: inline; width:80px;' class='internalName1'
+				<p style='display: inline;'>Assignment: </p><input style='display: inline;' class='internalName'
+					placeholder="Assignment-Name" type="text"><input style='display: inline; width:80px;' class='internalName1'
 					placeholder="Max Marks" type="text"><br><button class="btn btn-success addinternalsubmit"
 					style=margin-right;>Submit</button></br>
 			</div>
@@ -159,9 +155,9 @@
 				<input class='topic' style='display: none;' placeholder="Internal Name" type="text"><button
 					class="btn btn-danger" onclick="" style='display: none;'>X</button>
 
-				<a class="btn btn-info addinternal"><i class="icon-pencil"></i>Add Internal</a>
+				<a class="btn btn-info addinternal"><i class="icon-pencil"></i>Add Assignment</a>
 				<a class="btn btn-info submit saveinternal"><i class="icon-save icon-large"></i> Save</a>
-				<a onclick="window.open('internal_print.php<?php echo '?id='.$get_id; ?>')" class="btn btn-success"><i
+				<a onclick="window.open('offlineassignment_print.php<?php echo '?id='.$get_id; ?>')" class="btn btn-success"><i
 						class="icon-list"></i> Report</a>
 			</div>
 			<script>
@@ -176,6 +172,7 @@
 				}
 				let totalIAs = 0;
 				document.querySelector('.addinternalsubmit').addEventListener('click', function (event) {
+					
 					event.preventDefault();
 					let th = document.createElement('th');
 					th.classList.add('IaNameTh');
@@ -244,7 +241,7 @@
 						students['students'].push(student);
 					}
 					$.ajax({
-						url: 'internalfinal.php',
+						url: 'offlinefinal.php',
 						type: 'POST',
 						data: {
 							syllabus: JSON.stringify(students),
@@ -382,8 +379,8 @@ if (isset($_POST['submit'])){
 								</div>​
 								`;
 							row.parentElement.appendChild(td);
-							row.parentElement.querySelector('.totalMarksTd').innerHTML = Number(row.parentElement
-								.querySelector('.totalMarksTd').innerHTML) + Number(ia['IAMark']);
+							row.parentElement.querySelector('.totalMarksTd').innerHTML = (Number(row.parentElement
+								.querySelector('.totalMarksTd').innerHTML) + Number(ia['IAMark']));
 						})
 						check = 0;
 					}
@@ -413,7 +410,8 @@ if (isset($_POST['submit'])){
 					studentrows[i].querySelectorAll('.marksEdited').forEach(row1 => {
 						totalMarks += Number(row1.value);
 					})
-					document.querySelectorAll('.totalMarksTd')[i].innerHTML = totalMarks;
+					document.querySelectorAll('.totalMarksTd')[i].innerHTML = totalMarks ;
+
 				})
 			}
 			document.querySelectorAll('.thEditable').forEach(editable => {
@@ -434,28 +432,18 @@ if (isset($_POST['submit'])){
 			let labels = [];
 			let dataToDisplay = [];
 			let backgrounds = [];
-			let names = [];
 			data.forEach(student=>{
-			// for randomColors
-			// var o = Math.round, r = Math.random, s = 255;
-				// backgrounds.push('rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')');
-			//  dark colors
+				// for randomColors
+				// var o = Math.round, r = Math.random, s = 255;
+				 // backgrounds.push('rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')');
 				var color = '#';
 				for (var i = 0; i < 6; i++) {
 						color += Math.floor(Math.random() * 10);
 				}
 				backgrounds.push(color);
-				labels.push(student['USN']);
-				names.push(student['Name']);
+				labels.push(student['USN'])
 				dataToDisplay.push(Number(student['IAs'][headingNumber]['IAMark']));
 			})
-			document.querySelector('.internalDetails').innerHTML = '';
-			for(let i =0; i<backgrounds.length; i++) {
-				document.querySelector('.internalDetails').innerHTML += `
-					<div style='display: inline-block; width: 50px; height: 25px; background: ${backgrounds[i]}; position: relative;'></div>
-					<p style='display:inline;'>${names[i]}</p><br>
-				`;
-			}
 			let myChart = document.getElementById('myChart').getContext('2d');
 			// Global Options
 			Chart.defaults.global.defaultFontFamily = 'Lato';
@@ -483,7 +471,7 @@ if (isset($_POST['submit'])){
 						fontSize:25
 					},
 					legend:{
-						display:false,
+						display:true,
 						position:'right',
 						labels:{
 							fontColor:'#000'
@@ -511,6 +499,7 @@ if (isset($_POST['submit'])){
 			});
 			document.querySelector('.graphDisplay').classList.add('graphShow');
 			document.querySelector('.graphDisplay').classList.remove('graphHide');
+			console.log(data, headingNumber);
 		}
 		document.querySelector('.closeButton').addEventListener('click', event=>{
 			event.preventDefault();
