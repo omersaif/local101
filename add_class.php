@@ -15,10 +15,15 @@
 													<label>Department:</label>
 														<select name="department_id" class="form-control form-control-lg department_id" id="department"  required>
 															<option value="" disabled selected>-Select department-</option>
-															 
+															<?php
+															$query = mysqli_query($conn,"select * from department order by department_name");
+															while($row = mysqli_fetch_array($query)){
+															
+															?>
+											<option value="<?php echo $row['department_id']; ?>"><?php echo $row['department_name']; ?></option>
+											<?php } ?>
 														</select>
 													</div>
-
 
 
 													<div class="form-group">

@@ -9,7 +9,7 @@ $errflag = false;
 $conn = $connector->DbConnector();
 // var_dump($conn);
 // exit;       
-$uploaded_by_query = mysqli_query($conn,"select * from teacher where teacher_id = '$session_id'")or die(mysqli_error());
+$uploaded_by_query = mysqli_query($conn,"select * from teacher where teacher_id = $session_id")or die(mysqli_error());
 $uploaded_by_query_row = mysqli_fetch_array($uploaded_by_query);
 $uploaded_by = $uploaded_by_query_row['firstname']."".$uploaded_by_query_row['lastname'];
 
@@ -88,19 +88,13 @@ if ((!empty($_FILES["uploaded_file"])) && ($_FILES['uploaded_file']['error'] == 
                 // echo "It's done! The file has been saved as: ".$newname;		   
 					
 							$id=$_POST['selector'];
-											$N = count($id);
-											for($i=0; $i < $N; $i++)
-											{			
 										
                /*  $qry2 = "INSERT INTO files (fdesc,floc,fdatein,teacher_id,class_id,fname,uploaded_by) VALUES ('$filedesc','$newname',NOW(),'$session_id','$id[$i]','$name','$uploaded_by')"; */
                // echo "INSERT INTO files (fdesc,floc,fdatein,teacher_id,class_id,fname,uploaded_by) VALUES ('$filedesc','$newname',NOW(),'$session_id','$id[$i]','$name','$uploaded_by')";
   //               exit;
-				$result = mysqli_query($conn,"INSERT INTO assignment (fdesc,floc,fdatein,teacher_id,class_id,fname,maxmarks,qmaxmarks,deadline_date,deadline_time,auto_deadline) VALUES ('$filedesc','$newname',NOW(),'$session_id','$id[$i]','$name','$maxmarks','$questions','$dateToSave','$time',$checkbox)");
+				$result = mysqli_query($conn,"INSERT INTO assignment (fdesc,floc,fdatein,teacher_id,class_id,fname,maxmarks,qmaxmarks,deadline_date,deadline_time,auto_deadline) VALUES ('$filedesc','$newname',NOW(),$session_id,$id,'$name','$maxmarks','$questions','$dateToSave','$time',$checkbox)");
 				mysqli_query($conn,"insert into notification (teacher_class_id,notification,date_of_notification,link) value('$id[$i]','$name_notification',NOW(),'assignment_student.php')")or die(mysqli_error());
 				print_r($result);
-			   
-			  }
-			   
 }
 }
 }

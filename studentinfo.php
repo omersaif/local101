@@ -47,7 +47,7 @@
 
                                 <div class="alert alert-info"><i class="icon-info-sign"></i> About Me</div>
 								<?php $query= mysqli_query($conn,"select * from student where student_id = $session_id")or die(mysqli_error());
-										 $query= mysqli_query($conn,"select * from student where student_id = $session_id")or die(mysqli_error());
+										 $query= mysqli_query($conn,"select * from student  where student_id = $session_id")or die(mysqli_error());
 								while($row = mysqli_fetch_array($query)) {
 									?>
 									<div class="pull-right"  style='position: relative;'>
@@ -55,14 +55,15 @@
 
 										<div><h4> <?php echo $row['firstname']; ?> <?php echo $row['lastname']; ?>  </h4></div>
 										<div><h4> <?php echo "Student"; ?></h4></div>
-	  									<div><h4 id="NAME">Date of Birth: <?php echo $row['dob']; ?></h4></div>
+	  									<div><h4 id="NAME">Department: <?php echo $row['']; ?></h4></div>
+	  									<div><h4 id="NAME">Class: <?php echo $row['']; ?></h4></div>
 	  									<div><h4 id="NAME">USN: <?php echo $row['username']; ?></h4></div>
-	  									<div><h4 id="NAME">Status: <?php echo $row['status']; ?></h4></div>
-	  									<div><h4 id="NAME">Student Id: <?php echo $row['student_id']; ?></h4></div>
-	  									<div><h4 id="NAME">Personal Number: <?php echo $row['per_no']; ?></h4></div>
-	  									<div><h4 id="NAME">Guardian Number: <?php echo $row['gua_no']; ?></h4></div>
 	  									
-	  									<div  style='position: absolute;  top: 15px; margin-left: -300px;'><img src="admin/<?php echo $row['location']; ?>"" style="height:200px;" alt='profile Image'></div>
+	  									<div><h4 id="NAME">Roll No: <?php echo $row['rollno']; ?></h4></div>
+	  									<div><h4 id="NAME">Personal Contact: <?php echo $row['per_no']; ?></h4></div>
+	  									<div><h4 id="NAME">Guardian Contact: <?php echo $row['gua_no']; ?></h4></div>
+	  									
+	  									<div  style='position: absolute;  top: 15px; margin-left: -300px;'><img src="admin/<?php echo $row['location']; ?>" style="height:200px;" alt='profile Image'></div>
 	  									
 										
 									</div>

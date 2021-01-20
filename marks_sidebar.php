@@ -1,4 +1,7 @@
 <div class="span3" id="">
+	<script> 
+		let previousMarks;
+	</script>
 <?php $get_id = $_GET['id'];?>
 <?php $student_id = $_GET['student_id'];
 	$student_assignment_id = $_GET['student_assignment_id'];
@@ -25,6 +28,14 @@
 	  		$usn = $row['username'];
 	  		$student_id = $row['student_id'];
 	  	}
+	  	$previousMarksCheck=mysqli_query($conn, "SELECT * FROM `student_assignment` WHERE student_assignment_id=$student_assignment_id");
+	  	if($previousMarksCheck) {
+	  		while($row=mysqli_fetch_array($previousMarksCheck)) {
+	  			$marks_alloc = $row['marks_alloc'];
+	  			echo "<script>previousMarks = $marks_alloc</script>";
+	  		}
+	  	 } 
+
 	  }
 	
  ?>
@@ -104,9 +115,9 @@
 											<tbody class='marksObtainedTable'></tbody>
 										</table>
 									`;
-									qMarks['questions'].forEach(question=>{
-										addInput(question.questionNo, question.queMaxMarks);
-									})
+									for(let i=0; i<qMarks['questions'].length; i++) {
+										addInput(qMarks['questions'][i].questionNo, previousMarks['questions'][i]['marksObtained'], qMarks['questions'][i].queMaxMarks);
+									}
 									document.querySelector('.marksForm').addEventListener('submit', function(event) {
 										event.preventDefault();
 										const student_assignment_id = <?php echo $student_assignment_id ?>;
@@ -138,13 +149,14 @@
 											}
 										})
 									})
-									function addInput(questionNo=1, maxmarks=0) {
+									function addInput(questionNo=1, marksObtained=0, maxmarks=0) {
 										var myDiv = document.createElement("tr");
 										myDiv.classList.add('marksDiv');
 	 									myDiv.innerHTML = `
 	 										<td class='questionNo'>${questionNo}</td>
-	 										<td><input type='text' class='enteredMarks' value='0' style='width: 25px;'>   /<span class='maxmarks'>${maxmarks}</span></td>
+	 										<td><input type='text' class='enteredMarks' style='width: 25px;' value=${marksObtained}>   /<span class='maxmarks'>${maxmarks}</span></td>
 										`;
+										document.querySelector('.totalMarks').value = Number(document.querySelector('.totalMarks').value) + Number(marksObtained);
 										document.querySelector('.marksObtainedTable').appendChild(myDiv);
 										index++;
 										inputs = document.querySelectorAll('.enteredMarks');

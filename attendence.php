@@ -127,7 +127,7 @@
                       <div class='innerDiv'>
                         <div class='attendenceAvatar' style='display: inline-block; position: relative;'>
                           <img src="user-avatar.svg" style='width: 70px;' alt="">
-                          <div class="rollNumberOverAvatar"><?php echo $row['student_id']; ?></div>
+                          <div class="rollNumberOverAvatar"><?php echo $row['rollno']; ?></div>
                           <span style="display: none;" class="class_id"><?php echo($row['class_id']); ?></span>
                           <span style="display: none;" class="first_name"><?php echo($row['firstname']); ?></span>
                           <span style="display: none;" class="last_name"><?php echo($row['lastname']); ?></span>
@@ -149,9 +149,9 @@
                       <table class='attendenceTable'>
                         <thead>
                           <tr class='attendenecsHeading'>
-                            <th>Sl No</th>                          
+                            <th>Roll No</th>        
                             <th>Name</th>
-                            <th>Roll No</th>
+                            
                           </tr>
                         </thead>
                         <tbody class='attendenceBody'>
@@ -159,7 +159,7 @@
                       </table>
                   <?php
                     $teacher_id = $_SESSION['id'];
-                    $attendences = mysqli_query($conn, "SELECT * FROM attendence WHERE attendence.teacher_class_id = $get_id")or die(mysqli_error());
+                    $attendences = mysqli_query($conn, "SELECT * FROM attendence  WHERE attendence.teacher_class_id = $get_id")or die(mysqli_error());
                   ?>
                   <script>
                     let attendences = [];
@@ -182,9 +182,9 @@
                         data.forEach(i=>{
                           document.querySelector('.attendenceBody').innerHTML += `
                             <tr class="attendenceDate">
-                              <td>${index}</td>
-                              <td>${i['firstname']} ${i['lastname']}</td>
                               <td>${i['rollNo']}</td>
+                              <td>${i['firstname']} ${i['lastname']}</td>
+                              
                               <td>${i['attendence']}</td>
                             </tr>
                           `;
